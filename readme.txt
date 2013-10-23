@@ -1,4 +1,4 @@
-﻿=== AVCP ===
+﻿=== WP AVCP ===
 Contributors: Milmor
 Tags: avcp
 Requires at least: 3.3
