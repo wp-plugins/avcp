@@ -1,10 +1,10 @@
-﻿=== AVCP ===
+﻿=== AVCP Xml ===
 Contributors: Milmor
 Tags: avcp
 Requires at least: 3.3
 Tested up to: 3.7
-Version: alpha 1
-Stable tag: alpha 1
+Version: alpha
+Stable tag: alpha
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
