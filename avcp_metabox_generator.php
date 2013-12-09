@@ -1,236 +1,108 @@
-<?php
-/**
- * Include and setup custom metaboxes and fields.
- *
- * @category YourThemeOrPlugin
- * @package  Metaboxes
- * @license  http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
- * @link     https://github.com/jaredatch/Custom-Metaboxes-and-Fields-for-WordPress
- */
+ <?php
 
-add_filter( 'cmb_meta_boxes', 'cmb_sample_metaboxes' );
-/**
- * Define the metabox and field configurations.
- *
- * @param  array $meta_boxes
- * @return array
- */
-function cmb_sample_metaboxes( array $meta_boxes ) {
+if (is_admin()){
 
-	// Start with an underscore to hide fields from custom fields list
-	$prefix = '_cmb_';
+  $prefix = 'avcp_';
 
-	$meta_boxes[] = array(
-		'id'         => 'test_metabox',
-		'title'      => 'Test Metabox',
-		'pages'      => array( 'at_gara'), // Post type
-		'context'    => 'normal',
-		'priority'   => 'high',
-		'show_names' => true, // Show field names on the left
-		'fields'     => array(
-			array(
-				'name' => 'Test Text',
-				'desc' => 'field description (optional)',
-				'id'   => $prefix . 'test_text',
-				'type' => 'text',
-			),
-			array(
-				'name' => 'Test Text Small',
-				'desc' => 'field description (optional)',
-				'id'   => $prefix . 'test_textsmall',
-				'type' => 'text_small',
-			),
-			array(
-				'name' => 'Test Text Medium',
-				'desc' => 'field description (optional)',
-				'id'   => $prefix . 'test_textmedium',
-				'type' => 'text_medium',
-			),
-			array(
-				'name' => 'Test Date Picker',
-				'desc' => 'field description (optional)',
-				'id'   => $prefix . 'test_textdate',
-				'type' => 'text_date',
-			),
-			array(
-				'name' => 'Test Date Picker (UNIX timestamp)',
-				'desc' => 'field description (optional)',
-				'id'   => $prefix . 'test_textdate_timestamp',
-				'type' => 'text_date_timestamp',
-			),
-			array(
-				'name' => 'Test Date/Time Picker Combo (UNIX timestamp)',
-				'desc' => 'field description (optional)',
-				'id'   => $prefix . 'test_datetime_timestamp',
-				'type' => 'text_datetime_timestamp',
-			),
-			array(
-	            'name' => 'Test Time',
-	            'desc' => 'field description (optional)',
-	            'id'   => $prefix . 'test_time',
-	            'type' => 'text_time',
-	        ),
-			array(
-				'name'   => 'Test Money',
-				'desc'   => 'field description (optional)',
-				'id'     => $prefix . 'test_textmoney',
-				'type'   => 'text_money',
-				// 'before' => '£', // override '$' symbol if needed
-			),
-			array(
-	            'name' => 'Test Color Picker',
-	            'desc' => 'field description (optional)',
-	            'id'   => $prefix . 'test_colorpicker',
-	            'type' => 'colorpicker',
-				'std'  => '#ffffff'
-	        ),
-			array(
-				'name' => 'Test Text Area',
-				'desc' => 'field description (optional)',
-				'id'   => $prefix . 'test_textarea',
-				'type' => 'textarea',
-			),
-			array(
-				'name' => 'Test Text Area Small',
-				'desc' => 'field description (optional)',
-				'id'   => $prefix . 'test_textareasmall',
-				'type' => 'textarea_small',
-			),
-			array(
-				'name' => 'Test Text Area Code',
-				'desc' => 'field description (optional)',
-				'id'   => $prefix . 'test_textarea_code',
-				'type' => 'textarea_code',
-			),
-			array(
-				'name' => 'Test Title Weeeee',
-				'desc' => 'This is a title description',
-				'id'   => $prefix . 'test_title',
-				'type' => 'title',
-			),
-			array(
-				'name'    => 'Test Select',
-				'desc'    => 'field description (optional)',
-				'id'      => $prefix . 'test_select',
-				'type'    => 'select',
-				'options' => array(
-					array( 'name' => 'Option One', 'value' => 'standard', ),
-					array( 'name' => 'Option Two', 'value' => 'custom', ),
-					array( 'name' => 'Option Three', 'value' => 'none', ),
-				),
-			),
-			array(
-				'name'    => 'Test Radio inline',
-				'desc'    => 'field description (optional)',
-				'id'      => $prefix . 'test_radio_inline',
-				'type'    => 'radio_inline',
-				'options' => array(
-					array( 'name' => 'Option One', 'value' => 'standard', ),
-					array( 'name' => 'Option Two', 'value' => 'custom', ),
-					array( 'name' => 'Option Three', 'value' => 'none', ),
-				),
-			),
-			array(
-				'name'    => 'Test Radio',
-				'desc'    => 'field description (optional)',
-				'id'      => $prefix . 'test_radio',
-				'type'    => 'radio',
-				'options' => array(
-					array( 'name' => 'Option One', 'value' => 'standard', ),
-					array( 'name' => 'Option Two', 'value' => 'custom', ),
-					array( 'name' => 'Option Three', 'value' => 'none', ),
-				),
-			),
-			array(
-				'name'     => 'Test Taxonomy Radio',
-				'desc'     => 'Description Goes Here',
-				'id'       => $prefix . 'text_taxonomy_radio',
-				'type'     => 'taxonomy_radio',
-				'taxonomy' => '', // Taxonomy Slug
-			),
-			array(
-				'name'     => 'Test Taxonomy Select',
-				'desc'     => 'Description Goes Here',
-				'id'       => $prefix . 'text_taxonomy_select',
-				'type'     => 'taxonomy_select',
-				'taxonomy' => '', // Taxonomy Slug
-			),
-			array(
-				'name'		=> 'Test Taxonomy Multi Checkbox',
-				'desc'		=> 'field description (optional)',
-				'id'		=> $prefix . 'test_multitaxonomy',
-				'type'		=> 'taxonomy_multicheck',
-				'taxonomy'	=> '', // Taxonomy Slug
-			),
-			array(
-				'name' => 'Test Checkbox',
-				'desc' => 'field description (optional)',
-				'id'   => $prefix . 'test_checkbox',
-				'type' => 'checkbox',
-			),
-			array(
-				'name'    => 'Test Multi Checkbox',
-				'desc'    => 'field description (optional)',
-				'id'      => $prefix . 'test_multicheckbox',
-				'type'    => 'multicheck',
-				'options' => array(
-					'check1' => 'Check One',
-					'check2' => 'Check Two',
-					'check3' => 'Check Three',
-				),
-			),
-			array(
-				'name'    => 'Test wysiwyg',
-				'desc'    => 'field description (optional)',
-				'id'      => $prefix . 'test_wysiwyg',
-				'type'    => 'wysiwyg',
-				'options' => array(	'textarea_rows' => 5, ),
-			),
-			array(
-				'name' => 'Test Image',
-				'desc' => 'Upload an image or enter an URL.',
-				'id'   => $prefix . 'test_image',
-				'type' => 'file',
-			),
-			array(
-				'name' => 'oEmbed',
-				'desc' => 'Enter a youtube, twitter, or instagram URL. Supports services listed at <a href="http://codex.wordpress.org/Embeds">http://codex.wordpress.org/Embeds</a>.',
-				'id'   => $prefix . 'test_embed',
-				'type' => 'oembed',
-			),
-		),
-	);
+  $config = array(
+    'id'             => 'avcp_metabox1',          // meta box id, unique per meta box
+    'title'          => 'Dettagli Gara',          // meta box title
+    'pages'          => array('avcp'),      // post types, accept custom post types as well, default is array('post'); optional
+    'context'        => 'normal',            // where the meta box appear: normal (default), advanced, side; optional
+    'priority'       => 'high',            // order of meta box: high (default), low; optional
+    'fields'         => array(),            // list of meta fields (can be added by field arrays)
+    'local_images'   => false,          // Use local or hosted images (meta box images for add/remove)
+    'use_with_theme' => false          //change path if used with theme set to true, false for a plugin or anything else for a custom path(default false).
+  );
 
-	$meta_boxes[] = array(
-		'id'         => 'about_page_metabox',
-		'title'      => 'About Page Metabox',
-		'pages'      => array( 'page', ), // Post type
-		'context'    => 'normal',
-		'priority'   => 'high',
-		'show_names' => true, // Show field names on the left
-		'show_on'    => array( 'key' => 'id', 'value' => array( 2, ), ), // Specific post IDs to display this metabox
-		'fields' => array(
-			array(
-				'name' => 'Test Text',
-				'desc' => 'field description (optional)',
-				'id'   => $prefix . 'test_text',
-				'type' => 'text',
-			),
-		)
-	);
+  $my_meta =  new AT_Meta_Box($config);
+ 
+  //text field
+  $my_meta->addText($prefix.'cig',array('name'=> 'Codice Identificativo Gara (C.I.G.)'));
+  
+  //select field
+  $my_meta->addSelect($prefix.'contraente',array(
+  '01-Procedura Aperta'=>'1. Procedura Aperta',
+  '02-Procedura Ristretta'=>'2. Procedura Ristretta',
+  '03-Procedura negoziata previa pubblicazione del bando'=>'3. Procedura negoziata previa pubblicazione del bando',
+  '04-Procedura negoziata senza previa pubblicazione del bando'=>'4. Procedura negoziata senza previa pubblicazione del bando',
+  '05-Dialogo Competitivo'=>'5. Dialogo Competitivo',
+  '06-Procedura negoziata senza previa indizione di gara (art. 221 D.LGS. 163/2006)'=>'6. Procedura negoziata senza previa indizione di gara (art. 221 D.LGS. 163/2006)',
+  '07-Sistema dinamico di acquisizione'=>'7. Sistema dinamico di acquisizione',
+  '08-Affidamento in economia - cottimo fiduciario'=>'8. Affidamento in economia - cottimo fiduciario',
+  '14-Procedura selettiva (ex art. 238 C.7 D.LGS. 163/2006)'=>'14. Procedura selettiva (ex art. 238 C.7 D.LGS. 163/2006)',
+  '17-Affidamento diretto (ex art. 5 legge 381/91)'=>'17. Affidamento diretto (ex art. 5 legge 381/91)',
+  '21-Procedura ristretta derivante da avvisi con cui si indice la gara'=>'21. Procedura ristretta derivante da avvisi con cui si indice la gara',
+  '22-Procedura negoziata derivante da avvisi con cui si indice la gara'=>'22. Procedura negoziata derivante da avvisi con cui si indice la gara',
+  '23-Affidamento in economia - Affidamento diretto'=>'23. Affidamento in economia - Affidamento diretto',
+  '24-Affidamento diretto a Società in-house'=>'24. Affidamento diretto a Società in-house',
+  '025-Affidamento diretto a Società raggruppate/consorziate o controllate nelle concessioni di LL.PP'=>'25. Affidamento diretto a Società raggruppate/consorziate o controllate nelle concessioni di LL.PP',
+  '26-Affidamento diretto in adesione ad accordo quadro/convenzione'=>'26. Affidamento diretto in adesione ad accordo quadro/convenzione',
+  '27-Confronto competitivo in adesione ad accordo quadro/convenzione'=>'27. Confronto competitivo in adesione ad accordo quadro/convenzione',
+  '28-Procedura ai sensi dei regolamenti degli organi costituzionali'=>'28. Procedura ai sensi dei regolamenti degli organi costituzionali'
+  ),array('name'=> 'Scelta Contraente', 'std'=> array('selectkey2')));
+  
+  //date field
+  $my_meta->addDate($prefix.'data_inizio',array('name'=> 'Data Inizio'));
+  
+  //date field
+  $my_meta->addDate($prefix.'data_fine',array('name'=> 'Data Fine '));
+  
+  $my_meta->addText($prefix.'aggiudicazione',array('name'=> 'Importo aggiudicazione <b>€</b>'));
+  $my_meta->addText($prefix.'somme_liquidate',array('name'=> 'Importo somme liquidate <b>€</b>'));
 
-	// Add other metaboxes as needed
+  //wysiwyg field
+  //$my_meta->addWysiwyg($prefix.'wysiwyg_note',array('name'=> 'Allegati e note libere '));
 
-	return $meta_boxes;
+  $my_meta->Finish();
+  
+  
+	//Secondo Metabo (indipendente da Bainternet)
+	
+	
+	function pages_inner_custom_box3( $post ) {
+
+    // Use nonce for verification
+    wp_nonce_field( plugin_basename( __FILE__ ), 'pages_noncename' );
+
+    // The actual fields for data entry
+	echo 'Le ditte appena collegate compariranno solo dopo avere aggiornato/pubblicato questa gara';
+    $dittepartecipanti = get_the_terms( $post->ID, 'ditte' );
+	$cats = get_post_meta($post->ID,'avcp_aggiudicatari',true);
+    echo '<ul>';
+	if(is_array($dittepartecipanti)) {
+		foreach ($dittepartecipanti as $term) {
+			$cterm = get_term_by('name',$term->name,'ditte');
+			$cat_id = $cterm->term_id; //Prende l'id del termine
+			$checked = (in_array($cat_id,(array)$cats)? ' checked="checked"': "");
+			echo'<li id="cat-'.$cat_id.'"><input type="checkbox" name="avcp_aggiudicatari[]" id="'.$cat_id.'" value="'.$cat_id.'"'.$checked.'> <label for="'.$cat_id.'">'.__($term->name, 'pages_textdomain' ).'</label></li>';
+		}
+	} else {
+		echo '<b>Nessun partecipante impostato</b>';
+	}
+    echo '</ul>';
+}
+	
+add_action( 'add_meta_boxes', 'cd_meta_box_add' );
+function cd_meta_box_add()
+{
+	add_meta_box( 'my-meta-box-id', 'Ditte :: AGGIUDICATARI', 'pages_inner_custom_box3', 'avcp', 'normal', 'high' );
 }
 
-add_action( 'init', 'cmb_initialize_cmb_meta_boxes', 9999 );
-/**
- * Initialize the metabox class.
- */
-function cmb_initialize_cmb_meta_boxes() {
-
-	if ( ! class_exists( 'cmb_Meta_Box' ) )
-		require_once 'init.php';
-
+function my_custom_save_post( $post_id ) {
+	update_post_meta($post_id,'avcp_aggiudicatari',$_POST['avcp_aggiudicatari']);
 }
+add_action( 'save_post_avcp', 'my_custom_save_post' );
+
+//add_action('add_meta_boxes','mysite_add_meta_boxes',10,2);
+function mysite_add_meta_boxes($post_type, $post) {
+  ob_start();
+}
+//add_action('dbx_post_sidebar','mysite_dbx_post_sidebar');
+function mysite_dbx_post_sidebar() {
+  $html = ob_get_clean();
+  $html = str_replace('"checkbox"','"radio"',$html);
+  echo $html;
+}
+  
+  } ?>
