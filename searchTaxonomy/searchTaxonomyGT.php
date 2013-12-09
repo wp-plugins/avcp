@@ -27,6 +27,7 @@ function searchTaxonomyGT_enqueue_admin_scripts() {
 	wp_enqueue_media();
 	wp_register_script( 'searchTaxonomyGT_js', plugins_url('searchTaxonomyGT.js', __FILE__), array('jquery') );
 	wp_enqueue_script( 'searchTaxonomyGT_js' );
+	
 	 
 }
 add_action( 'admin_enqueue_scripts', 'searchTaxonomyGT_enqueue_admin_scripts' );

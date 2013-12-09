@@ -3,8 +3,8 @@ Contributors: Milmor
 Tags: avcp, autorita, vigilanza, lavori, pubblici, amministrazione, trasparente, legge, obblighi, marco, milesi, normativa, pubblicazione
 Requires at least: 3.3
 Tested up to: 3.7
-Version: 1.0.0.1
-Stable tag: 1.0.0.1
+Version: 1.0.1
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -56,8 +56,9 @@ Per qualsiasi informazione, per segnalare problemi o per suggerire nuove funzion
 4. Dai un'occhiata alle altre impostazioni
 5. Predisponi un'area del sito in cui mostrare l'elenco dei bandi (per assolvere anche all'obbligo di pubblicazione sul sito istituzionale). Di seguito trovi tutte le informazioni nella sezione **Shortcode**
 6. Inserisci le ditte, con Codice Fiscale/Partita IVA, dal menù AVCP -> Ditte
-7. Inserisci le gare, avendo cura di riempire in modo corretto tutti i campi, dal menù AVCP -> Nuova Gara
-8. Per la generazione del file .xml e la sua comunicazione all'Avcp, leggi il paragrafo successivo
+7. Inserisci gli anni di riferimento dal menù AVCP -> Ditte ("2013", "2014",...)
+8. Inserisci le gare, avendo cura di riempire in modo corretto tutti i campi, dal menù AVCP -> Nuova Gara
+9. Per la generazione del file .xml e la sua comunicazione all'Avcp, leggi il paragrafo successivo
 
 = SHORTCODE =
 AVCP XML permette, oltre alla creazione del file xml per la trasmissione ad AVCP, di assolvere anche l'obbligo di pubblicazione delle informazioni sul sito istituzionale. E' infatti possibile utilizzare lo shortcode [avcp] in una pagina/articolo per visualizzare una tabella (con funzioni di filtraggio avanzate) contenente tutti i bandi.
@@ -72,7 +73,9 @@ AVCP XML integra, nella pagina delle impostazioni, un piccolo sistema di auto-di
 1) Presenza della cartella www.miodominio.com**/avcp** (creata dal plugin durante l'attivazione).
 2) Permessi di scrittura/lettura della cartella precedente (impostati dal plugin durante l'attivazione).
 3) Presenza del file index.php nella cartella precedente (copiato dal .zip del plugin alla cartella /avcp durante l'attivazione).
-Se tutti i parametri vengono rispettati, accanto alle 3 voci precedenti compare la dicitura 'OK'. In caso contrario, il sistema avvisa di un problema critico. Se questo dovesse accadere, è probabile che la cartella /avcp o i file in essa contenuti siano stati rimossi o spostati mentre il plugin era attivo e per ricrearli è sufficiente disattivare e riattivare il plugin, avendo poi cura di ricontrollare se "System Check-UP" indica che gli errori sono stati risolti. **Attenzione! Anche i file .xml generati dal plugin vengono salvati nella cartella /avcp quindi è necessario ricreare questi file avviando rigenerando manualmente il dataset .xml da AVCP -> Impostazioni**.
+Se tutti i parametri vengono rispettati, accanto alle 3 voci precedenti compare la dicitura 'OK'. In caso contrario, il sistema avvisa di un problema critico. Se questo dovesse accadere, è probabile che la cartella /avcp o i file in essa contenuti siano stati rimossi o spostati mentre il plugin era attivo e per ricrearli è sufficiente disattivare e riattivare il plugin, avendo poi cura di ricontrollare se "System Check-UP" indica che gli errori sono stati risolti.
+
+**Attenzione! Anche i file .xml generati dal plugin vengono salvati nella cartella /avcp quindi è necessario ricreare questi file avviando rigenerando manualmente il dataset .xml da AVCP -> Impostazioni**.
 Se dopo questi passaggi "System Check-UP" rileva ancora alcuni problemi, è probabile che il server non sia configurato correttamente. In questo caso usa il forum di supporto www.marcomilesi.ml/supporto
 
 == Screenshots ==
@@ -87,7 +90,9 @@ Se dopo questi passaggi "System Check-UP" rileva ancora alcuni problemi, è prob
 == Changelog ==
 > Questa è la lista completa di tutti gli aggiornamenti, test e correzioni. Ogni volta che una nuova versione viene rilasciata assicuratevi di aggiornare il prima possibile per usufruire delle ultime migliorie!
 
-= Versione 1.0.0.1 9/12/2013 =
+= Versione 1.0.1 9/12/2013 =
+* Correzione file readme.txt
+* Nascosti i campi per la creazione gerarchica delle tassonomie, per evitare possibili conflitti
 
 = Versione 1.0 9/12/2013 =
 * Prima versione rilasciata

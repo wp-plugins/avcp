@@ -1,5 +1,7 @@
 jQuery(document).ready(function($){
-	if($('#taxonomy-ditte').length>0){		
+	if($('#taxonomy-ditte').length>0){	
+	$('#newditte_parent').hide();
+	$('#newannirif_parent').hide();	
 		$('#taxonomy-ditte>.tabs-panel').eq(1).prepend('<span class="searchTaxonomyGTdiv"><label for="#searchTaxonomyGT">Cerca: </label><input type="text" value="" id="searchTaxonomyGT" style="border-radius: 10px;font-size: 11px;margin: 5px;"/><br/></span>');
 		//<input type="checkbox" checked id="searchTaxonomyGT_keephierarchy"/><label for="#searchTaxonomyGT_keephierarchy">Keep Hierarchy</label></span>');
 		
