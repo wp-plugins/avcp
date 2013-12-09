@@ -1,10 +1,10 @@
-﻿=== AVCP ===
+﻿=== AVCP XML ===
 Contributors: Milmor
 Tags: avcp, autorita, vigilanza, lavori, pubblici, amministrazione, trasparente, legge, obblighi, marco, milesi, normativa, pubblicazione
 Requires at least: 3.3
 Tested up to: 3.7
-Version: 1.0
-Stable tag: 1.0
+Version: 1.0.0.1
+Stable tag: 1.0.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,12 +77,19 @@ Se dopo questi passaggi "System Check-UP" rileva ancora alcuni problemi, è prob
 
 == Screenshots ==
 
-Nessuno, per il momento...
+1. Pagina di gestione delle gare (back-end)
+2. Inserimento guidato delle informazioni
+3. Semplici e intuitive impostazioni
+4. Menù del plugin
+5. Esempio pagina /avcp contenente i file .xml generati
+6. Tabella generata con lo shortcode [avcp] configurabile per anno
 
 == Changelog ==
 > Questa è la lista completa di tutti gli aggiornamenti, test e correzioni. Ogni volta che una nuova versione viene rilasciata assicuratevi di aggiornare il prima possibile per usufruire delle ultime migliorie!
 
-= Versione 1.0 7/12/2013 =
+= Versione 1.0.0.1 9/12/2013 =
+
+= Versione 1.0 9/12/2013 =
 * Prima versione rilasciata
 
 = 20/10/2013 =
