@@ -132,7 +132,7 @@ function avcp_settings_menu()
 	
 	echo '</div>';
 	echo '
-	<div id="welcome-panel" style="margin:10px;width:40%;float:left;" class="welcome-panel">
+	<div id="alert" style="margin:10px;width:40%;float:left;" class="welcome-panel">
         <h3><span>System Check-UP</span></h3>';
 
 	$dir = ABSPATH . 'avcp';
@@ -149,23 +149,73 @@ function avcp_settings_menu()
 	if (is_writeable($dir)) {
 		echo 'Permessi scrittura cartella /avcp<font style="color:green;font-weight:bold;"> ==> OK</font>';
 	} else {
-		echo 'Permessi scrittura cartella /avcp<font style="color:green;font-weight:bold;"> ==> NON CORRISPONDENTI</font>';
+		echo 'Permessi scrittura cartella /avcp<font style="color:red;font-weight:bold;"> ==> NON CORRISPONDENTI</font>';
 		$system_ok = false;
 	}
 	echo '<br/>';
 
-
 	if (file_exists($file)) {
 		echo 'Presenza index.php /avcp<font style="color:green;font-weight:bold;"> ==> OK</font>';
 	} else {
-		echo 'Presenza index.php /avcp<font style="color:green;font-weight:bold;"> ==> NON TROVATO</font>';
+		echo 'Presenza index.php /avcp<font style="color:red;font-weight:bold;"> ==> NON TROVATO</font>';
 		$system_ok = false;
 	}
+	echo '<br/>';
+	
+	$urlcheck = get_site_url() . '/avcp/index.php';
+
+	$agent = "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_8; pt-pt) AppleWebKit/533.20.25 (KHTML, like Gecko) Version/5.0.4 Safari/533.20.27";
+ 
+     // initializes curl session
+     $ch=curl_init();
+ 
+     // sets the URL to fetch
+     curl_setopt ($ch, CURLOPT_URL,$urlcheck );
+ 
+     // sets the content of the User-Agent header
+     curl_setopt($ch, CURLOPT_USERAGENT, $agent);
+ 
+     // return the transfer as a string
+     curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+ 
+     // disable output verbose information
+     curl_setopt ($ch,CURLOPT_VERBOSE,false);
+ 
+     // max number of seconds to allow cURL function to execute
+     curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+ 
+     curl_exec($ch);
+ 
+     // get HTTP response code
+     $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+ 
+     curl_close($ch);
+ 
+    if($httpcode==200) {
+		echo 'Test Accesso pubblico /avcp<font style="color:green;font-weight:bold;"> ==> OK [200]</font>';
+    } else if($httpcode==500) {
+		echo 'Test Accesso pubblico /avcp<font style="color:red;font-weight:bold;"> ==> ERRORE 500 ISE</font>';
+		$headers = get_headers($urlcheck);
+		echo ' - ' . $headers[0];
+		$system_ok = false;
+	} else {
+        echo 'Test Accesso pubblico /avcp<font style="color:red;font-weight:bold;"> ==> ERRORE ' . $httpcode . '</font>';
+		$headers = get_headers($urlcheck);
+		echo ' - ' . $headers[0];
+		$system_ok = false;
+	}
+
 
 	echo '<h4>Esito:</h4>';
 	if ($system_ok) {
 		echo 'Nessun problema rilevato con il server. Molto bene!';
 	} else {
+		echo '
+		<style>
+		#alert {
+		background: white url(' . plugin_dir_url(__FILE__) . 'includes/alert.jpg) no-repeat center;
+		}
+		</style>';
 		echo 'Sono stati trovati alcuni problemi <b>critici</b>. Affinchè AVCP funzioni correttamente è necessario risolvere al più presto questi problemi. Consultare la documentazione del plugin per conoscere le cause più probabili di questo problema!';
 	}	
 	echo '</div>

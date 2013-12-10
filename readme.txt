@@ -3,8 +3,8 @@ Contributors: Milmor
 Tags: avcp, autorita, vigilanza, lavori, pubblici, amministrazione, trasparente, legge, obblighi, marco, milesi, normativa, pubblicazione
 Requires at least: 3.3
 Tested up to: 3.7
-Version: 1.0.1
-Stable tag: 1.0.1
+Version: 1.0.2
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +30,7 @@ AVCP XML per Wordpress è il più semplice e intuitivo software per la gestione 
 
 = Caratteristiche Salienti =
 Oltre all'adempimento degli obblighi di legge, AVCP XML per Wordpress offre alcune funzioni in grado di dare valore aggiunto al vostro operato:
+
 * Visualizzazione pubblica dei file .xml in una pagina dedicata: www.example.com**/avcp**
 * Visualizzazione singola delle voci, con possibilità di aggiunta testo a piacere, documenti, link,...
 * Visualizzazione **archivio** di tutte le gare partecipate da ogni ditta [opzionale]
@@ -63,17 +64,21 @@ Per qualsiasi informazione, per segnalare problemi o per suggerire nuove funzion
 = SHORTCODE =
 AVCP XML permette, oltre alla creazione del file xml per la trasmissione ad AVCP, di assolvere anche l'obbligo di pubblicazione delle informazioni sul sito istituzionale. E' infatti possibile utilizzare lo shortcode [avcp] in una pagina/articolo per visualizzare una tabella (con funzioni di filtraggio avanzate) contenente tutti i bandi.
 E' possibile configurare lo shortcode inserendo il parametro dell'anno:
+
 * [avcp] -> Mostra una lista di **tutti** i bandi (può rallentare il caricamento della pagina in presenza di molte informazioni
 * [avcp anno="2013"] -> Mostra una lista dei bandi relativi all'anno impostato. L'anno preso in considerazione **non** è la data di pubblicazione del bando, ma l'**anno di riferimento** che si inserisce creando il nuovo bando.
 
 = GENERAZIONE FILE .XML E COMUNICAZIONE AD AVCP =
 
 = SYSTEM CHECK-UP =
-AVCP XML integra, nella pagina delle impostazioni, un piccolo sistema di auto-diagnostica che permette di conoscere facilmente se la configurazione del server permette il corretto funzionamento del plugin. In particolare vengono effettuati 3 test:
-1) Presenza della cartella www.miodominio.com**/avcp** (creata dal plugin durante l'attivazione).
-2) Permessi di scrittura/lettura della cartella precedente (impostati dal plugin durante l'attivazione).
-3) Presenza del file index.php nella cartella precedente (copiato dal .zip del plugin alla cartella /avcp durante l'attivazione).
-Se tutti i parametri vengono rispettati, accanto alle 3 voci precedenti compare la dicitura 'OK'. In caso contrario, il sistema avvisa di un problema critico. Se questo dovesse accadere, è probabile che la cartella /avcp o i file in essa contenuti siano stati rimossi o spostati mentre il plugin era attivo e per ricrearli è sufficiente disattivare e riattivare il plugin, avendo poi cura di ricontrollare se "System Check-UP" indica che gli errori sono stati risolti.
+AVCP XML integra, nella pagina delle impostazioni, un piccolo sistema di auto-diagnostica che permette di conoscere facilmente se la configurazione del server permette il corretto funzionamento del plugin. In particolare vengono effettuati 4 test:
+
+* 1. Presenza della cartella www.miodominio.com**/avcp** (creata dal plugin durante l'attivazione).
+* 2. Permessi di scrittura/lettura della cartella precedente (impostati dal plugin durante l'attivazione).
+* 3. Presenza del file index.php nella cartella precedente (copiato dal .zip del plugin alla cartella /avcp durante l'attivazione).
+* 4. Controllo dell'effettivo accesso pubblico al link
+
+Se tutti i parametri vengono rispettati, accanto alle 4 voci precedenti compare la dicitura 'OK'. In caso contrario, il sistema avvisa di un problema critico. Se questo dovesse accadere, è probabile che la cartella /avcp o i file in essa contenuti siano stati rimossi o spostati mentre il plugin era attivo e per ricrearli è sufficiente disattivare e riattivare il plugin, avendo poi cura di ricontrollare se "System Check-UP" indica che gli errori sono stati risolti.
 
 **Attenzione! Anche i file .xml generati dal plugin vengono salvati nella cartella /avcp quindi è necessario ricreare questi file avviando rigenerando manualmente il dataset .xml da AVCP -> Impostazioni**.
 Se dopo questi passaggi "System Check-UP" rileva ancora alcuni problemi, è probabile che il server non sia configurato correttamente. In questo caso usa il forum di supporto www.marcomilesi.ml/supporto
@@ -89,6 +94,11 @@ Se dopo questi passaggi "System Check-UP" rileva ancora alcuni problemi, è prob
 
 == Changelog ==
 > Questa è la lista completa di tutti gli aggiornamenti, test e correzioni. Ogni volta che una nuova versione viene rilasciata assicuratevi di aggiornare il prima possibile per usufruire delle ultime migliorie!
+
+= Versione 1.0.2 10/12/2013 =
+* Migliore stile per System Check-up
+* Forzato CHMOD del file /avcp/index.php - 0755
+* Aggiunto parametro di controllo al System Check-up
 
 = Versione 1.0.1 9/12/2013 =
 * Correzione file readme.txt
