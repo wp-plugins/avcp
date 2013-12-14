@@ -36,10 +36,8 @@ function avcp_restrict_manage_posts() {
         }
     }
 }
-?>
 
-
-<?php //HOOK PER LE COLONNE DELLA NUOVA VISUALIZZAZIONE AMMINISTRATORE
+//HOOK PER LE COLONNE DELLA NUOVA VISUALIZZAZIONE AMMINISTRATORE
 	
 function avcp_modify_post_table( $column, $defaults ) {
 	$column['avcp_CIG'] = 'CIG';

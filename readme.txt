@@ -3,8 +3,8 @@ Contributors: Milmor
 Tags: avcp, autorita, vigilanza, lavori, pubblici, amministrazione, trasparente, legge, obblighi, marco, milesi, normativa, pubblicazione
 Requires at least: 3.3
 Tested up to: 3.7
-Version: 1.0.3
-Stable tag: 1.0.3
+Version: 1.0.4
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -94,6 +94,10 @@ Se dopo questi passaggi "System Check-UP" rileva ancora alcuni problemi, è prob
 
 == Changelog ==
 > Questa è la lista completa di tutti gli aggiornamenti, test e correzioni. Ogni volta che una nuova versione viene rilasciata assicuratevi di aggiornare il prima possibile per usufruire delle ultime migliorie!
+
+= Versione 1.0.4 15/12/2013 =
+* Corretti bug causa di possibili conflitti (taxfilteringbackend.php + avcp_metabox_generator.php)
+* Rimossi 2 file .php attualmente inattivi
 
 = Versione 1.0.3 10/12/2013 =
 * Risolto bug mancata visualizzazione campi nella vista singola
