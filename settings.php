@@ -53,13 +53,13 @@ function avcp_settings_menu()
 				foreach ( $terms as $term ) {
 				  creafilexml ($term->name);
 				  $verificafilecreati = $term->name . ' - ' . $verificafilecreati;
+				  echo '<div class="updated"><p>'; 
+				  printf(__('AVCP | Il seguente file .xml è stato creato correttamente: <b>' . $term->name . '</b>'));
+				  echo "</p></div>";
 				}
-				echo '<div class="updated"><p>'; 
-				printf(__('AVCP | Generazione dei file .xml completata => ' . $verificafilecreati));
-				echo "</p></div>";
 			} else {
 				echo '<div class="error"><p>'; 
-				printf(__('AVCP | Impossibile creare il file .xml! Nessun "Anno di Riferimento" impostato o nessuna gara trovata...'));
+				printf(__('AVCP | Impossibile creare il file .xml!<br/>Controlla che sia presente qualche gara e che siano collegate al proprio "Anno di Riferimento"...'));
 				echo "</p></div>";
 			}
 		}	
@@ -114,7 +114,7 @@ function avcp_settings_menu()
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="hosted_button_id" value="F2JK36SCXKTE2">
-<input type="image" src="https://www.paypalobjects.com/it_IT/IT/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - Il metodo rapido, affidabile e innovativo per pagare e farsi pagare.">
+<input type="image" src="https://www.paypalobjects.com/it_IT/IT/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - Il metodo rapido, affidabile e innovativo per pagare e farsi pagare.">
 <img alt="" border="0" src="https://www.paypalobjects.com/it_IT/i/scr/pixel.gif" width="1" height="1">
 </form>
 </div>
@@ -128,7 +128,7 @@ function avcp_settings_menu()
 	echo '<div id="welcome-panel" style="margin:10px;width:50%;float:left;" class="welcome-panel">
 	<h3><span>Generazione file .xml</span></h3>
 	I file .xml generati sono pubblicamente accessibili da: <b><a class="add-new-h2" href="' . get_site_url() . '/avcp' . '" target="_blank">' . get_site_url() . '/avcp' . '</a></b><br/>
-	<center><p class="submit"><input type="submit" class="button-primary" name="XMLgenBUTTON" value="Genera XML" /><br/>Clicca qui per generare manualmente i file .xml (verranno creati i file divisi per anno prendendo come riferimento il campo "Anno di Riferimento" inserito nelle varie voci).</p></center>';
+	<center><p class="submit"><input type="submit" class="button-primary" name="XMLgenBUTTON" value="Genera XML" /><br/>Clicca qui per generare manualmente i file .xml (verranno creati i file divisi per anno prendendo come riferimento il campo "Anno di Riferimento" inserito nelle varie voci).</p><p style="color:red;">Attenzione! Questa funzione non sostituisce la comunicazione obbligatoria dell\'url del file .xml ad AVCP, secondo le disposizioni normative vigenti.</p></center>';
 	
 	echo '</div>';
 	echo '

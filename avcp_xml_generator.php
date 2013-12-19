@@ -39,23 +39,43 @@ function creafilexml ($anno) {
 	</strutturaProponente>
 	<oggetto>' . get_the_title() . '</oggetto>
 	<sceltaContraente>' . $avcp_contraente . '</sceltaContraente>
-	<partecipanti>
-	<partecipante>
-	<codiceFiscale>XXXXXXXXXXX</codiceFiscale>
-	<ragioneSociale>XXXXXXXXX</ragioneSociale>
-	</partecipante>
-	</partecipanti>
-	<aggiudicatari>';
+	<partecipanti>';
 	$queried_term = get_query_var($taxonomy);
 	$terms = get_terms('ditte', 'slug='.$queried_term);
 	if ($terms) {
 	  foreach($terms as $term) {
-		$XML_FILE .= '<aggiudicatario>
-			<codiceFiscale>XXXXXX</codiceFiscale>
+		$get_term = get_term_by('name', $term->name, 'ditte');
+		$t_id = $get_term->term_id;
+		$term_meta = get_option( "taxonomy_$t_id" );
+		$term_return = esc_attr( $term_meta['avcp_codice_fiscale'] );
+		$XML_FILE .= '<partecipante>
+			<codiceFiscale>' . $term_return . '</codiceFiscale>
 			<ragioneSociale>' . $term->name . '</ragioneSociale>
-			</aggiudicatario>';
+			</partecipante>';
 	  }
 	}
+	$XML_FILE .= '</partecipanti>
+	<aggiudicatari>';
+	
+	$dittepartecipanti = get_the_terms( $post->ID, 'ditte' );
+	$cats = get_post_meta($post->ID,'avcp_aggiudicatari',true);
+	if(is_array($dittepartecipanti)) {
+		foreach ($dittepartecipanti as $term) {
+			
+			$cterm = get_term_by('name',$term->name,'ditte');
+			$cat_id = $cterm->term_id; //Prende l'id del termine
+			$term_meta = get_option( "taxonomy_$cat_id" );
+			$term_return = esc_attr( $term_meta['avcp_codice_fiscale'] );
+			$checked = (in_array($cat_id,(array)$cats)? ' checked="checked"': "");
+			if ($checked) {
+				$XML_FILE .= '<aggiudicatario>';
+				$XML_FILE .= '<ragioneSociale>' . $term->name . '</ragioneSociale>';
+				$XML_FILE .= '<codiceFiscale>' . $term_return . '</codiceFiscale>';
+				$XML_FILE .= '</aggiudicatario>';
+			}
+		}
+	}	
+	
 	$XML_FILE .= '</aggiudicatari>
 	<importoAggiudicazione>' . $avcp_importo_aggiudicazione . '</importoAggiudicazione>
 	<tempiCompletamento>

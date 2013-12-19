@@ -1,5 +1,8 @@
 <?php
-
+function avcp_remove_metaboxes() {
+ remove_meta_box( 'postcustom' , 'avcp' , 'normal' ); //removes custom fields metabox for avcp
+}
+add_action( 'admin_menu' , 'avcp_remove_metaboxes' );
 	$prefix = 'avcp_';
 
 	$config = array(
@@ -59,7 +62,7 @@ function avcp_pages_inner_custom_box3( $post ) { //Inizializzazione Metabox 2, s
     wp_nonce_field( plugin_basename( __FILE__ ), 'pages_noncename' );
 
     // The actual fields for data entry
-	echo 'Le ditte appena collegate compariranno solo dopo avere aggiornato/pubblicato questa gara';
+	echo 'Le ditte appena collegate compariranno solo dopo avere aggiornato/pubblicato questa gara.';
     $dittepartecipanti = get_the_terms( $post->ID, 'ditte' );
 	$cats = get_post_meta($post->ID,'avcp_aggiudicatari',true);
     echo '<ul>';
@@ -71,7 +74,7 @@ function avcp_pages_inner_custom_box3( $post ) { //Inizializzazione Metabox 2, s
 			echo'<li id="cat-'.$cat_id.'"><input type="checkbox" name="avcp_aggiudicatari[]" id="'.$cat_id.'" value="'.$cat_id.'"'.$checked.'> <label for="'.$cat_id.'">'.__($term->name, 'pages_textdomain' ).'</label></li>';
 		}
 	} else {
-		echo '<b>Nessun partecipante impostato</b>';
+		echo '<b>Nessuna ditta partecipante collegata a questa gara.</b>';
 	}
     echo '</ul>';
 }

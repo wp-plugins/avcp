@@ -1,10 +1,11 @@
 ﻿=== AVCP XML ===
 Contributors: Milmor
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=F2JK36SCXKTE2
 Tags: avcp, autorita, vigilanza, lavori, pubblici, amministrazione, trasparente, legge, obblighi, marco, milesi, normativa, pubblicazione
 Requires at least: 3.3
 Tested up to: 3.7
-Version: 1.0.4
-Stable tag: 1.0.4
+Version: 1.1
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -94,6 +95,14 @@ Se dopo questi passaggi "System Check-UP" rileva ancora alcuni problemi, è prob
 
 == Changelog ==
 > Questa è la lista completa di tutti gli aggiornamenti, test e correzioni. Ogni volta che una nuova versione viene rilasciata assicuratevi di aggiornare il prima possibile per usufruire delle ultime migliorie!
+
+= Versione 1.1 19/12/2013 =
+* **Migliore** notifica della creazione del file .xml
+* Corretto Problema visualizzazione back-end dei Codici Fiscali
+* Corretta scrittura partecipanti/aggiudicatari nel file .xml
+* Rimosse alcune modifiche css per il backend
+* Metabox anno di riferimento giallo!
+* Rimosso il metabox "Campi Personalizzati" mostrato da Wordpress nella pagina di modifica delle gare (causava confusione)
 
 = Versione 1.0.4 15/12/2013 =
 * Corretti bug causa di possibili conflitti (taxfilteringbackend.php + avcp_metabox_generator.php)

@@ -4,7 +4,7 @@ function sfondo_avcp_trasparenza() {
 	if ($get_avcp_dis_styledbackend == '0') {
 		global $current_screen;
 		if ($current_screen->post_type == 'avcp') {
-			$css = '<style type="text/css">' . '#wpwrap { background: white url(' . plugin_dir_url(__FILE__) . 'includes/gare.jpg) no-repeat top right; } #titlewrap {width: 70%;}' . '</style>';
+			$css = '<style type="text/css">' . '#annirifdiv { background:yellow; } #titlewrap {width: 70%;}' . '</style>';
 			echo $css;
 		}
 	}
