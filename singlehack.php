@@ -30,8 +30,8 @@ function avcp_job_cpt_template_filter($content)
 	echo 'Contraente: <b>' . get_post_meta(get_the_ID(), 'avcp_contraente', true) . '</b><br/>';
 	echo 'Importo Aggiudicazione: <b>' . get_post_meta(get_the_ID(), 'avcp_aggiudicazione', true) . '</b><br/>';
 	echo 'Somme liquidate: <b>' . get_post_meta(get_the_ID(), 'avcp_somme_liquidate', true) . '</b><br/>';
-	echo 'Data di inizio: <b>' . date("Y-m-d", strtotime(get_post_meta(get_the_ID(), 'avcp_data_inizio', true))) . '</b><br/>';
-	echo 'Data di ultimazione: <b>' . date("Y-m-d", strtotime(get_post_meta(get_the_ID(), 'avcp_data_fine', true))) . '</b><br/>';
+	echo 'Data di inizio: <b>' . date("d F Y", strtotime(get_post_meta(get_the_ID(), 'avcp_data_inizio', true))) . '</b><br/>';
+	echo 'Data di ultimazione: <b>' . date("d F Y", strtotime(get_post_meta(get_the_ID(), 'avcp_data_fine', true))) . '</b><br/>';
 	echo 'Ditte partecipanti: ';
 
 	$get_avcp_dis_archivioditte = get_option('avcp_dis_archivioditte');

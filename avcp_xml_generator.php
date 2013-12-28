@@ -29,8 +29,8 @@ function creafilexml ($anno) {
 	$avcp_contraente = get_post_meta($post->ID, 'avcp_contraente', true);
 	$avcp_importo_aggiudicazione = get_post_meta($post->ID, 'avcp_aggiudicazione', true);
 	$avcp_somme_liquidate = get_post_meta($post->ID, 'avcp_somme_liquidate', true);
-	$avcp_data_inizio = date("Y-m-d", strtotime(get_post_meta(get_the_ID(), 'data_inizio', true)));
-	$avcp_data_ultimazione = date("Y-m-d", strtotime(get_post_meta(get_the_ID(), 'data_fine', true)));
+	$avcp_data_inizio = date("Y-m-d", strtotime(get_post_meta(get_the_ID(), 'avcp_data_inizio', true)));
+	$avcp_data_ultimazione = date("Y-m-d", strtotime(get_post_meta(get_the_ID(), 'avcp_data_fine', true)));
 	$XML_FILE .= '<lotto>
 	<cig>' . $avcp_cig . '</cig>
 	<strutturaProponente>

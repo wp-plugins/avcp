@@ -4,8 +4,8 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: avcp, autorita, vigilanza, lavori, pubblici, amministrazione, trasparente, legge, obblighi, marco, milesi, normativa, pubblicazione
 Requires at least: 3.3
 Tested up to: 3.7
-Version: 1.1
-Stable tag: 1.1
+Version: 1.1.1
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -96,6 +96,10 @@ Se dopo questi passaggi "System Check-UP" rileva ancora alcuni problemi, è prob
 == Changelog ==
 > Questa è la lista completa di tutti gli aggiornamenti, test e correzioni. Ogni volta che una nuova versione viene rilasciata assicuratevi di aggiornare il prima possibile per usufruire delle ultime migliorie!
 
+= Versione 1.1.1 28/12/2013 =
+* **Corretto** problema di mancata generazione della data corretta nel file .xml [!]
+* Data in formato d F Y nella visualizzazione singola del bando di gara
+
 = Versione 1.1 19/12/2013 =
 * **Migliore** notifica della creazione del file .xml
 * Corretto Problema visualizzazione back-end dei Codici Fiscali
@@ -127,3 +131,4 @@ Se dopo questi passaggi "System Check-UP" rileva ancora alcuni problemi, è prob
 * **Pubblicazione** sul repository WP.ORG per inizio fase di sviluppo/testing
 
 (!) = Aggiornamento Importante (Sicurezza/Stabilità)
+[!] = Nuova generazione del file .xml necessaria per adempiere agli obblighi normativi
