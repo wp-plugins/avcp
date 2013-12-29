@@ -25,8 +25,8 @@ define( 'PLUGIN_DIR', dirname(__FILE__).'/' );
 function searchTaxonomyGT_enqueue_admin_scripts() {
 	wp_enqueue_script('jquery');
 	wp_enqueue_media();
-	wp_register_script( 'searchTaxonomyGT_js', plugins_url('searchTaxonomyGT.js', __FILE__), array('jquery') );
-	wp_enqueue_script( 'searchTaxonomyGT_js' );
+	wp_register_script( 'searchTaxonomyGT_avcp_js', plugins_url('searchTaxonomyGT.js', __FILE__), array('jquery') );
+	wp_enqueue_script( 'searchTaxonomyGT_avcp_js' );
 	
 	 
 }
