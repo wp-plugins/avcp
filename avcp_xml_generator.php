@@ -2,7 +2,7 @@
 function creafilexml ($anno) {
 	$XML_ente_proponente = get_option('avcp_denominazione_ente');
 	$XML_data_aggiornamento =  date("Y-m-d");
-	$XML_data_completa_aggiornamento = date('d/m/y - h:m.s'); //Utile essenzialmente per i test
+	$XML_data_completa_aggiornamento = date('d/m/y - H:i'); //Utile essenzialmente per i test
 	$XML_anno_riferimento =  $anno;
 
 	$XML_FILE .= '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
@@ -15,7 +15,7 @@ function creafilexml ($anno) {
 	<entePubblicatore>' . $XML_ente_proponente . '</entePubblicatore>
 	<dataUltimoAggiornamentoDataset>' . $XML_data_aggiornamento . '</dataUltimoAggiornamentoDataset>
 	<annoRiferimento>' . $XML_anno_riferimento . '</annoRiferimento>
-	<urlFile>' . site_url() . 'avcp.xml' . '</urlFile>
+	<urlFile>' . site_url() . '/avcp/' . $anno . '.xml' . '</urlFile>
 	<licenza>IODL</licenza>
 	</metadata>
 	<data>';
@@ -41,7 +41,7 @@ function creafilexml ($anno) {
 	<sceltaContraente>' . $avcp_contraente . '</sceltaContraente>
 	<partecipanti>';
 	$queried_term = get_query_var($taxonomy);
-	$terms = get_terms('ditte', 'slug='.$queried_term);
+	$terms = get_the_terms( $post->ID, 'ditte' );
 	if ($terms) {
 	  foreach($terms as $term) {
 		$get_term = get_term_by('name', $term->name, 'ditte');

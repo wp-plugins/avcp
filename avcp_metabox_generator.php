@@ -19,38 +19,38 @@ add_action( 'admin_menu' , 'avcp_remove_metaboxes' );
 	$my_meta =  new AT_Meta_Box($config);
 	 
 	//text field
-	$my_meta->addText($prefix.'cig',array('name'=> 'Codice Identificativo Gara (C.I.G.)'));
+	$my_meta->addText($prefix.'cig',array('name'=> 'Codice Identificativo Gara (C.I.G.)', 'desc' => 'Identificativo della gara (10 caratteri alfanumerici)'));
 	  
 	//select field
 	$my_meta->addSelect($prefix.'contraente',array(
-	  '01-Procedura Aperta'=>'1. Procedura Aperta',
-	  '02-Procedura Ristretta'=>'2. Procedura Ristretta',
-	  '03-Procedura negoziata previa pubblicazione del bando'=>'3. Procedura negoziata previa pubblicazione del bando',
-	  '04-Procedura negoziata senza previa pubblicazione del bando'=>'4. Procedura negoziata senza previa pubblicazione del bando',
-	  '05-Dialogo Competitivo'=>'5. Dialogo Competitivo',
-	  '06-Procedura negoziata senza previa indizione di gara (art. 221 D.LGS. 163/2006)'=>'6. Procedura negoziata senza previa indizione di gara (art. 221 D.LGS. 163/2006)',
-	  '07-Sistema dinamico di acquisizione'=>'7. Sistema dinamico di acquisizione',
-	  '08-Affidamento in economia - cottimo fiduciario'=>'8. Affidamento in economia - cottimo fiduciario',
-	  '14-Procedura selettiva (ex art. 238 C.7 D.LGS. 163/2006)'=>'14. Procedura selettiva (ex art. 238 C.7 D.LGS. 163/2006)',
-	  '17-Affidamento diretto (ex art. 5 legge 381/91)'=>'17. Affidamento diretto (ex art. 5 legge 381/91)',
-	  '21-Procedura ristretta derivante da avvisi con cui si indice la gara'=>'21. Procedura ristretta derivante da avvisi con cui si indice la gara',
-	  '22-Procedura negoziata derivante da avvisi con cui si indice la gara'=>'22. Procedura negoziata derivante da avvisi con cui si indice la gara',
-	  '23-Affidamento in economia - Affidamento diretto'=>'23. Affidamento in economia - Affidamento diretto',
-	  '24-Affidamento diretto a Società in-house'=>'24. Affidamento diretto a Società in-house',
-	  '025-Affidamento diretto a Società raggruppate/consorziate o controllate nelle concessioni di LL.PP'=>'25. Affidamento diretto a Società raggruppate/consorziate o controllate nelle concessioni di LL.PP',
-	  '26-Affidamento diretto in adesione ad accordo quadro/convenzione'=>'26. Affidamento diretto in adesione ad accordo quadro/convenzione',
-	  '27-Confronto competitivo in adesione ad accordo quadro/convenzione'=>'27. Confronto competitivo in adesione ad accordo quadro/convenzione',
-	  '28-Procedura ai sensi dei regolamenti degli organi costituzionali'=>'28. Procedura ai sensi dei regolamenti degli organi costituzionali'
+	  '01-PROCEDURA APERTA'=>'1. Procedura Aperta',
+	  '02-PROCEDURA RISTRETTA'=>'2. Procedura Ristretta',
+	  '03-PROCEDURA NEGOZIATA PREVIA PUBBLICAZIONE DEL BANDO'=>'3. Procedura negoziata previa pubblicazione del bando',
+	  '04-PROCEDURA NEGOZIATA SENZA PREVIA PUBBLICAZIONE DEL BANDO'=>'4. Procedura negoziata senza previa pubblicazione del bando',
+	  '05-DIALOGO COMPETITIVO'=>'5. Dialogo Competitivo',
+	  '06-PROCEDURA NEGOZIATA SENZA PREVIA INDIZIONE DI GARA ART. 221 D.LGS. 163/2006'=>'6. Procedura negoziata senza previa indizione di gara (art. 221 D.LGS. 163/2006)',
+	  '07-SISTEMA DINAMICO DI ACQUISIZIONE'=>'7. Sistema dinamico di acquisizione',
+	  '08-AFFIDAMENTO IN ECONOMIA - COTTIMO FIDUCIARIO'=>'8. Affidamento in economia - cottimo fiduciario',
+	  '14-PROCEDURA SELETTIVA EX ART 238 C.7, D.LGS. 163/2006'=>'14. Procedura selettiva (ex art. 238 C.7 D.LGS. 163/2006)',
+	  '17-AFFIDAMENTO DIRETTO EX ART. 5 DELLA LEGGE N.381/91'=>'17. Affidamento diretto (ex art. 5 legge 381/91)',
+	  '21-PROCEDURA RISTRETTA DERIVANTE DA AVVISI CON CUI SI INDICE LA GARA'=>'21. Procedura ristretta derivante da avvisi con cui si indice la gara',
+	  '22-PROCEDURA NEGOZIATA DERIVANTE DA AVVISI CON CUI SI INDICE LA GARA'=>'22. Procedura negoziata derivante da avvisi con cui si indice la gara',
+	  '23-AFFIDAMENTO IN ECONOMIA - AFFIDAMENTO DIRETTO'=>'23. Affidamento in economia - Affidamento diretto',
+	  '24-AFFIDAMENTO DIRETTO A SOCIETA\' IN HOUSE'=>'24. Affidamento diretto a Società in-house',
+	  '25-AFFIDAMENTO DIRETTO A SOCIETA\' RAGGRUPPATE/CONSORZIATE O CONTROLLATE NELLE CONCESSIONI DI LL.PP'=>'25. Affidamento diretto a Società raggruppate/consorziate o controllate nelle concessioni di LL.PP',
+	  '26-AFFIDAMENTO DIRETTO IN ADESIONE AD ACCORDO QUADRO/CONVENZIONE'=>'26. Affidamento diretto in adesione ad accordo quadro/convenzione',
+	  '27-CONFRONTO COMPETITIVO IN ADESIONE AD ACCORDO QUADRO/CONVENZIONE'=>'27. Confronto competitivo in adesione ad accordo quadro/convenzione',
+	  '28-PROCEDURA AI SENSI DEI REGOLAMENTI DEGLI ORGANI COSTITUZIONALI'=>'28. Procedura ai sensi dei regolamenti degli organi costituzionali'
 	  ),array('name'=> 'Scelta Contraente', 'std'=> array('selectkey2')));
 	  
 	  //date field
-	$my_meta->addDate($prefix.'data_inizio',array('name'=> 'Data Inizio'));
+	$my_meta->addDate($prefix.'data_inizio',array('name'=> 'Data Inizio', 'format' => 'd MM yy'));
 	  
 	  //date field
-	$my_meta->addDate($prefix.'data_fine',array('name'=> 'Data Fine '));
+	$my_meta->addDate($prefix.'data_fine',array('name'=> 'Data Fine', 'format' => 'd M yy'));
 	  
-	  $my_meta->addText($prefix.'aggiudicazione',array('name'=> 'Importo aggiudicazione <b>€</b>'));
-	  $my_meta->addText($prefix.'somme_liquidate',array('name'=> 'Importo somme liquidate <b>€</b>'));
+	  $my_meta->addText($prefix.'aggiudicazione',array('name'=> 'Importo aggiudicazione <b>€</b>', 'desc' => 'Inserire l\'importo avendo cura di riportare SEMPRE i decimali .00 esempio: 22330.00'));
+	  $my_meta->addText($prefix.'somme_liquidate',array('name'=> 'Importo somme liquidate <b>€</b>', 'desc' => 'Inserire l\'importo avendo cura di riportare SEMPRE i decimali .00 esempio: 22330.00'));
 
 	  //wysiwyg field
 	  //$my_meta->addWysiwyg($prefix.'wysiwyg_note',array('name'=> 'Allegati e note libere '));

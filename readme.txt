@@ -3,9 +3,9 @@ Contributors: Milmor
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=F2JK36SCXKTE2
 Tags: avcp, autorita, vigilanza, lavori, pubblici, amministrazione, trasparente, legge, obblighi, marco, milesi, normativa, pubblicazione
 Requires at least: 3.3
-Tested up to: 3.7
-Version: 1.1.2
-Stable tag: 1.1.2
+Tested up to: 3.8
+Version: 2.0
+Stable tag: 2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,7 +14,7 @@ Generatore XML per l’AVCP (Autorità per la Vigilanza sui Contratti Pubblici d
 
 == Description ==
 
-> ATTENZIONE: Questo plugin è ancora in fase di sviluppo e al momento non supporta i raggruppamenti temporanei di imprese.
+> Questo plugin non supporta i raggruppamenti temporanei di impresa. In futuro questa funzione potrebbe essere aggiunta!
 
 Dopo il positivo feedback ricevuto per il plugin [Amministrazione Trasparente](http://wordpress.org/plugins/amministrazione-trasparente/), è arrivato su Wordpress.org anche il nuovo software per l'adeguamento normativo richiesto per l’Autorità per la Vigilanza sui Contratti Pubblici di Lavori, Servizi e Forniture, conforme alle specifiche tecniche ai sensi dell’art. 1 comma 32 Legge n. 190/2012. Sulla scia di Amministrazione Trasparente questo plugin, costantemente aggiornato, è focalizzato su flessibilità, semplicità e intuitività nell'aggiornamento delle informazioni, direttamente dall'interfaccia di amministrazione di Wordpress.
 
@@ -28,6 +28,7 @@ AVCP XML per Wordpress è il più semplice e intuitivo software per la gestione 
 * Generazione **automatica** o manuale dei file XML per la trasmissione ad AVCP, suddivisi per anno
 * Codice leggero, commentato e facilmente modificabile
 * Compatibilità completa per i temi Wordpress
+* Generazione di dataset .xml vuoti
 
 = Caratteristiche Salienti =
 Oltre all'adempimento degli obblighi di legge, AVCP XML per Wordpress offre alcune funzioni in grado di dare valore aggiunto al vostro operato:
@@ -58,9 +59,8 @@ Per qualsiasi informazione, per segnalare problemi o per suggerire nuove funzion
 4. Dai un'occhiata alle altre impostazioni
 5. Predisponi un'area del sito in cui mostrare l'elenco dei bandi (per assolvere anche all'obbligo di pubblicazione sul sito istituzionale). Di seguito trovi tutte le informazioni nella sezione **Shortcode**
 6. Inserisci le ditte, con Codice Fiscale/Partita IVA, dal menù AVCP -> Ditte
-7. Inserisci gli anni di riferimento dal menù AVCP -> Ditte ("2013", "2014",...)
-8. Inserisci le gare, avendo cura di riempire in modo corretto tutti i campi, dal menù AVCP -> Nuova Gara
-9. Per la generazione del file .xml e la sua comunicazione all'Avcp, leggi il paragrafo successivo
+7. Inserisci le gare, avendo cura di riempire in modo corretto tutti i campi, dal menù AVCP -> Nuova Gara
+8. Per la generazione del file .xml e la sua comunicazione all'Avcp, leggi il paragrafo successivo
 
 = SHORTCODE =
 AVCP XML permette, oltre alla creazione del file xml per la trasmissione ad AVCP, di assolvere anche l'obbligo di pubblicazione delle informazioni sul sito istituzionale. E' infatti possibile utilizzare lo shortcode [avcp] in una pagina/articolo per visualizzare una tabella (con funzioni di filtraggio avanzate) contenente tutti i bandi.
@@ -95,6 +95,17 @@ Se dopo questi passaggi "System Check-UP" rileva ancora alcuni problemi, è prob
 
 == Changelog ==
 > Questa è la lista completa di tutti gli aggiornamenti, test e correzioni. Ogni volta che una nuova versione viene rilasciata assicuratevi di aggiornare il prima possibile per usufruire delle ultime migliorie!
+
+= Versione 2.0 2/01/2013 =
+* **Corretta** errata generazione dell'url xml nel dataset
+* **Corretta** errata generazione delle ditte partecipanti // Grazie Gianni Cepollina
+* **Aggiunta** validazione campi data delle gare con obbligo di scelta dal calendario (input readonly)
+* Nuovo sistema di gestione degli anni di riferimento: adesso vengono creati dal plugin (richiede step di aggiornamento 1.2 aggiuntivo)
+* Corretto messaggio di errore "FATAL ERROR" causato da una continua chiamata dell' hook save_post
+* **Corretti** valori "sceltacontraente" scritti nel dataset .xml
+* **Corretto** orario generazione scritto nel dataset .xml
+* **Aggiunta** generazione di file .xml vuoti
+* Testato con WP 3.8
 
 = Versione 1.1.2 30/12/2013 =
 * **Corretto** conflitto con il plugin Amministrazione Trasparente che impediva il caricamento della funzione di ricerca nel metabox tipologie (Nuova Voce)

@@ -4,7 +4,7 @@ Plugin Name: AVCP XML
 Plugin URI: http://www.marcomilesi.ml
 Description: Generatore XML per l’AVCP (Autorità per la Vigilanza sui Contratti Pubblici di Lavori, Servizi e Forniture) // Art. 1 comma 32 Legge 190/2012.
 Author: Marco Milesi
-Version: 1.1.2
+Version: 1.2
 Author URI: http://www.marcomilesi.ml
 */
 
@@ -119,21 +119,28 @@ function register_taxonomy_annirif() {
         'show_admin_column' => true,
         'hierarchical' => true,
         'rewrite' => true,
+		'capabilities' => array('manage_terms' => 'utentealieno','edit_terms'   => 'utentealieno','delete_terms' => 'utentealieno'),
         'query_var' => true
     );
 
     register_taxonomy( 'annirif', array('avcp'), $args );
+	wp_insert_term('2013', 'annirif');
+	wp_insert_term('2014', 'annirif');
 }
 
 add_action('save_post', 'save_at_gara_posts',10,2);
 function save_at_gara_posts($post_id) {
+
+    // If this isn't a 'book' post, don't update it.
+    $slug = 'avcp'; if ( $slug != $_POST['post_type'] ) { return; }
+	
 	$get_avcp_autopublish = get_option('avcp_autopublish');
 	if ($get_avcp_autopublish == '1') {
 		$terms = wp_get_post_terms($post_id, 'annirif');
 		$count = count($terms);
 		if (!($count > 0 )){
 			echo '<div class="error"><p>'; 
-			printf(__('FATAL ERROR' . $verificafilecreati));
+			printf(__('AVCP | Errore: impossibile ricreare il file .xml: nessuna ditta impostata' . $verificafilecreati));
 			echo "</p></div>";	
 		}
 		require_once(plugin_dir_path(__FILE__) . 'avcp_xml_generator.php');
@@ -142,7 +149,7 @@ function save_at_gara_posts($post_id) {
 			$verificafilecreati = $term->name . ' - ' . $verificafilecreati;
 		}
 		echo '<div class="updated"><p>'; 
-		printf(__('AVCP | Generazione dei file .xml completata => ' . $verificafilecreati));
+		printf(__('AVCP | Generazione automatica del file .xml completata => ' . $verificafilecreati));
 		echo "</p></div>";		
 	}
 }
@@ -241,7 +248,7 @@ function atg_caricamoduli() {
 	require_once(plugin_dir_path(__FILE__) . 'avcp_metabox_generator.php');
 	require_once(plugin_dir_path(__FILE__) . 'singlehack.php');
 	require_once(plugin_dir_path(__FILE__) . 'avcp_xml_generator.php');
-	//include(plugin_dir_path(__FILE__) . 'alerts.php');
+	include(plugin_dir_path(__FILE__) . 'alerts.php');
 	include(plugin_dir_path(__FILE__) . 'styledbackend.php');
 	require_once(plugin_dir_path(__FILE__) . 'taxfilteringbackend.php');
 	require_once(plugin_dir_path(__FILE__) . 'searchTaxonomy/searchTaxonomyGT.php');
