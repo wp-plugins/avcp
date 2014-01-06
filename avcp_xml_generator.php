@@ -1,6 +1,6 @@
 <?php
 function creafilexml ($anno) {
-	$XML_ente_proponente = get_option('avcp_denominazione_ente');
+	$avcp_denominazione_ente = get_option('avcp_denominazione_ente');
 	$XML_data_aggiornamento =  date("Y-m-d");
 	$XML_data_completa_aggiornamento = date('d/m/y - H:i'); //Utile essenzialmente per i test
 	$XML_anno_riferimento =  $anno;
@@ -12,7 +12,7 @@ function creafilexml ($anno) {
 	<titolo>Pubblicazione 1 legge 190</titolo>
 	<abstract>Pubblicazione 1 legge 190 anno 1 rif. 2013 - ' . $XML_data_completa_aggiornamento . ' - Wordpress Plugin AVCP XML di Marco Milesi</abstract>
 	<dataPubbicazioneDataset>2013-06-12</dataPubbicazioneDataset>
-	<entePubblicatore>' . $XML_ente_proponente . '</entePubblicatore>
+	<entePubblicatore>' . $avcp_denominazione_ente . '</entePubblicatore>
 	<dataUltimoAggiornamentoDataset>' . $XML_data_aggiornamento . '</dataUltimoAggiornamentoDataset>
 	<annoRiferimento>' . $XML_anno_riferimento . '</annoRiferimento>
 	<urlFile>' . site_url() . '/avcp/' . $anno . '.xml' . '</urlFile>
@@ -25,7 +25,6 @@ function creafilexml ($anno) {
 	//Ottieni le variabili per la voce corrente
 	$avcp_cig = get_post_meta($post->ID, 'avcp_cig', true);
 	$avcp_codicefiscale_ente = get_option('avcp_codicefiscale_ente');
-	$avcp_denominazione_ente = get_option('avcp_denominazione_ente');
 	$avcp_contraente = get_post_meta($post->ID, 'avcp_contraente', true);
 	$avcp_importo_aggiudicazione = get_post_meta($post->ID, 'avcp_aggiudicazione', true);
 	$avcp_somme_liquidate = get_post_meta($post->ID, 'avcp_somme_liquidate', true);

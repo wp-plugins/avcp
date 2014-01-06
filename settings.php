@@ -24,13 +24,12 @@ if ( is_admin() ){ // admin actions
 }
 
 function avcp_reg_settings() {
-	register_setting( 'avcp_options', 'avcp_version_number'); update_option( 'avcp_version_number', '2.0.3' );
+	register_setting( 'avcp_options', 'avcp_version_number'); update_option( 'avcp_version_number', '2.1' );
 	register_setting( 'avcp_options', 'avcp_denominazione_ente');
 	register_setting( 'avcp_options', 'avcp_codicefiscale_ente');
 	register_setting( 'avcp_options', 'avcp_autopublish');
 	register_setting( 'avcp_options', 'avcp_dis_archivioditte');
 	register_setting( 'avcp_options', 'avcp_dis_archivioanni');
-	register_setting( 'avcp_options', 'avcp_dis_styledbackend');
 	register_setting( 'avcp_options', 'avcp_tab_jqueryui');
 	register_setting( 'avcp_options', 'avcp_showxml');
 	register_setting( 'avcp_options', 'avcp_showlove');
@@ -55,7 +54,7 @@ function avcp_settings_menu()
 				  creafilexml ($term->name);
 				  $verificafilecreati = $term->name . ' - ' . $verificafilecreati;
 				  echo '<div class="updated"><p>'; 
-				  printf(__('AVCP | Il seguente file .xml è stato creato correttamente: <b>' . $term->name . '</b>'));
+				  printf(__('AVCP | Il seguente file .xml è generato: <b>' . $term->name . '</b>'));
 				  echo "</p></div>";
 				}
 			} else {
@@ -120,7 +119,7 @@ function avcp_settings_menu()
 </form>
 </div>
 
-<h2>AVCP XML v' . get_option('avcp_version_number') . ' <a href="http://wordpress.org/plugins/avcp/installation/" target="_blank" class="add-new-h2">Installazione</a><a href="http://marcomilesi.ml/supporto" target="_blank" class="add-new-h2">Forum di Supporto</a><a href="http://wordpress.org/plugins/avcp/changelog/" target="_blank" class="add-new-h2">CHANGELOG</a></h2>'
+<h2>AVCP XML v' . get_option('avcp_version_number') . ' <a href="http://wordpress.org/plugins/avcp/installation/" target="_blank" class="add-new-h2">Installazione</a><a href="http://supporto.marcomilesi.ml/" target="_blank" class="add-new-h2">Forum di Supporto</a><a href="http://wordpress.org/plugins/avcp/changelog/" target="_blank" class="add-new-h2">CHANGELOG</a></h2>'
     );
 	
 	// SYSTEM CHECK
@@ -128,8 +127,9 @@ function avcp_settings_menu()
 	settings_fields('avcp_options');
 	echo '<div id="welcome-panel" style="margin:10px;width:50%;float:left;" class="welcome-panel">
 	<h3><span>Generazione file .xml</span></h3>
-	I file .xml generati sono pubblicamente accessibili da: <b><a class="add-new-h2" href="' . get_site_url() . '/avcp' . '" target="_blank">' . get_site_url() . '/avcp' . '</a></b><br/>
-	<center><p class="submit"><input type="submit" class="button-primary" name="XMLgenBUTTON" value="Genera XML" /><br/>Clicca qui per generare manualmente i file .xml (verranno creati i file divisi per anno prendendo come riferimento il campo "Anno di Riferimento" inserito nelle varie voci).<br/>Per <b>cancellare</b> i file, accedere via ftp!</p><p style="color:red;">Attenzione! Questa funzione non sostituisce la comunicazione obbligatoria dell\'url del file .xml ad AVCP, secondo le disposizioni normative vigenti.</p></center>';
+	I file .xml generati sono pubblicamente accessibili all\'indirizzo <b><a href="' . get_site_url() . '/avcp' . '" target="_blank">' . get_site_url() . '/avcp' . '</a>*</b><br/>';
+
+	echo'<p style="text-align:center;" class="submit"><input type="submit" class="button-primary" name="XMLgenBUTTON" value="Crea Dataset" /><br/><br/><br/><font style="color:red;">*Attenzione! Questa funzione non sostituisce la comunicazione obbligatoria dell\'url del file .xml ad AVCP, secondo le disposizioni normative vigenti.</font></p>';
 	
 	echo '</div>';
 	echo '
@@ -209,7 +209,7 @@ function avcp_settings_menu()
 
 	echo '<h4>Esito:</h4>';
 	if ($system_ok) {
-		echo 'Nessun problema rilevato con il server. Molto bene!';
+		echo 'Nessun problema tecnico rilevato con il server. Molto bene!';
 	} else {
 		echo '
 		<style>
@@ -221,7 +221,7 @@ function avcp_settings_menu()
 	}	
 	echo '</div>
 	<div class="clear"></div>';
-	
+
 	//Qui inizia la sezione delle impostazioni
 	
 	echo '
@@ -329,26 +329,7 @@ function avcp_settings_menu()
 	echo '</tbody></table>
 	</div></div>';
 	
-	echo '
-	<div class="postbox" id="second">
-        <h3 class="hndle"><span>Altre Impostazioni</span></h3>
-            <div class="inside">
-			
-	<table class="form-table"><tbody>';
-	
-	echo '<tr>';
-	echo '<th><label>CSS Backend</label></th>';
-	echo '<td><input type="checkbox" name="avcp_dis_styledbackend_n" ';
-	$get_avcp_dis_styledbackend = get_option('avcp_dis_styledbackend');
-		if ($get_avcp_dis_styledbackend == '0') {
-			echo 'checked="checked" ';
-		}
-	echo '><span class="description">Abilita il caricamento di css aggiuntivo per le pagine di amministrazione AVCP</span></td>';
-	echo '</tr>';
-	
-	echo '</tbody></table>
-	</div></div>
-	</div></div>
+	echo '</div></div>
 	<p class="submit"><input type="submit" class="button-primary" name="Submit" value="AGGIORNA IMPOSTAZIONI" /></p>';
     
     echo '</form>';
@@ -363,7 +344,7 @@ function avcp_settings_menu()
 	<a href="http://wordpress.org/plugins/amministrazione-aperta/" target="_blank" title="Plugin Wordpress per la gestione di Spese, Contributi, Concessioni, Incarichi...">
 	<img src="' . plugin_dir_url(__FILE__) . 'includes/aa.png"/></a>
 	<hr/>
-	Sviluppo e ideazione Wordpress a cura di <a href="http://marcomilesi.ml" target="_blank" title="www.marcomilesi.ml">Marco Milesi</a><br/><small>Per la preparazione di questo programma sono state impiegate diverse ore a titolo volontario. Se vuoi, puoi effettuare una piccola donazione utilizzando il link che trovi in alto a destra.<br/>Per qualsiasi informazione e per segnalare un problema è attivo il forum di supporto su <a href="http://marcomilesi.ml/supporto" target="_blank" title="www.marcomilesi.ml/supporto">www.marcomilesi.ml/supporto</a></small></center>
+	Sviluppo e ideazione Wordpress a cura di <a href="http://marcomilesi.ml" target="_blank" title="www.marcomilesi.ml">Marco Milesi</a><br/><small>Per la preparazione di questo programma sono state impiegate diverse ore a titolo volontario. Se vuoi, puoi effettuare una piccola donazione utilizzando il link che trovi in alto a destra.<br/>Per qualsiasi informazione e per segnalare un problema è attivo il forum di supporto su <a href="http://supporto.marcomilesi.ml/" target="_blank" title="supporto.marcomilesi.ml">supporto.marcomilesi.ml</a></small></center>
 	</div>';
 
 }

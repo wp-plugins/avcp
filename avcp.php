@@ -4,7 +4,7 @@ Plugin Name: AVCP XML
 Plugin URI: http://www.marcomilesi.ml
 Description: Generatore XML per l’AVCP (Autorità per la Vigilanza sui Contratti Pubblici di Lavori, Servizi e Forniture) // Art. 1 comma 32 Legge 190/2012.
 Author: Marco Milesi
-Version: 2.0.3
+Version: 2.1
 Author URI: http://www.marcomilesi.ml
 */
 
@@ -124,6 +124,7 @@ function register_taxonomy_annirif() {
     );
 
     register_taxonomy( 'annirif', array('avcp'), $args );
+	wp_insert_term('2012', 'annirif');
 	wp_insert_term('2013', 'annirif');
 	wp_insert_term('2014', 'annirif');
 }
@@ -140,7 +141,7 @@ function save_at_gara_posts($post_id) {
 		$count = count($terms);
 		if (!($count > 0 )){
 			echo '<div class="error"><p>'; 
-			printf(__('AVCP | Errore: impossibile ricreare il file .xml: nessuna ditta impostata' . $verificafilecreati));
+			printf(__('AVCP | Errore: impossibile ricreare il file .xml: la gara inserita non ha ditte collegate' . $verificafilecreati));
 			echo "</p></div>";	
 		}
 		require_once(plugin_dir_path(__FILE__) . 'avcp_xml_generator.php');
@@ -252,6 +253,10 @@ function atg_caricamoduli() {
 	include(plugin_dir_path(__FILE__) . 'styledbackend.php');
 	require_once(plugin_dir_path(__FILE__) . 'taxfilteringbackend.php');
 	require_once(plugin_dir_path(__FILE__) . 'searchTaxonomy/searchTaxonomyGT.php');
+	
+	//Include sistemi di validazione
+	include(plugin_dir_path(__FILE__) . 'valid_check.php');
+	include(plugin_dir_path(__FILE__) . 'valid_page.php');
 	
 	global $typenow;
 	if ($typenow == 'avcp') {

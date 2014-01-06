@@ -68,7 +68,7 @@ $(document).ready( function () {
 query_posts( array( 'post_type' => 'avcp', 'orderby' => date, 'order' => DESC, 'posts_per_page' => -1  ) );
 echo '<h3>Elenco Bandi e appalti - Tutti gli Anni</h3>';
 } else {
-query_posts( array( 'post_type' => 'avcp', 'orderby' => date, 'order' => DESC, 'posts_per_page' => -1 , 'meta_key' => 'avcp_anno_riferimento','meta_value' => $anno) );
+query_posts( array( 'post_type' => 'avcp', 'orderby' => date, 'order' => DESC, 'posts_per_page' => -1 , 'annirif' => $anno) );
 echo '<h3>Elenco Bandi e appalti - Anno ' . $anno . '</h3>';
 }
 ?>
