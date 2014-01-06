@@ -4,8 +4,8 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: avcp, autorita, vigilanza, lavori, pubblici, amministrazione, trasparente, legge, obblighi, marco, milesi, normativa, pubblicazione
 Requires at least: 3.3
 Tested up to: 3.8
-Version: 2.1
-Stable tag: 2.1
+Version: 2.0.3
+Stable tag: 2.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,7 @@ Se dopo questi passaggi "System Check-UP" rileva ancora alcuni problemi, è prob
 * **Migliorata** pagina delle impostazioni
 * **Rimossa** opzione per disabilitare il caricamento aggiuntivo di css (dalla versione 2 è javascript richiesto)
 * **Aggiunto** sistema di validazione AVCP (75% accuratezza), con notifica opzionale in caso di errore
+* **Corretta** mancata scrittura <entePubblicatore> nella testata del file .xml
 
 = Versione 2.0.3 2/01/2013 =
 * Modifica nome immagine case-sensitive
