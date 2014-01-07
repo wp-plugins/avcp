@@ -24,7 +24,7 @@ if ( is_admin() ){ // admin actions
 }
 
 function avcp_reg_settings() {
-	register_setting( 'avcp_options', 'avcp_version_number'); update_option( 'avcp_version_number', '2.1' );
+	register_setting( 'avcp_options', 'avcp_version_number'); update_option( 'avcp_version_number', '2.2' );
 	register_setting( 'avcp_options', 'avcp_denominazione_ente');
 	register_setting( 'avcp_options', 'avcp_codicefiscale_ente');
 	register_setting( 'avcp_options', 'avcp_autopublish');
@@ -33,6 +33,7 @@ function avcp_reg_settings() {
 	register_setting( 'avcp_options', 'avcp_tab_jqueryui');
 	register_setting( 'avcp_options', 'avcp_showxml');
 	register_setting( 'avcp_options', 'avcp_showlove');
+	register_setting( 'avcp_options', 'avcp_invalid');
 }
 
 function avcp_setting_menu()

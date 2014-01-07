@@ -4,8 +4,8 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: avcp, autorita, vigilanza, lavori, pubblici, amministrazione, trasparente, legge, obblighi, marco, milesi, normativa, pubblicazione
 Requires at least: 3.3
 Tested up to: 3.8
-Version: 2.1
-Stable tag: 2.1
+Version: 2.2
+Stable tag: 2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -96,7 +96,13 @@ Se dopo questi passaggi "System Check-UP" rileva ancora alcuni problemi, è prob
 == Changelog ==
 > Questa è la lista completa di tutti gli aggiornamenti, test e correzioni. Ogni volta che una nuova versione viene rilasciata assicuratevi di aggiornare il prima possibile per usufruire delle ultime migliorie!
 
-= Versione 2.1 6/01/2013 =
+= Versione 2.2 7/01/2014 =
+* **Corretto** errore scrittura xml del codice fiscale e nome ditta aggiudicataria (erano invertiti) [!]
+* **Corretta** mancata generazione automatica file .xml al salvataggio/pubblicazione di una gara
+* Validazione automatica .xml rivista completamente per migliorare le performance del sito (non più lanciata in admin_init)
+* **Migliorata** leggibilità dei messaggi
+
+= Versione 2.1 6/01/2014 =
 * **Corretti** errori di generazione della tabella shortcode filtrata per anno
 * Aggiunto Anno di riferimento 2012
 * **Migliorata** pagina delle impostazioni
@@ -104,7 +110,7 @@ Se dopo questi passaggi "System Check-UP" rileva ancora alcuni problemi, è prob
 * **Aggiunto** sistema di validazione AVCP (75% accuratezza), con notifica opzionale in caso di errore
 * **Corretta** mancata scrittura <entePubblicatore> nella testata del file .xml
 
-= Versione 2.0.3 2/01/2013 =
+= Versione 2.0.3 2/01/2014 =
 * Modifica nome immagine case-sensitive
 
 = Versione 2.0.2 =
@@ -113,7 +119,7 @@ Se dopo questi passaggi "System Check-UP" rileva ancora alcuni problemi, è prob
 = Versione 2.0.1 =
 * Aggiunto file mancante (svista)
 
-= Versione 2.0 2/01/2013 =
+= Versione 2.0 2/01/2014 =
 * **Corretta** errata generazione dell'url xml nel dataset
 * **Corretta** errata generazione delle ditte partecipanti // Grazie Gianni Cepollina
 * **Aggiunta** validazione campi data delle gare con obbligo di scelta dal calendario (input readonly)

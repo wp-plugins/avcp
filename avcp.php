@@ -4,7 +4,7 @@ Plugin Name: AVCP XML
 Plugin URI: http://www.marcomilesi.ml
 Description: Generatore XML per l’AVCP (Autorità per la Vigilanza sui Contratti Pubblici di Lavori, Servizi e Forniture) // Art. 1 comma 32 Legge 190/2012.
 Author: Marco Milesi
-Version: 2.1
+Version: 2.2
 Author URI: http://www.marcomilesi.ml
 */
 
@@ -132,8 +132,9 @@ function register_taxonomy_annirif() {
 add_action('save_post', 'save_at_gara_posts',10,2);
 function save_at_gara_posts($post_id) {
 
+	$post = get_post($post_id);
     // If this isn't a 'book' post, don't update it.
-    $slug = 'avcp'; if ( $slug != $_POST['post_type'] ) { return; }
+    $slug = 'avcp'; if ( $slug != $post->post_type ) { return; }
 	
 	$get_avcp_autopublish = get_option('avcp_autopublish');
 	if ($get_avcp_autopublish == '1') {

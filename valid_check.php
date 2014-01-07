@@ -1,5 +1,4 @@
 <?php
-add_action('admin_init', 'avcp_valid_check');
 function avcp_valid_check() {
 	// Enable user error handling 
 	libxml_use_internal_errors(true);
@@ -13,7 +12,10 @@ function avcp_valid_check() {
 		}
 	}
 	if ($errori) {
+		update_option('avcp_invalid', '1');
 		echo '<div class="error"><p>AVCP | I seguenti file .xml presentano errori: ' . $errori . '</p><p><a href="' . admin_url() . 'edit.php?post_type=avcp&page=avcp_v_dataset">Clicca qui vedere i dettagli degli errori</a></div>';
+	} else {
+		update_option('avcp_invalid', '0');
 	}
 }
 ?>

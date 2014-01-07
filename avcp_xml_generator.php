@@ -68,8 +68,8 @@ function creafilexml ($anno) {
 			$checked = (in_array($cat_id,(array)$cats)? ' checked="checked"': "");
 			if ($checked) {
 				$XML_FILE .= '<aggiudicatario>';
-				$XML_FILE .= '<ragioneSociale>' . $term->name . '</ragioneSociale>';
 				$XML_FILE .= '<codiceFiscale>' . $term_return . '</codiceFiscale>';
+				$XML_FILE .= '<ragioneSociale>' . $term->name . '</ragioneSociale>';
 				$XML_FILE .= '</aggiudicatario>';
 			}
 		}
@@ -99,5 +99,7 @@ function creafilexml ($anno) {
 
 	// Close 'er up
 	fclose($my_file);
+	
+	avcp_valid_check();
 }
 ?>

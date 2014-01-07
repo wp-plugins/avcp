@@ -9,7 +9,7 @@ function avcp_v_dataset_load()
 {
 	echo '<div class="wrap">';
 	screen_icon();
-	echo '<h2>Validazione Dataset XML</h2><em>Tramite questa funzione è possibile verificare dei dataset .xml con le specifiche di Avcp; non è tuttavia garantito il controllo della completezza/veridicità dei dati inseriti/omessi</em>';
+	echo '<h2>Validazione Dataset XML</h2><em>Tramite questa pagina puoi verificare se i tuoi dataset xml generati presentano problemi di validazione secondo le specifiche di avcp. Ricorda che questo test non garantisce la completezza o veridicita\' delle informazioni inserite, o di dati omessi.</em>';
     $terms = get_terms( 'annirif', array('hide_empty' => 0) );
 	foreach ( $terms as $term ) {
 		$xml = new DOMDocument(); 
@@ -17,6 +17,7 @@ function avcp_v_dataset_load()
 		echo '<hr><h3>Dataset Anno ' . $term->name . ' >>> <a href="' . get_site_url()  . '/avcp/' . $term->name. '.xml">' . get_site_url()  . '/avcp/' . $term->name. '.xml</a></h3>';
 		if (!$xml->schemaValidate(get_site_url()  . '/wp-content/plugins/avcp/includes/datasetAppaltiL190.xsd')) {
 			libxml_display_errors();
+			echo '<br/><font style="color:red;font-weight:bold;">Risolvere i problemi riportati qui sopra, poi procedere con la rigenerazione dei dataset .xml!</font>';
 		} else {
 			echo 'Valido!';
 		}
