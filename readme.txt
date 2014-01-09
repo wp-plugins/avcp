@@ -4,8 +4,8 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: avcp, autorita, vigilanza, lavori, pubblici, amministrazione, trasparente, legge, obblighi, marco, milesi, normativa, pubblicazione
 Requires at least: 3.3
 Tested up to: 3.8
-Version: 2.3
-Stable tag: 2.3
+Version: 2.3.1
+Stable tag: 2.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -95,6 +95,10 @@ Se dopo questi passaggi "System Check-UP" rileva ancora alcuni problemi, è prob
 
 == Changelog ==
 > Questa è la lista completa di tutti gli aggiornamenti, test e correzioni. Ogni volta che una nuova versione viene rilasciata assicuratevi di aggiornare il prima possibile per usufruire delle ultime migliorie!
+
+= Versione 2.3.1 9/01/2014 =
+* **Corretto** errore validazione "Warning 1549: failed to load external entity"
+* **Corretta** visualizzazione di troppe notifiche in caso di generazione manuale di dataset non conformi
 
 = Versione 2.3 8/01/2014 =
 * **Rinnovata** visualizzazione singola bandi di gara, con visualizzazione aggiudicatari

@@ -13,9 +13,9 @@ function avcp_v_dataset_load()
     $terms = get_terms( 'annirif', array('hide_empty' => 0) );
 	foreach ( $terms as $term ) {
 		$xml = new DOMDocument(); 
-		$xml->load(get_site_url()  . '/avcp/' . $term->name. '.xml');
+		$xml->load(ABSPATH  . '/avcp/' . $term->name. '.xml');
 		echo '<hr><h3>Dataset Anno ' . $term->name . ' >>> <a href="' . get_site_url()  . '/avcp/' . $term->name. '.xml">' . get_site_url()  . '/avcp/' . $term->name. '.xml</a></h3>';
-		if (!$xml->schemaValidate(get_site_url()  . '/wp-content/plugins/avcp/includes/datasetAppaltiL190.xsd')) {
+		if (!$xml->schemaValidate(ABSPATH  . '/wp-content/plugins/avcp/includes/datasetAppaltiL190.xsd')) {
 			libxml_display_errors();
 			echo '<br/><font style="color:red;font-weight:bold;">Risolvere i problemi riportati qui sopra, poi procedere con la rigenerazione dei dataset .xml!</font>';
 		} else {
