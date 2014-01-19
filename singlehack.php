@@ -38,7 +38,7 @@ function avcp_job_cpt_template_filter($content)
 	}
 	echo '</td></tr>';
 	echo '</table>';
-	echo '<h3>Elenco degli operatori invitati a presentare offerte</h3>';
+	echo '<h3>Elenco degli operatori partecipanti</h3>';
 
 	echo '<table>';	
 	$terms = get_the_terms( $post->ID, 'ditte' );
@@ -48,9 +48,11 @@ function avcp_job_cpt_template_filter($content)
 		$t_id = $get_term->term_id;
 		$term_meta = get_option( "taxonomy_$t_id" );
 		$term_return = esc_attr( $term_meta['avcp_codice_fiscale'] );
+		$stato_var = get_tax_meta($t_id,'avcp_is_ditta_estera');
+		if (empty($stato_var)) {$is_estera = 'IT';}else{$is_estera = 'EE';}
 		echo '<tr>
-			<td><a href="' . get_term_link( $get_term->term_id, 'ditte' ) . '" title="' . $term->name . '">' . $term->name . '</a></td>
-			<td>' . $term_return . '</td>
+			<td><a href="' . get_term_link( $t_id, 'ditte' ) . '" title="' . $term->name . '">' . $term->name . '</a></td>
+			<td>' . $term_return . ' - <b>' . $is_estera . '</b></td>
 			</tr>';
 	  }
 	}
@@ -68,10 +70,12 @@ function avcp_job_cpt_template_filter($content)
 			$term_meta = get_option( "taxonomy_$cat_id" );
 			$term_return = esc_attr( $term_meta['avcp_codice_fiscale'] );
 			$checked = (in_array($cat_id,(array)$cats)? ' checked="checked"': "");
+			$stato_var = get_tax_meta($cat_id,'avcp_is_ditta_estera');
+			if (empty($stato_var)) {$is_estera = 'IT';}else{$is_estera = 'EE';}
 			if ($checked) {
 				echo '<tr>
 				<td><a href="' . get_term_link( $cterm->term_id, 'ditte' ) . '" title="' . $term->name . '">' . $term->name . '</a></td>
-				<td>' . $term_return . '</td>
+				<td>' . $term_return . ' - <b>' . $is_estera . '</b></td>
 				</tr>';
 			}
 		}
@@ -79,5 +83,9 @@ function avcp_job_cpt_template_filter($content)
 	
 	echo '</table>';
 	
+	$get_avcp_showlove = get_option('avcp_showlove');
+	if ($get_avcp_showlove == '1') {
+		echo '<center><small>Vista generata con il plugin <a href="http://wordpress.org/plugins/avcp/" target="_blank" title="AVCP Wordpress Plugin">AVCP XML per Wordpress</a></small></center>';
+	}
 }
 ?>

@@ -54,7 +54,7 @@ add_action( 'admin_menu' , 'avcp_remove_metaboxes' );
 
 	  //wysiwyg field
 	  //$my_meta->addWysiwyg($prefix.'wysiwyg_note',array('name'=> 'Allegati e note libere '));
-
+	
 	$my_meta->Finish();
  
 function avcp_pages_inner_custom_box3( $post ) { //Inizializzazione Metabox 2, senza api bainternet
@@ -62,7 +62,7 @@ function avcp_pages_inner_custom_box3( $post ) { //Inizializzazione Metabox 2, s
     wp_nonce_field( plugin_basename( __FILE__ ), 'pages_noncename' );
 
     // The actual fields for data entry
-	echo 'Le ditte appena collegate compariranno solo dopo avere aggiornato/pubblicato questa gara.';
+	echo 'Le ditte appena impostate come partecipanti nel riquadro "Ditte" compariranno qui solo dopo avere aggiornato/pubblicato questa gara.';
     $dittepartecipanti = get_the_terms( $post->ID, 'ditte' );
 	$cats = get_post_meta($post->ID,'avcp_aggiudicatari',true);
     echo '<ul>';
@@ -76,12 +76,12 @@ function avcp_pages_inner_custom_box3( $post ) { //Inizializzazione Metabox 2, s
 	} else {
 		echo '<b>Nessuna ditta partecipante collegata a questa gara.</b>';
 	}
-    echo '</ul>';
+    echo '</ul><hr/><input type="submit" name="publish" id="publish" class="button button-primary button-large" value="Pubblica/Aggiorna Gara" accesskey="p">';
 }
 	
 add_action( 'add_meta_boxes', 'avcp_meta_box_add' );
 function avcp_meta_box_add() {
-	add_meta_box( 'my-meta-box-id', 'Ditte :: AGGIUDICATARI', 'avcp_pages_inner_custom_box3', 'avcp', 'normal', 'high' );
+	add_meta_box( 'my-meta-box-id', 'Ditte aggiudicatarie', 'avcp_pages_inner_custom_box3', 'avcp', 'normal', 'high' );
 }
 
 add_action( 'save_post_avcp', 'avcp_custom_save_post' );

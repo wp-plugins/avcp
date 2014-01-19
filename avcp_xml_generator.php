@@ -1,5 +1,6 @@
 <?php
 function creafilexml ($anno) {
+	//creafileindice();
 	$avcp_denominazione_ente = get_option('avcp_denominazione_ente');
 	$XML_data_aggiornamento =  date("Y-m-d");
 	$XML_data_completa_aggiornamento = date('d/m/y - H:i'); //Utile essenzialmente per i test
@@ -10,8 +11,8 @@ function creafilexml ($anno) {
 	<legge190:pubblicazione xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:legge190="legge190_1_0" xsi:schemaLocation="legge190_1_0 datasetAppaltiL190.xsd">
 	<metadata>
 	<titolo>Pubblicazione 1 legge 190</titolo>
-	<abstract>Pubblicazione 1 legge 190 anno 1 rif. 2013 - ' . $XML_data_completa_aggiornamento . ' - Wordpress Plugin AVCP XML di Marco Milesi</abstract>
-	<dataPubbicazioneDataset>2013-06-12</dataPubbicazioneDataset>
+	<abstract>Pubblicazione 1 legge 190 anno 1 rif. 2013 M - ' . $XML_data_completa_aggiornamento . ' - Generato con AVCP XML ' . get_option('avcp_version_number') . ' di Marco Milesi</abstract>
+	<dataPubbicazioneDataset>' . $anno . '-12-31</dataPubbicazioneDataset>
 	<entePubblicatore>' . $avcp_denominazione_ente . '</entePubblicatore>
 	<dataUltimoAggiornamentoDataset>' . $XML_data_aggiornamento . '</dataUltimoAggiornamentoDataset>
 	<annoRiferimento>' . $XML_anno_riferimento . '</annoRiferimento>
@@ -47,8 +48,10 @@ function creafilexml ($anno) {
 		$t_id = $get_term->term_id;
 		$term_meta = get_option( "taxonomy_$t_id" );
 		$term_return = esc_attr( $term_meta['avcp_codice_fiscale'] );
+		$stato_var = get_tax_meta($t_id,'avcp_is_ditta_estera');
+		if (empty($stato_var)) {$is_estera = 'codiceFiscale';}else{$is_estera = 'identificativoFiscaleEstero';}
 		$XML_FILE .= '<partecipante>
-			<codiceFiscale>' . $term_return . '</codiceFiscale>
+			<' . $is_estera . '>' . $term_return . '</' . $is_estera . '>
 			<ragioneSociale>' . $term->name . '</ragioneSociale>
 			</partecipante>';
 	  }
@@ -66,9 +69,11 @@ function creafilexml ($anno) {
 			$term_meta = get_option( "taxonomy_$cat_id" );
 			$term_return = esc_attr( $term_meta['avcp_codice_fiscale'] );
 			$checked = (in_array($cat_id,(array)$cats)? ' checked="checked"': "");
+			$stato_var = get_tax_meta($cat_id,'avcp_is_ditta_estera');
+		if (empty($stato_var)) {$is_estera = 'codiceFiscale';}else{$is_estera = 'identificativoFiscaleEstero';}
 			if ($checked) {
 				$XML_FILE .= '<aggiudicatario>';
-				$XML_FILE .= '<codiceFiscale>' . $term_return . '</codiceFiscale>';
+				$XML_FILE .= '<' . $is_estera . '>' . $term_return . '</' . $is_estera . '>';
 				$XML_FILE .= '<ragioneSociale>' . $term->name . '</ragioneSociale>';
 				$XML_FILE .= '</aggiudicatario>';
 			}

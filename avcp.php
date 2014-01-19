@@ -4,7 +4,7 @@ Plugin Name: AVCP XML
 Plugin URI: http://www.marcomilesi.ml
 Description: Generatore XML per l’AVCP (Autorità per la Vigilanza sui Contratti Pubblici di Lavori, Servizi e Forniture) // Art. 1 comma 32 Legge 190/2012.
 Author: Marco Milesi
-Version: 2.3.1
+Version: 3.0
 Author URI: http://www.marcomilesi.ml
 */
 
@@ -26,6 +26,26 @@ function register_cpt_avcp() {
         'parent_item_colon' => _x( 'Parent Gara:', 'avcp' ),
         'menu_name' => _x( 'AVCP', 'avcp' ),
     );
+	
+	$get_avcp_abilita_ruoli = get_option('avcp_abilita_ruoli');
+	if ($get_avcp_abilita_ruoli == '1') {
+		$avcp_capability_type = 'gare_avcp';
+		$avcp_map_meta_cap_var = 'true';
+		$avcp_capabilities_array = array(
+				'publish_posts' => 'pubblicare_gara_avcp',
+				'edit_posts' => 'modificare_propri_gara_avcp',
+				'edit_others_posts' => 'modificare_altri_gara_avcp',
+				'delete_posts' => 'eliminare_propri_gara_avcp',
+				'delete_others_posts' => 'modificare_altri_gara_avcp',
+				'read_private_posts' => 'read_private_avcp',
+				'edit_post' => 'modificare_gara_avcp',
+				'delete_post' => 'eliminare_gara_avcp',
+				'read_post' => 'leggere_gara_avcp',
+				);
+	} else {
+		$avcp_capability_type = 'post';
+		$avcp_map_meta_cap_var = 'false';
+	}
 
     $args = array( 
         'labels' => $labels,
@@ -37,7 +57,7 @@ function register_cpt_avcp() {
         'show_ui' => true,
         'show_in_menu' => true,
         'menu_position' => 20,
-        'menu_icon' => 'http://www.comunepantelleria.it/files/ext/ico_zip.gif',
+        'menu_icon'    => 'dashicons-portfolio',
         'show_in_nav_menus' => false,
         'publicly_queryable' => true,
         'exclude_from_search' => false,
@@ -45,7 +65,8 @@ function register_cpt_avcp() {
         'query_var' => true,
         'can_export' => true,
         'rewrite' => true,
-        'capability_type' => 'post'
+        'capability_type' => $avcp_capability_type,
+		'map_meta_cap' => $avcp_map_meta_cap_var
     );
 
     register_post_type( 'avcp', $args );
@@ -124,9 +145,14 @@ function register_taxonomy_annirif() {
     );
 
     register_taxonomy( 'annirif', array('avcp'), $args );
-	wp_insert_term('2012', 'annirif');
-	wp_insert_term('2013', 'annirif');
-	wp_insert_term('2014', 'annirif');
+	$termcheck = term_exists('2013', 'annirif');
+	if ($termcheck == 0 || $termcheck == null) {
+		wp_insert_term('2013', 'annirif');
+	}
+	$termcheck = term_exists('2014', 'annirif');
+	if ($termcheck == 0 || $termcheck == null) {
+		wp_insert_term('2014', 'annirif');
+	}
 }
 
 add_action('save_post', 'save_at_gara_posts',10,2);
@@ -246,8 +272,11 @@ add_action( 'init', 'atg_caricamoduli' );
 function atg_caricamoduli() {
 	include(plugin_dir_path(__FILE__) . 'settings.php');
 	include(plugin_dir_path(__FILE__) . 'avcp_create_taxonomy.php');
-	include(plugin_dir_path(__FILE__) . 'meta-box-class/metabox.php');
+	require_once(plugin_dir_path(__FILE__) . 'meta-box-class/metabox.php');
+	require_once(plugin_dir_path(__FILE__) . 'tax-meta-class/Tax-meta-class.php');
+	require_once(plugin_dir_path(__FILE__) . 'avcp_taxonomy_fields.php');
 	require_once(plugin_dir_path(__FILE__) . 'avcp_metabox_generator.php');
+	require_once(plugin_dir_path(__FILE__) . 'avcp_index_generator.php');
 	require_once(plugin_dir_path(__FILE__) . 'singlehack.php');
 	require_once(plugin_dir_path(__FILE__) . 'avcp_xml_generator.php');
 	include(plugin_dir_path(__FILE__) . 'alerts.php');

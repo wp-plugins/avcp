@@ -4,8 +4,8 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: avcp, autorita, vigilanza, lavori, pubblici, amministrazione, trasparente, legge, obblighi, marco, milesi, normativa, pubblicazione
 Requires at least: 3.3
 Tested up to: 3.8
-Version: 2.3.1
-Stable tag: 2.3.1
+Version: 3
+Stable tag: 3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,7 +14,7 @@ Generatore XML per l’AVCP (Autorità per la Vigilanza sui Contratti Pubblici d
 
 == Description ==
 
-> Questo plugin non supporta i raggruppamenti temporanei di impresa. In futuro questa funzione potrebbe essere aggiunta!
+> Questo plugin al momento non supporta i raggruppamenti temporanei di impresa.
 
 Dopo il positivo feedback ricevuto per il plugin [Amministrazione Trasparente](http://wordpress.org/plugins/amministrazione-trasparente/), è arrivato su Wordpress.org anche il nuovo software per l'adeguamento normativo richiesto per l’Autorità per la Vigilanza sui Contratti Pubblici di Lavori, Servizi e Forniture, conforme alle specifiche tecniche ai sensi dell’art. 1 comma 32 Legge n. 190/2012. Sulla scia di Amministrazione Trasparente questo plugin, costantemente aggiornato, è focalizzato su flessibilità, semplicità e intuitività nell'aggiornamento delle informazioni, direttamente dall'interfaccia di amministrazione di Wordpress.
 
@@ -25,7 +25,7 @@ AVCP XML per Wordpress è il più semplice e intuitivo software per la gestione 
 * Creazione e gestione delle ditte tramite Taxonomy (tassonomia, stessa impostazione delle categorie)
 * Assegnazione ditte partecipanti e aggiudicatari direttamente nella pagina di creazione del bando
 * Generazione di tabelle di riepilogo tramite shortcode [avcp] // [avcp anno="2013"] // [avcp anno="%%%%"]
-* Generazione **automatica** o manuale dei file XML per la trasmissione ad AVCP, suddivisi per anno
+* Generazione **automatica** o manuale del file indice XML per la trasmissione ad AVCP e delle annualità singole
 * Codice leggero, commentato e facilmente modificabile
 * Compatibilità completa per i temi Wordpress
 * Generazione di dataset .xml vuoti
@@ -47,15 +47,11 @@ AVCP XML permette il backup e il ripristino nativo delle voci dei bandi (per tra
 = CONTATTI & SUPPORTO =
 Per qualsiasi informazione, per segnalare problemi o per suggerire nuove funzioni, è attivo il forum di supporto su [www.marcomilesi.ml/supporto](http://marcomilesi.ml/supporto/)
 
-http://www.youtube.com/watch?v=D_nmx_XXo8o
-
 > **ATTENZIONE** | **"For each author’s protection [***] we want to make certain that everyone understands that there is no warranty for this free software.** In accordo con la licenza GPL v.2 con cui questo software viene fornito, **declino** ogni responsabilità per eventuali inadempimenti legislativi e/o altri problemi legali e/o tecnici derivanti, implicitamente o esplicitamente, dall'utilizzo di questo plugin Wordpress o da un'affrettata configurazione dello stesso (ivi compresi eventuali aggiornamenti). E' compito del gestore del sito assicurarsi che il modulo funzioni correttamente e adempia agli obblighi di legge e, al contempo, è obbligo degli operatori/impiegati/dipendenti/funzionari preposti alla gestione dell'Amministrazione Trasparente la pubblicazione degli opportuni dati.
 
 > **EN** | This plugin is developed for **schools, universities, municipalities and local authorities** of **ITALY** and respects their legal parameters. The installation of this plugin on amateur websites and/or portals not subject to 'Amministrazione Trasparente' legislation is a waste of time since the purpose of this software is the posting of data in a legal and validated way.
 
 == Installation ==
-
-http://www.youtube.com/watch?v=D_nmx_XXo8o
 
 1. Carica il contenuto estratto nella cartella `/wp-content/plugins/`
 2. Attiva il plugin dal menu 'Plugins' in WordPress
@@ -99,6 +95,20 @@ Se dopo questi passaggi "System Check-UP" rileva ancora alcuni problemi, è prob
 
 == Changelog ==
 > Questa è la lista completa di tutti gli aggiornamenti, test e correzioni. Ogni volta che una nuova versione viene rilasciata assicuratevi di aggiornare il prima possibile per usufruire delle ultime migliorie!
+
+= Versione 3 19/01/2014 =
+* **Aggiunta** colonna "Aggiudicatari" nella visualizzazione admin delle gare, con indicatore rosso in caso di mancato inserimento
+* **RIMOSSO** anno riferimento 2012, con procedura di aggiornamento automatico per le voci in "2013" (file 2012.xml rimosso)
+* **AGGIUNTO** SUPPORTO PER DITTE ESTERE (IT/EE) con visualizzazione front-end
+* **Aggiunta** condizione verifica curl_init per evitare errori fatali nella pagina delle Impostazioni
+* **Rimosso** step di aggiornamento alla versione 2
+* **Aggiunta** opzione per mappatura meta-capacità (gestione avanzata Ruoli & Permessi)
+
+**Modifiche minori:**
+* **Migliorate** diciture visualizzazione singola
+* **Nuova** icona menù in stile Wordpress 3.8
+* **Aggiunto** avvertimento nel menù "Ditte"
+* **Aggiunta** precisazione date nel metabox nuova gara "Anno Riferimento"
 
 = Versione 2.3.1 9/01/2014 =
 * **Corretto** errore validazione "Warning 1549: failed to load external entity"

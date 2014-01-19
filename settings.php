@@ -24,7 +24,7 @@ if ( is_admin() ){ // admin actions
 }
 
 function avcp_reg_settings() {
-	register_setting( 'avcp_options', 'avcp_version_number'); update_option( 'avcp_version_number', '2.3.1' );
+	register_setting( 'avcp_options', 'avcp_version_number'); update_option( 'avcp_version_number', '3.0' );
 	register_setting( 'avcp_options', 'avcp_denominazione_ente');
 	register_setting( 'avcp_options', 'avcp_codicefiscale_ente');
 	register_setting( 'avcp_options', 'avcp_autopublish');
@@ -34,6 +34,7 @@ function avcp_reg_settings() {
 	register_setting( 'avcp_options', 'avcp_showxml');
 	register_setting( 'avcp_options', 'avcp_showlove');
 	register_setting( 'avcp_options', 'avcp_invalid');
+	register_setting( 'avcp_options', 'avcp_abilita_ruoli');
 }
 
 function avcp_setting_menu()
@@ -105,6 +106,11 @@ function avcp_settings_menu()
 			} else {
 				update_option('avcp_showlove', '0');
 		}
+		if (isset($_POST['avcp_abilita_ruoli_n'])){
+				update_option('avcp_abilita_ruoli', '1');
+			} else {
+				update_option('avcp_abilita_ruoli', '0');
+		}
 	}
 	
 	echo '<div class="wrap">';
@@ -167,43 +173,49 @@ function avcp_settings_menu()
 	$urlcheck = get_site_url() . '/avcp/index.php';
 
 	$agent = "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_8; pt-pt) AppleWebKit/533.20.25 (KHTML, like Gecko) Version/5.0.4 Safari/533.20.27";
- 
-     // initializes curl session
-     $ch=curl_init();
- 
-     // sets the URL to fetch
-     curl_setopt ($ch, CURLOPT_URL,$urlcheck );
- 
-     // sets the content of the User-Agent header
-     curl_setopt($ch, CURLOPT_USERAGENT, $agent);
- 
-     // return the transfer as a string
-     curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
- 
-     // disable output verbose information
-     curl_setopt ($ch,CURLOPT_VERBOSE,false);
- 
-     // max number of seconds to allow cURL function to execute
-     curl_setopt($ch, CURLOPT_TIMEOUT, 5);
- 
-     curl_exec($ch);
- 
-     // get HTTP response code
-     $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
- 
-     curl_close($ch);
- 
-    if($httpcode==200) {
-		echo 'Test Accesso pubblico /avcp<font style="color:green;font-weight:bold;"> ==> OK [200]</font>';
-    } else if($httpcode==500) {
-		echo 'Test Accesso pubblico /avcp<font style="color:red;font-weight:bold;"> ==> ERRORE 500 ISE</font>';
-		$headers = get_headers($urlcheck);
-		echo ' - ' . $headers[0];
-		$system_ok = false;
+	
+	if(is_callable('curl_init')){
+
+		 // initializes curl session
+		 $ch=curl_init();
+	 
+		 // sets the URL to fetch
+		 curl_setopt ($ch, CURLOPT_URL,$urlcheck );
+	 
+		 // sets the content of the User-Agent header
+		 curl_setopt($ch, CURLOPT_USERAGENT, $agent);
+	 
+		 // return the transfer as a string
+		 curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+	 
+		 // disable output verbose information
+		 curl_setopt ($ch,CURLOPT_VERBOSE,false);
+	 
+		 // max number of seconds to allow cURL function to execute
+		 curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+	 
+		 curl_exec($ch);
+	 
+		 // get HTTP response code
+		 $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+	 
+		 curl_close($ch);
+	 
+		if($httpcode==200) {
+			echo 'Test Accesso pubblico /avcp<font style="color:green;font-weight:bold;"> ==> OK [200]</font>';
+		} else if($httpcode==500) {
+			echo 'Test Accesso pubblico /avcp<font style="color:red;font-weight:bold;"> ==> ERRORE 500 ISE</font>';
+			$headers = get_headers($urlcheck);
+			echo ' - ' . $headers[0];
+			$system_ok = false;
+		} else {
+			echo 'Test Accesso pubblico /avcp<font style="color:red;font-weight:bold;"> ==> ERRORE ' . $httpcode . '</font>';
+			$headers = get_headers($urlcheck);
+			echo ' - ' . $headers[0];
+			$system_ok = false;
+		}
 	} else {
-        echo 'Test Accesso pubblico /avcp<font style="color:red;font-weight:bold;"> ==> ERRORE ' . $httpcode . '</font>';
-		$headers = get_headers($urlcheck);
-		echo ' - ' . $headers[0];
+		echo 'Test Accesso pubblico /avcp<font style="color:red;font-weight:bold;"> ==> CURL_INIT MANCANTE</font>';
 		$system_ok = false;
 	}
 
@@ -262,7 +274,7 @@ function avcp_settings_menu()
 	
 	echo '
 	<div class="postbox" id="second">
-        <h3 class="hndle"><span>Impostazioni Tabella</span></h3>
+        <h3 class="hndle"><span>Impostazioni Varie</span></h3>
             <div class="inside">
 			
 	<table class="form-table"><tbody>';
@@ -275,6 +287,16 @@ function avcp_settings_menu()
 			echo 'checked="checked" ';
 		}
 	echo '><span class="description">Spunta questa casella se vuoi abilitare il tema jQueryUI Themeroller per la tabella</span></td>';
+	echo '</tr>';
+	
+	echo '<tr>';
+	echo '<th><label>Ruoli & Permessi</label></th>';
+	echo '<td><input type="checkbox" name="avcp_abilita_ruoli_n" ';
+	$get_avcp_abilita_ruoli = get_option('avcp_abilita_ruoli');
+		if ($get_avcp_abilita_ruoli == '1') {
+			echo 'checked="checked" ';
+		}
+	echo '><span class="description">Le voci di AVCP ereditano i permessi di pubblicazione/modifica/eliminazione degli articoli. Se vuoi avere un maggior controllo abilita questa opzione e segui <a href="http://supporto.marcomilesi.ml/?p=571" target="_blank" title="Istruzioni per la configurazione di Ruoli & Permessi">questo tutorial</span></td>';
 	echo '</tr>';
 	
 	echo '<tr>';

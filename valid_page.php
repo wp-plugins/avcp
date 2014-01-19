@@ -9,17 +9,19 @@ function avcp_v_dataset_load()
 {
 	echo '<div class="wrap">';
 	screen_icon();
-	echo '<h2>Validazione Dataset XML</h2><em>Tramite questa pagina puoi verificare se i tuoi dataset xml generati presentano problemi di validazione secondo le specifiche di avcp. Ricorda che questo test non garantisce la completezza o veridicita\' delle informazioni inserite, o di dati omessi.</em>';
+	echo '<h2>Validazione Dataset XML</h2><em>Tramite questa pagina puoi verificare se i tuoi dataset xml generati presentano problemi di validazione secondo le specifiche di avcp. Ricorda che questo test non garantisce, e anzi <b>ignora</b>, la completezza o veridicita\' delle informazioni inserite, o di dati omessi.<br/>In particolare, controllare di avere impostato per ogni gara le relative ditte aggiudicatarie.</em>';
     $terms = get_terms( 'annirif', array('hide_empty' => 0) );
 	foreach ( $terms as $term ) {
 		$xml = new DOMDocument(); 
 		$xml->load(ABSPATH  . '/avcp/' . $term->name. '.xml');
-		echo '<hr><h3>Dataset Anno ' . $term->name . ' >>> <a href="' . get_site_url()  . '/avcp/' . $term->name. '.xml">' . get_site_url()  . '/avcp/' . $term->name. '.xml</a></h3>';
+		echo '<hr/><center><h3 style="margin-bottom: 0px;">Dataset Anno ' . $term->name . '</h3><small><a target="_blank" href="' . get_site_url()  . '/avcp/' . $term->name. '.xml">' . get_site_url()  . '/avcp/' . $term->name. '.xml</a></small></center>';
 		if (!$xml->schemaValidate(ABSPATH  . '/wp-content/plugins/avcp/includes/datasetAppaltiL190.xsd')) {
 			libxml_display_errors();
-			echo '<br/><font style="color:red;font-weight:bold;">Risolvere i problemi riportati qui sopra, poi procedere con la rigenerazione dei dataset .xml!</font>';
+			echo '<br/><center><font style="background-color:red;color:white;padding:2px;border-radius:3px;font-weight:bold;font-family:verdana;">Risolvere i problemi riportati qui sopra, poi procedere con la rigenerazione dei dataset .xml!</font></center>';
+			//check_aggiudicatari($term->name);
 		} else {
-			echo 'Valido!';
+			echo '<center><br/><font style="background-color:lime;padding:2px;border-radius:3px;font-weight:bold;font-family:verdana;">Validazione sintattica passata!</font></center>';
+			//check_aggiudicatari($term->name);
 		}
 	}
 	echo '</div>';
@@ -57,5 +59,31 @@ libxml_clear_errors();
 } 
 // Enable user error handling 
 libxml_use_internal_errors(true);
+
+function check_aggiudicatari($anno) {
+
+query_posts( array( 'post_type' => 'avcp', 'annirif' => $anno) ); global $post;
+	$checkok = false;
+	if ( have_posts() ) : while ( have_posts() ) : the_post();
+			$dittepartecipanti = get_the_terms( $post_id, 'ditte' );
+			$cats = get_post_meta($post_id,'avcp_aggiudicatari',true);
+			if(is_array($dittepartecipanti)) {
+				foreach ($dittepartecipanti as $term) {
+					$cterm = get_term_by('name',$term->name,'ditte');
+					$cat_id = $cterm->term_id; //Prende l'id del termine
+					$term_meta = get_option( "taxonomy_$cat_id" );
+					$checked = (in_array($cat_id,(array)$cats)? ' checked="checked"': "");
+					if ($checked) {
+						$checkok = true;
+					}
+				}
+			}
+	endwhile; else:
+	$checkok = true;
+	endif;
+	if ($checkok == false) {
+		echo '<center><font style="background-color:red;color:white;padding:2px;border-radius:3px;font-weight:bold;font-family:verdana;">AGGIUDICATARI MANCANTI</font></center>';
+	}
+}
 
 ?>

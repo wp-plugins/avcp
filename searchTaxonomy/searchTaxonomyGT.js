@@ -1,4 +1,5 @@
 jQuery(document).ready(function($){
+	$('#taxonomy-annirif').prepend('Dal 1.12.2012 al 31.12.2013 -> <b>2013</b>.xml<br/>Dal 1.01.2014 al 31.12.2014 -> <b>2014</b>.xml');
 	if($('#taxonomy-ditte').length>0){	
 	$('#newditte_parent').hide();
 	$("#ditte-adder").hide();
