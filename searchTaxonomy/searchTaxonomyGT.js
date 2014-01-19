@@ -1,6 +1,6 @@
 jQuery(document).ready(function($){
-	$('#taxonomy-annirif').prepend('Dal 1.12.2012 al 31.12.2013 -> <b>2013</b>.xml<br/>Dal 1.01.2014 al 31.12.2014 -> <b>2014</b>.xml');
 	if($('#taxonomy-ditte').length>0){	
+	$('#taxonomy-annirif').prepend('Dal 1.12.2012 al 31.12.2013 -> <b>2013</b>.xml<br/>Dal 1.01.2014 al 31.12.2014 -> <b>2014</b>.xml');
 	$('#newditte_parent').hide();
 	$("#ditte-adder").hide();
 		$('#taxonomy-ditte>.tabs-panel').eq(1).prepend('<span class="searchTaxonomyGTdiv"><label for="#searchTaxonomyGT">Cerca: </label><input type="text" value="" id="searchTaxonomyGT" style="border-radius: 10px;font-size: 11px;margin: 5px;"/><br/></span>');
