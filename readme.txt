@@ -4,8 +4,8 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: avcp, autorita, vigilanza, lavori, pubblici, amministrazione, trasparente, legge, obblighi, marco, milesi, normativa, pubblicazione
 Requires at least: 3.3
 Tested up to: 3.8
-Version: 3
-Stable tag: 3
+Version: 3.0.1
+Stable tag: 3.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -109,6 +109,8 @@ Se dopo questi passaggi "System Check-UP" rileva ancora alcuni problemi, è prob
 * **Nuova** icona menù in stile Wordpress 3.8
 * **Aggiunto** avvertimento nel menù "Ditte"
 * **Aggiunta** precisazione date nel metabox nuova gara "Anno Riferimento"
+
+* **3.0.1** -> Impostato a -1 il numero massimo di gare su cui eseguire query (illimitato)
 
 = Versione 2.3.1 9/01/2014 =
 * **Corretto** errore validazione "Warning 1549: failed to load external entity"

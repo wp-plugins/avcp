@@ -21,7 +21,7 @@ function creafilexml ($anno) {
 	</metadata>
 	<data>';
 
-	query_posts( array( 'post_type' => 'avcp', 'annirif' => $anno) ); global $post;
+	query_posts( array( 'post_type' => 'avcp', 'posts_per_page' => '-1', 'annirif' => $anno) ); global $post;
 	if ( have_posts() ) : while ( have_posts() ) : the_post();
 	//Ottieni le variabili per la voce corrente
 	$avcp_cig = get_post_meta($post->ID, 'avcp_cig', true);
