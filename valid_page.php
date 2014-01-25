@@ -24,6 +24,7 @@ function avcp_v_dataset_load()
 			//check_aggiudicatari($term->name);
 		}
 	}
+	echo '<br/><div class="clear"></div><center>Puoi controllare online i dataset anche con il validatore gratuito offerto da <b><a href="https://avcp.centrosistema.it/validator">CentroSistema</a></b></center>';
 	echo '</div>';
 }
 
