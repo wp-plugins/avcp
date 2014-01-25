@@ -4,7 +4,7 @@ Plugin Name: AVCP XML
 Plugin URI: http://www.marcomilesi.ml
 Description: Generatore XML per l’AVCP (Autorità per la Vigilanza sui Contratti Pubblici di Lavori, Servizi e Forniture) // Art. 1 comma 32 Legge 190/2012.
 Author: Marco Milesi
-Version: 3.0.1
+Version: 3.1
 Author URI: http://www.marcomilesi.ml
 */
 
@@ -254,6 +254,27 @@ function avcp_remove_row_actions( $actions )
     return $actions;
 }
 
+/* =========== PLUGINLNK ============ */
+add_filter('plugin_action_links', 'avcp_plugin_action_links', 10, 2);
+
+function avcp_plugin_action_links($links, $file) {
+    static $this_plugin;
+
+    if (!$this_plugin) {
+        $this_plugin = plugin_basename(__FILE__);
+    }
+
+    if ($file == $this_plugin) {
+        // The "page" query string value must be equal to the slug
+        // of the Settings admin page we defined earlier, which in
+        // this case equals "myplugin-settings".
+        $settings_link = '<a href="' . get_bloginfo('wpurl') . '/wp-admin/edit.php?post_type=avcp&page=avcp_settings">Configura</a>';
+        array_unshift($links, $settings_link);
+    }
+
+    return $links;
+}
+
 /* =========== SHORTCODE ============ */
 
 function avcp_func($atts)
@@ -293,6 +314,11 @@ function atg_caricamoduli() {
 		add_filter( 'manage_posts_custom_column', 'avcp_modify_post_table_row', 10, 2 );
 		add_filter( 'manage_posts_custom_column', 'avcp_modify_post_table' );
 	}
+	
+	if (get_option('avcp_version_number') != '3.1') {
+		avcp_activate();
+		update_option( 'avcp_version_number', '3.1' );
+	}
 }
 
 function avcp_activate() {
@@ -303,4 +329,10 @@ function avcp_activate() {
 	chmod($dstfile, 0755);
 }
 register_activation_hook( __FILE__, 'avcp_activate' );
+
+function avcp_deactivate() {
+	unlink(ABSPATH . 'avcp/index.php');
+}
+register_deactivation_hook( __FILE__, 'avcp_deactivate' );
+
 ?>

@@ -4,8 +4,8 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: avcp, autorita, vigilanza, lavori, pubblici, amministrazione, trasparente, legge, obblighi, marco, milesi, normativa, pubblicazione
 Requires at least: 3.3
 Tested up to: 3.8
-Version: 3.0.1
-Stable tag: 3.0.1
+Version: 3.1
+Stable tag: 3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -95,6 +95,15 @@ Se dopo questi passaggi "System Check-UP" rileva ancora alcuni problemi, è prob
 
 == Changelog ==
 > Questa è la lista completa di tutti gli aggiornamenti, test e correzioni. Ogni volta che una nuova versione viene rilasciata assicuratevi di aggiornare il prima possibile per usufruire delle ultime migliorie!
+
+= Versione 3.1 26/01/2014 [!] =
+* **Migliorata** validazione Javascript per gli importi
+* **Corretto** errore javascript nella visualizzazione completa delle gare
+* **Migliorato** sistema di migrazione dei dati (per aggiornamenti da v. < 3.0)
+* **Migliorato** sistema interno di migrazione automatica dei dati
+* **Aggiunto** avviso di mancato inserimento denominazione/partita iva ente
+* **Aggiunta** funzione che elimina avcp/index.php alla disattivazione del plugin (i dataset rimangono)
+* **Corretto** doppio spazio in 06-PROCEDURA NEGOZIATA SENZA PREVIA INDIZIONE DI##GARA (errore di Avcp, ma bisogna adeguarsi...)
 
 = Versione 3 19/01/2014 =
 * **Aggiunta** colonna "Aggiudicatari" nella visualizzazione admin delle gare, con indicatore rosso in caso di mancato inserimento

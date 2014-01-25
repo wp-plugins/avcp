@@ -124,6 +124,6 @@ foreach($files as $file)
 ?>
 	</div>
 	
-<center><small>Software pubblicazione e trasmissione bandi di gara realizzato da <a href="http://www.marcomilesi.ml" target="_blank">Marco Milesi</a> su piattaforma <a href="http://wordpress.org/plugins/avcp" target="_blank">Wordpress</a></small></center>
+<center><small>Software pubblicazione bandi di gara e generazione dataset per Avcp realizzato da <a href="http://www.marcomilesi.ml" target="_blank">Marco Milesi</a> su piattaforma <a href="http://wordpress.org/plugins/avcp" target="_blank">Wordpress</a></small></center>
 </body>
 </html>

@@ -70,7 +70,7 @@ function avcp_modify_post_table_row( $column_name, $post_id ) {
 					$term_return = esc_attr( $term_meta['avcp_codice_fiscale'] );
 					$checked = (in_array($cat_id,(array)$cats)? ' checked="checked"': "");
 					if ($checked) {
-						echo $term->name . ' // ';
+						echo $term->name . ', ';
 						$checkok++;
 					}
 				}

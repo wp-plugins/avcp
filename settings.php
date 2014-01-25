@@ -24,7 +24,7 @@ if ( is_admin() ){ // admin actions
 }
 
 function avcp_reg_settings() {
-	register_setting( 'avcp_options', 'avcp_version_number'); update_option( 'avcp_version_number', '3.0.1' );
+	register_setting( 'avcp_options', 'avcp_version_number');
 	register_setting( 'avcp_options', 'avcp_denominazione_ente');
 	register_setting( 'avcp_options', 'avcp_codicefiscale_ente');
 	register_setting( 'avcp_options', 'avcp_autopublish');
@@ -134,9 +134,12 @@ function avcp_settings_menu()
 	settings_fields('avcp_options');
 	echo '<div id="welcome-panel" style="margin:10px;width:50%;float:left;" class="welcome-panel">
 	<h3><span>Generazione file .xml</span></h3>
-	I file .xml generati sono pubblicamente accessibili all\'indirizzo <b><a href="' . get_site_url() . '/avcp' . '" target="_blank">' . get_site_url() . '/avcp' . '</a>*</b><br/>';
+	I dataset generati sono salvati nella cartella <b><a href="' . get_site_url() . '/avcp' . '" target="_blank">' . get_site_url() . '/avcp' . '</a></b>';
 
-	echo'<p style="text-align:center;" class="submit"><input type="submit" class="button-primary" name="XMLgenBUTTON" value="Crea Dataset" /><br/><br/><br/><font style="color:red;">*Attenzione! Questa funzione non sostituisce la comunicazione obbligatoria dell\'url del file .xml ad AVCP, secondo le disposizioni normative vigenti.</font></p>';
+	echo'<p style="text-align:center;" class="submit"><input type="submit" class="button-primary" name="XMLgenBUTTON" value="Crea Dataset" /><br/><hr/><font style="color:red;">Ecco i link dei dataset da comunicare ad AVCP:</font>
+	<br/>Anno 2013: <b><a href="' . get_site_url() . '/avcp/2013.xml' . '" target="_blank">' . get_site_url() . '/avcp/2013.xml' . '</a></b>
+	<br/>Anno 2014: <b><a href="' . get_site_url() . '/avcp/2014.xml' . '" target="_blank">' . get_site_url() . '/avcp/2014.xml' . '</a></b>
+	</p>';
 	
 	echo '</div>';
 	echo '

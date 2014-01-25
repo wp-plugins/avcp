@@ -1,0 +1,12 @@
+#annirifdiv {
+    background: yellow;
+}
+
+.at-text error {
+    border: 2px solid red!important;
+	background-color:red!important;
+}
+
+.at-text right {
+    border: 2px solid green;
+}

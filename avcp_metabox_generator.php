@@ -28,7 +28,7 @@ add_action( 'admin_menu' , 'avcp_remove_metaboxes' );
 	  '03-PROCEDURA NEGOZIATA PREVIA PUBBLICAZIONE DEL BANDO'=>'3. Procedura negoziata previa pubblicazione del bando',
 	  '04-PROCEDURA NEGOZIATA SENZA PREVIA PUBBLICAZIONE DEL BANDO'=>'4. Procedura negoziata senza previa pubblicazione del bando',
 	  '05-DIALOGO COMPETITIVO'=>'5. Dialogo Competitivo',
-	  '06-PROCEDURA NEGOZIATA SENZA PREVIA INDIZIONE DI GARA ART. 221 D.LGS. 163/2006'=>'6. Procedura negoziata senza previa indizione di gara (art. 221 D.LGS. 163/2006)',
+	  '06-PROCEDURA NEGOZIATA SENZA PREVIA INDIZIONE DI  GARA ART. 221 D.LGS. 163/2006'=>'6. Procedura negoziata senza previa indizione di gara (art. 221 D.LGS. 163/2006)',
 	  '07-SISTEMA DINAMICO DI ACQUISIZIONE'=>'7. Sistema dinamico di acquisizione',
 	  '08-AFFIDAMENTO IN ECONOMIA - COTTIMO FIDUCIARIO'=>'8. Affidamento in economia - cottimo fiduciario',
 	  '14-PROCEDURA SELETTIVA EX ART 238 C.7, D.LGS. 163/2006'=>'14. Procedura selettiva (ex art. 238 C.7 D.LGS. 163/2006)',
