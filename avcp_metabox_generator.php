@@ -49,8 +49,8 @@ add_action( 'admin_menu' , 'avcp_remove_metaboxes' );
 	  //date field
 	$my_meta->addDate($prefix.'data_fine',array('name'=> 'Data Fine', 'format' => 'd M yy'));
 	  
-	  $my_meta->addText($prefix.'aggiudicazione',array('name'=> 'Importo aggiudicazione <b>€</b>', 'desc' => 'Inserire l\'importo avendo cura di riportare SEMPRE i decimali .00 esempio: 22330.00'));
-	  $my_meta->addText($prefix.'somme_liquidate',array('name'=> 'Importo somme liquidate <b>€</b>', 'desc' => 'Inserire l\'importo avendo cura di riportare SEMPRE i decimali .00 esempio: 22330.00'));
+	  $my_meta->addText($prefix.'aggiudicazione',array('name'=> 'Importo aggiudicazione <b>€</b>', 'desc' => 'Inserire l\'importo avendo cura di riportare SEMPRE i decimali .00 esempio: 22330.00', 'std' => '0.00'));
+	  $my_meta->addText($prefix.'somme_liquidate',array('name'=> 'Importo somme liquidate <b>€</b>', 'desc' => 'Inserire l\'importo avendo cura di riportare SEMPRE i decimali .00 esempio: 22330.00', 'std' => '0.00'));
 
 	  //wysiwyg field
 	  //$my_meta->addWysiwyg($prefix.'wysiwyg_note',array('name'=> 'Allegati e note libere '));

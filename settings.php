@@ -137,8 +137,8 @@ function avcp_settings_menu()
 	I dataset generati sono salvati nella cartella <b><a href="' . get_site_url() . '/avcp' . '" target="_blank">' . get_site_url() . '/avcp' . '</a></b>';
 
 	echo'<p style="text-align:center;" class="submit"><input type="submit" class="button-primary" name="XMLgenBUTTON" value="Crea Dataset" /><br/><hr/><font style="color:red;">Ecco i link dei dataset da comunicare ad AVCP:</font>
-	<br/>Anno 2013: <b><a href="' . get_site_url() . '/avcp/2013.xml' . '" target="_blank">' . get_site_url() . '/avcp/2013.xml' . '</a></b>
-	<br/>Anno 2014: <b><a href="' . get_site_url() . '/avcp/2014.xml' . '" target="_blank">' . get_site_url() . '/avcp/2014.xml' . '</a></b>
+	<br/>Gare anno 2013: <b><a href="' . get_site_url() . '/avcp/2013.xml' . '" target="_blank">' . get_site_url() . '/avcp/2013.xml' . '</a></b>
+	<br/>Gare anno 2014: <b><a href="' . get_site_url() . '/avcp/2014.xml' . '" target="_blank">' . get_site_url() . '/avcp/2014.xml' . '</a></b>
 	</p>';
 	
 	echo '</div>';
