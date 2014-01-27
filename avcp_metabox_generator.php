@@ -19,7 +19,7 @@ add_action( 'admin_menu' , 'avcp_remove_metaboxes' );
 	$my_meta =  new AT_Meta_Box($config);
 	 
 	//text field
-	$my_meta->addText($prefix.'cig',array('name'=> 'Codice Identificativo Gara (C.I.G.)', 'desc' => 'Identificativo della gara (10 caratteri alfanumerici)'));
+	$my_meta->addText($prefix.'cig',array('name'=> 'Codice Identificativo Gara (C.I.G.)', 'desc' => 'Identificativo della gara (10 caratteri alfanumerici)', 'std' => '0000000000'));
 	  
 	//select field
 	$my_meta->addSelect($prefix.'contraente',array(
