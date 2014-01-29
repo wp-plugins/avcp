@@ -4,8 +4,8 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: avcp, autorita, vigilanza, lavori, pubblici, amministrazione, trasparente, legge, obblighi, marco, milesi, normativa, pubblicazione
 Requires at least: 3.3
 Tested up to: 3.8
-Version: 3.1.3
-Stable tag: 3.1.3
+Version: 3.2
+Stable tag: 3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -101,9 +101,16 @@ Se dopo questi passaggi "System Check-UP" rileva ancora alcuni problemi, è prob
 4. Menù del plugin
 5. Esempio pagina /avcp contenente i file .xml generati
 6. Tabella generata con lo shortcode [avcp] configurabile per anno
+7. Esempio visualizzazione singola del bando cliccando sulle voci della tabella
 
 == Changelog ==
 > Questa è la lista completa di tutti gli aggiornamenti, test e correzioni. Ogni volta che una nuova versione viene rilasciata assicuratevi di aggiornare il prima possibile per usufruire delle ultime migliorie!
+
+= Versione 3.2 29/01/2014 (!) [!] [URGENTE] =
+* **Corretta** lingua della data ITALIANO nella visualizzazione singola
+* **Impostata** lingua per il selettore data in italiano nel back-end. L'anteprima nella cella della data sarà comunque in inglese.
+* **CORRETTA** mancata validazione sceltacontraente 24/25 per apostrofo + aggiornamento automatico dello storico integrato
+* **Aggiunta** validazione software per: annirif + data_inizio + data_fine
 
 = Versione 3.1.3 27/01/2014 =
 * **Aggiunto** valore default CIG: "0000000000"

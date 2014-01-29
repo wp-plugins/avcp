@@ -31,6 +31,10 @@ function creafilexml ($anno) {
 	$avcp_somme_liquidate = get_post_meta($post->ID, 'avcp_somme_liquidate', true);
 	$avcp_data_inizio = date("Y-m-d", strtotime(get_post_meta(get_the_ID(), 'avcp_data_inizio', true)));
 	$avcp_data_ultimazione = date("Y-m-d", strtotime(get_post_meta(get_the_ID(), 'avcp_data_fine', true)));
+	//$avcp_data_inizio = get_post_meta(get_the_ID(), 'avcp_data_inizio', true);
+	//if ($avcp_data_inizio == '') { $avcp_data_inizio = '0000-00-00'; }
+	//$avcp_data_ultimazione = get_post_meta(get_the_ID(), 'avcp_data_fine', true);
+	//if ($avcp_data_ultimazione == '') { $avcp_data_ultimazione = '0000-00-00'; }
 	$XML_FILE .= '<lotto>
 	<cig>' . $avcp_cig . '</cig>
 	<strutturaProponente>

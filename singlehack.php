@@ -16,6 +16,14 @@ function avcp_job_cpt_template_filter($content)
     global $wp_query;
     $jobID = $wp_query->post->ID;
 	//echo get_post_meta(get_the_ID(), 'ammap_wysiwyg', true) . '<br/>';
+	
+	$mesi = array(1=>'gennaio', 'febbraio', 'marzo', 'aprile',
+                'maggio', 'giugno', 'luglio', 'agosto',
+                'settembre', 'ottobre', 'novembre','dicembre');
+	list($giorno,$mese,$anno) = explode(' ',date('j n Y',strtotime(get_post_meta(get_the_ID(), 'avcp_data_inizio', true))));
+	$avcp_data_inizio = $giorno . ' ' . $mesi[$mese] . ' ' . $anno;
+	list($giorno1,$mese1,$anno1) = explode(' ',date('j n Y',strtotime(get_post_meta(get_the_ID(), 'avcp_data_fine', true))));
+	$avcp_data_fine = $giorno1 . ' ' . $mesi[$mese1] . ' ' . $anno1;
 
 	echo '<br/>';
 	echo '<table>';
@@ -24,8 +32,8 @@ function avcp_job_cpt_template_filter($content)
 	echo '<tr><td>Oggetto del bando:</td><td>' . get_the_title(get_the_ID()) . '</td></tr>';
 	echo '<tr><td>Procedura di scelta del contraente:</td><td>' .  get_post_meta(get_the_ID(), 'avcp_contraente', true) . '</td></tr>';
 	echo '<tr><td>Importo di aggiudicazione:</td><td>' .  get_post_meta(get_the_ID(), 'avcp_aggiudicazione', true) . '</td></tr>';
-	echo '<tr><td>Data di effettivo inizio:</td><td>' .  date("d F Y", strtotime(get_post_meta(get_the_ID(), 'avcp_data_inizio', true))) . '</td></tr>';
-	echo '<tr><td>Data di ultimazione:</td><td>' .  date("d F Y", strtotime(get_post_meta(get_the_ID(), 'avcp_data_fine', true))) . '</td></tr>';
+	echo '<tr><td>Data di effettivo inizio:</td><td>' .  $avcp_data_inizio . '</td></tr>';
+	echo '<tr><td>Data di ultimazione:</td><td>' .  $avcp_data_fine . '</td></tr>';
 	echo '<tr><td>Importo delle somme liquidate:</td><td>' .  get_post_meta(get_the_ID(), 'avcp_somme_liquidate', true) . '</td></tr>';
 	echo '<tr><td>Anno di riferimento:</td><td>';
 	$get_avcp_dis_archivioanni = get_option('avcp_dis_archivioanni');

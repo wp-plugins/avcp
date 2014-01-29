@@ -2,6 +2,16 @@ document.getElementById("avcp_data_inizio").setAttribute("readonly", "true");
 document.getElementById("avcp_data_fine").setAttribute("readonly", "true");
 document.getElementById("avcp_cig").setAttribute("onkeyup", "validcig(this)");
 
+
+    $("#clearinizio").click(function(e) {
+        e.preventDefault();
+        $("#avcp_data_inizio").val('');
+    });
+ $("#clearfine").click(function(e) {
+        e.preventDefault();
+        $("#avcp_data_fine").val('');
+    });
+
 function validcig(f) {
     f.value = f.value.replace(/[^A-Z0-9-\s]/ig,'');
     if(f.length != '10'){
@@ -96,3 +106,37 @@ jQuery(document).ready(function(){
     }
 
 })
+/* Italian initialisation for the jQuery UI date picker plugin. */
+/* Written by Antonello Pasella (antonello.pasella@gmail.com). */
+(function( factory ) {
+	if ( typeof define === "function" && define.amd ) {
+
+		// AMD. Register as an anonymous module.
+		define([ "../datepicker" ], factory );
+	} else {
+
+		// Browser globals
+		factory( jQuery.datepicker );
+	}
+}(function( datepicker ) {
+	datepicker.regional['it'] = {
+		closeText: 'Chiudi',
+		prevText: '&#x3C;Prec',
+		nextText: 'Succ&#x3E;',
+		currentText: 'Oggi',
+		monthNames: ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno',
+			'Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'],
+		dayNames: ['Domenica','Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato'],
+		dayNamesShort: ['Dom','Lun','Mar','Mer','Gio','Ven','Sab'],
+		dayNamesMin: ['Do','Lu','Ma','Me','Gi','Ve','Sa'],
+		weekHeader: 'Sm',
+		dateFormat: 'dd/mm/yy',
+		firstDay: 1,
+		isRTL: false,
+		showMonthAfterYear: false,
+		yearSuffix: ''};
+	datepicker.setDefaults(datepicker.regional['it']);
+
+	return datepicker.regional['it'];
+
+}));

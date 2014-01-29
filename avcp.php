@@ -4,7 +4,7 @@ Plugin Name: AVCP XML
 Plugin URI: http://www.marcomilesi.ml
 Description: Generatore XML per l’AVCP (Autorità per la Vigilanza sui Contratti Pubblici di Lavori, Servizi e Forniture) // Art. 1 comma 32 Legge 190/2012.
 Author: Marco Milesi
-Version: 3.1.3
+Version: 3.2
 Author URI: http://www.marcomilesi.ml
 */
 
@@ -275,6 +275,25 @@ function avcp_plugin_action_links($links, $file) {
     return $links;
 }
 
+/**
+ * Add meta links in Plugins table
+ */
+ 
+add_filter( 'plugin_row_meta', 'avcp_plugin_meta_links', 10, 2 );
+function avcp_plugin_meta_links( $links, $file ) {
+
+	$plugin = plugin_basename(__FILE__);
+	
+	// create link
+	if ( $file == $plugin ) {
+		return array_merge(
+			$links,
+			array( '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=F2JK36SCXKTE2">Donazione</a>' )
+		);
+	}
+	return $links;
+}
+
 /* =========== SHORTCODE ============ */
 
 function avcp_func($atts)
@@ -325,6 +344,20 @@ function atg_caricamoduli() {
 		update_option( 'avcp_version_number', '3.1.2' );
 	} else if (version_compare($pluginversion, "3.1.3", "<")) { 
 		update_option( 'avcp_version_number', '3.1.3' );
+	} else if (version_compare($pluginversion, "3.2", "<")) {
+		query_posts( array( 'post_type' => 'avcp', 'posts_per_page' => '-1') ); global $post;
+		if ( have_posts() ) : while ( have_posts() ) : the_post();
+			$tip_contraente = get_post_meta($post->ID, 'avcp_contraente', true);
+			if ($tip_contraente == '25-AFFIDAMENTO DIRETTO A SOCIETA') {
+				update_post_meta($post->ID, 'avcp_contraente', '25-AFFIDAMENTO DIRETTO A SOCIETA&apos; RAGGRUPPATE/CONSORZIATE O CONTROLLATE NELLE CONCESSIONI DI LL.PP');
+			} else if ($tip_contraente == '24-AFFIDAMENTO DIRETTO A SOCIETA') {
+				update_post_meta($post->ID, 'avcp_contraente', '24-AFFIDAMENTO DIRETTO A SOCIETA&apos; IN HOUSE');
+			}
+		endwhile; else:
+		endif;
+		update_option( 'avcp_version_number', '3.2' );
+		creafilexml ('2013');
+		creafilexml ('2014');
 	}
 	
 }

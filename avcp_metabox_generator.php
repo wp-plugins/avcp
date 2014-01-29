@@ -36,15 +36,16 @@ add_action( 'admin_menu' , 'avcp_remove_metaboxes' );
 	  '21-PROCEDURA RISTRETTA DERIVANTE DA AVVISI CON CUI SI INDICE LA GARA'=>'21. Procedura ristretta derivante da avvisi con cui si indice la gara',
 	  '22-PROCEDURA NEGOZIATA DERIVANTE DA AVVISI CON CUI SI INDICE LA GARA'=>'22. Procedura negoziata derivante da avvisi con cui si indice la gara',
 	  '23-AFFIDAMENTO IN ECONOMIA - AFFIDAMENTO DIRETTO'=>'23. Affidamento in economia - Affidamento diretto',
-	  '24-AFFIDAMENTO DIRETTO A SOCIETA\' IN HOUSE'=>'24. Affidamento diretto a Società in-house',
-	  '25-AFFIDAMENTO DIRETTO A SOCIETA\' RAGGRUPPATE/CONSORZIATE O CONTROLLATE NELLE CONCESSIONI DI LL.PP'=>'25. Affidamento diretto a Società raggruppate/consorziate o controllate nelle concessioni di LL.PP',
+	  '24-AFFIDAMENTO DIRETTO A SOCIETA&apos; IN HOUSE'=>'24. Affidamento diretto a Società in-house',
+	  '25-AFFIDAMENTO DIRETTO A SOCIETA&apos; RAGGRUPPATE/CONSORZIATE O CONTROLLATE NELLE CONCESSIONI DI LL.PP'=>'25. Affidamento diretto a Società raggruppate/consorziate o controllate nelle concessioni di LL.PP',
 	  '26-AFFIDAMENTO DIRETTO IN ADESIONE AD ACCORDO QUADRO/CONVENZIONE'=>'26. Affidamento diretto in adesione ad accordo quadro/convenzione',
 	  '27-CONFRONTO COMPETITIVO IN ADESIONE AD ACCORDO QUADRO/CONVENZIONE'=>'27. Confronto competitivo in adesione ad accordo quadro/convenzione',
 	  '28-PROCEDURA AI SENSI DEI REGOLAMENTI DEGLI ORGANI COSTITUZIONALI'=>'28. Procedura ai sensi dei regolamenti degli organi costituzionali'
 	  ),array('name'=> 'Scelta Contraente', 'std'=> array('selectkey2')));
 	  
 	  //date field
-	$my_meta->addDate($prefix.'data_inizio',array('name'=> 'Data Inizio', 'format' => 'd MM yy'));
+	$my_meta->addDate($prefix.'data_inizio',array('name'=> 'Data Inizio', 'format' => 'd M yy'));
+	//'desc' => 'Lasciare vuoto il campo se non è nota. <button id="clearinizio">pulisci</button>
 	  
 	  //date field
 	$my_meta->addDate($prefix.'data_fine',array('name'=> 'Data Fine', 'format' => 'd M yy'));
