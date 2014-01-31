@@ -34,6 +34,7 @@ function avcp_reg_settings() {
 	register_setting( 'avcp_options', 'avcp_showxml');
 	register_setting( 'avcp_options', 'avcp_showlove');
 	register_setting( 'avcp_options', 'avcp_invalid');
+	register_setting( 'avcp_options', 'avcp_enable_editor');
 	register_setting( 'avcp_options', 'avcp_abilita_ruoli');
 }
 
@@ -91,6 +92,11 @@ function avcp_settings_menu()
 			} else {
 				update_option('avcp_dis_styledbackend', '1');
 		}
+		if (isset($_POST['avcp_enable_editor_n'])){
+				update_option('avcp_enable_editor', '1');
+			} else {
+				update_option('avcp_enable_editor', '0');
+		}
 		if (isset($_POST['avcp_tab_jqueryui_n'])){
 				update_option('avcp_tab_jqueryui', '1');
 			} else {
@@ -137,7 +143,7 @@ function avcp_settings_menu()
 	I dataset generati sono salvati nella cartella <b><a href="' . get_site_url() . '/avcp' . '" target="_blank">' . get_site_url() . '/avcp' . '</a></b>';
 
 	echo'<p style="text-align:center;" class="submit"><input type="submit" class="button-primary" name="XMLgenBUTTON" value="Crea Dataset" /><br/><hr/><font style="color:red;">Ecco i link dei dataset da comunicare ad AVCP:</font>
-	<br/>Gare anno 2013: <b><a href="' . get_site_url() . '/avcp/2013.xml' . '" target="_blank">' . get_site_url() . '/avcp/2013.xml' . '</a></b>
+	<br/>Gare anno 2012+2013: <b><a href="' . get_site_url() . '/avcp/2013.xml' . '" target="_blank">' . get_site_url() . '/avcp/2013.xml' . '</a></b>
 	<br/>Gare anno 2014: <b><a href="' . get_site_url() . '/avcp/2014.xml' . '" target="_blank">' . get_site_url() . '/avcp/2014.xml' . '</a></b>
 	</p>';
 	
@@ -281,6 +287,16 @@ function avcp_settings_menu()
             <div class="inside">
 			
 	<table class="form-table"><tbody>';
+	
+	echo '<tr>';
+	echo '<th><label>Abilita Editor WYSIWYG</label></th>';
+	echo '<td><input type="checkbox" name="avcp_enable_editor_n" ';
+	$get_avcp_enable_editor = get_option('avcp_enable_editor');
+		if ($get_avcp_enable_editor == '1') {
+			echo 'checked="checked" ';
+		}
+	echo '><span class="description">Spunta questa casella se vuoi abilitare l\'editor <b>WYSIWYG</b> per le gare, con la possibilità di inserire testo a piacere e documenti allegati al bando.</span></td>';
+	echo '</tr>';
 	
 	echo '<tr>';
 	echo '<th><label>JQuery UI</label></th>';

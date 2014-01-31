@@ -1,8 +1,7 @@
 document.getElementById("avcp_data_inizio").setAttribute("readonly", "true");
 document.getElementById("avcp_data_fine").setAttribute("readonly", "true");
 document.getElementById("avcp_cig").setAttribute("onkeyup", "validcig(this)");
-
-
+	
     $("#clearinizio").click(function(e) {
         e.preventDefault();
         $("#avcp_data_inizio").val('');

@@ -50,7 +50,7 @@
 }
 
 .paging_full_numbers {
-	width: 350px !important;
+	width: 100%;
 }
 
 .dataTables_wrapper .ui-toolbar {
@@ -142,11 +142,22 @@ table.display thead th div.DataTables_sort_wrapper span {
 }
 
 .dataTables_paginate {
-	float: right;
-	text-align: right;
+	text-align: center;
 }
 
-
+/* MODIFICA MARCO MILESI */
+.DTTT_container  {
+border:1px solid gray;
+border-radius:4px;
+margin-bottom:10px
+}
+.DTTT_container a {
+	padding:10px;
+	cursor: pointer
+}
+.DTTT_container:before {
+  content: " Esporta in:";
+}
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * DataTables display

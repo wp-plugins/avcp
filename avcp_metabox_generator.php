@@ -1,4 +1,14 @@
 <?php
+
+function extend_wysiwyg_height() {
+    echo '<style type="text/css">
+    #content{ height:100px; }
+    </style>';
+}
+ 
+add_action('admin_head', 'extend_wysiwyg_height');
+
+
 function avcp_remove_metaboxes() {
  remove_meta_box( 'postcustom' , 'avcp' , 'normal' ); //removes custom fields metabox for avcp
 }
@@ -17,7 +27,7 @@ add_action( 'admin_menu' , 'avcp_remove_metaboxes' );
 	);
 
 	$my_meta =  new AT_Meta_Box($config);
-	 
+	
 	//text field
 	$my_meta->addText($prefix.'cig',array('name'=> 'Codice Identificativo Gara (C.I.G.)', 'desc' => 'Identificativo della gara (10 caratteri alfanumerici)', 'std' => '0000000000'));
 	  
@@ -90,15 +100,16 @@ function avcp_custom_save_post( $post_id ) {
 	update_post_meta($post_id,'avcp_aggiudicatari',$_POST['avcp_aggiudicatari']);
 }
 
-//add_action('add_meta_boxes','mysite_add_meta_boxes',10,2);
-//function mysite_add_meta_boxes($post_type, $post) {
-//  ob_start();
-//}
-//add_action('dbx_post_sidebar','mysite_dbx_post_sidebar');
-//function mysite_dbx_post_sidebar() {
-//  $html = ob_get_clean();
-//  $html = str_replace('"checkbox"','"radio"',$html);
-//  echo $html;
-//}
+
+add_action('add_meta_boxes','avcp_add_meta_boxes',10,2);
+function avcp_add_meta_boxes($post_type, $post) {
+  ob_start();
+}
+add_action('dbx_post_sidebar','avcp_dbx_post_sidebar');
+function avcp_dbx_post_sidebar() {
+  $html = ob_get_clean();
+  $html = str_replace('type="checkbox" name="tax_input[areesettori][]"','type="radio" name="tax_input[areesettori][]"',$html);
+  echo $html;
+}
   
  ?>

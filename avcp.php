@@ -4,7 +4,7 @@ Plugin Name: AVCP XML
 Plugin URI: http://www.marcomilesi.ml
 Description: Generatore XML per l’AVCP (Autorità per la Vigilanza sui Contratti Pubblici di Lavori, Servizi e Forniture) // Art. 1 comma 32 Legge 190/2012.
 Author: Marco Milesi
-Version: 3.2
+Version: 4
 Author URI: http://www.marcomilesi.ml
 */
 
@@ -26,6 +26,13 @@ function register_cpt_avcp() {
         'parent_item_colon' => _x( 'Parent Gara:', 'avcp' ),
         'menu_name' => _x( 'AVCP', 'avcp' ),
     );
+	
+	$get_avcp_enable_editor = get_option('avcp_enable_editor');
+	if ($get_avcp_enable_editor == '1') {
+		$cp_support = array( 'title', 'custom-fields', 'editor', 'revisions' );
+	} else {
+		$cp_support = array( 'title', 'custom-fields', 'revisions' );
+	}
 	
 	$get_avcp_abilita_ruoli = get_option('avcp_abilita_ruoli');
 	if ($get_avcp_abilita_ruoli == '1') {
@@ -51,7 +58,7 @@ function register_cpt_avcp() {
         'labels' => $labels,
         'hierarchical' => false,
         'description' => 'Gare AVCP',
-        'supports' => array( 'title', 'custom-fields', 'revisions' ),
+        'supports' => $cp_support,
         'taxonomies' => array( 'ditte' ),
         'public' => true,
         'show_ui' => true,
@@ -153,6 +160,44 @@ function register_taxonomy_annirif() {
 	if ($termcheck == 0 || $termcheck == null) {
 		wp_insert_term('2014', 'annirif');
 	}
+}
+
+add_action( 'init', 'register_taxonomy_areesettori' );
+
+function register_taxonomy_areesettori() {
+
+    $labels = array( 
+        'name' => _x( 'Settori - Centri di costo', 'areesettori' ),
+        'singular_name' => _x( 'Settore - Centro di costo', 'areesettori' ),
+        'search_items' => _x( 'Cerca in Settori - Centri di costo', 'areesettori' ),
+        'popular_items' => _x( 'Settori - Centri di costo Più usati', 'areesettori' ),
+        'all_items' => _x( 'Tutti i Centri di costo', 'areesettori' ),
+        'parent_item' => _x( 'Parent Settore - Centro di costo', 'areesettori' ),
+        'parent_item_colon' => _x( 'Parent Settore - Centro di costo:', 'areesettori' ),
+        'edit_item' => _x( 'Modifica Settore - Centro di costo', 'areesettori' ),
+        'update_item' => _x( 'Aggiorna Settore - Centro di costo', 'areesettori' ),
+        'add_new_item' => _x( 'Aggiungi Nuovo Settore - Centro di costo', 'areesettori' ),
+        'new_item_name' => _x( 'Nuovo Settore - Centro di costo', 'areesettori' ),
+        'separate_items_with_commas' => _x( 'Separate settori - centri di costo with commas', 'areesettori' ),
+        'add_or_remove_items' => _x( 'Add or remove settori - centri di costo', 'areesettori' ),
+        'choose_from_most_used' => _x( 'Choose from the most used settori - centri di costo', 'areesettori' ),
+        'menu_name' => _x( 'Centri di costo', 'areesettori' ),
+    );
+
+    $args = array( 
+        'labels' => $labels,
+        'public' => true,
+        'show_in_nav_menus' => false,
+        'show_ui' => true,
+        'show_tagcloud' => false,
+        'show_admin_column' => true,
+        'hierarchical' => true,
+
+        'rewrite' => true,
+        'query_var' => true
+    );
+
+    register_taxonomy( 'areesettori', array('avcp'), $args );
 }
 
 add_action('save_post', 'save_at_gara_posts',10,2);
@@ -335,6 +380,9 @@ function atg_caricamoduli() {
 	}
 	
 	$pluginversion = get_option('avcp_version_number');
+	if ($pluginversion == '') {
+		update_option( 'avcp_version_number', '4' );
+	}
 	if (version_compare($pluginversion, "3.1", "<")) { 
 		avcp_activate();
 		update_option( 'avcp_version_number', '3.1' );
@@ -358,6 +406,8 @@ function atg_caricamoduli() {
 		update_option( 'avcp_version_number', '3.2' );
 		creafilexml ('2013');
 		creafilexml ('2014');
+	} else if (version_compare($pluginversion, "4", "<")) { 
+		update_option( 'avcp_version_number', '4' );
 	}
 	
 }

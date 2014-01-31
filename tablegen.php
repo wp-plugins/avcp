@@ -1,5 +1,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="<?php echo plugin_dir_url(__FILE__).'includes/jquery.dataTables.min.js';?>"></script>
+<script type="text/javascript" charset="utf-8" src="<?php echo plugin_dir_url(__FILE__).'TableTools/js/TableTools.js'?>"></script>
+<script type="text/javascript" charset="utf-8" src="<?php echo plugin_dir_url(__FILE__).'TableTools/js/ZeroClipboard.js'?>"></script>
 
 <?php
 $get_avcp_tab_jqueryui = get_option('avcp_tab_jqueryui');
@@ -22,6 +24,9 @@ $(document).ready( function () {
 		"bScrollCollapse": true,
 		"bJQueryUI": <? echo $t_jqueryui ?>,
 		"bSort": true,
+		//"sDom": '<"H"Tfr>T<"F"ip>lfrtip',
+		//"sDom": 'T<"clear">lfrtip',
+		"sDom": 'T<"clear"><"H"lfr>t<"F"ip>',
 		"sPaginationType": "full_numbers",
 		"oLanguage": {
 			"sProcessing":   "Caricamento dati avcp...",
@@ -41,11 +46,33 @@ $(document).ready( function () {
 				"sPrevious": "Precedente",
 				"sNext":     "Successivo",
 				"sLast":     "Fine",
-				"sDom": '<"H"Tfr>t<"F"ip>',
-				"sDom": 'T<"clear">lfrtip',
 			},
+		},
+		"oTableTools": {
+			"sSwfPath": "<?php echo plugin_dir_url(__FILE__).'TableTools/swf/copy_csv_xls_pdf.swf'?>",
+			"aButtons": [
+				{
+					"sExtends": "csv",
+					"sButtonText": "CSV",
+					"sFileName": "<?php echo get_bloginfo( 'name' );?>_amministrazioneaperta.csv"
+				},
+				{
+					"sExtends": "xls",
+					"sButtonText": "EXCEL",
+					"sFileName": "<?php echo get_bloginfo( 'name' );?>_amministrazioneaperta.xls"
+				},
+				{
+					"sExtends": "pdf",
+					"sButtonText": "PDF",
+					"sPdfOrientation": "landscape",
+					"sPdfMessage": "<?php echo get_bloginfo( 'name' );?> - Amministrazione Aperta",
+					"sFileName": "<?php echo get_bloginfo( 'name' );?>_amministrazioneaperta.pdf"
+				}
+			]
 		}
 	} );
+	
+	
 } );
 
 </script>
@@ -101,6 +128,7 @@ if ($get_avcp_dis_archivioditte == '1') {
     </tbody>
 </table>
 <?php
+echo '<div class="clear"></div>';
 $get_avcp_showxml = get_option('avcp_showxml');
 if ($get_avcp_showxml == '1') {
 	echo '<div style="float:right;"><small><a href="' . get_site_url() . '/avcp" target="_blank" title="File .xml">Scarica i file annuali in formato .xml</a></small></div>';

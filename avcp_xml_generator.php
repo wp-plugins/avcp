@@ -6,12 +6,19 @@ function creafilexml ($anno) {
 	$XML_data_completa_aggiornamento = date('d/m/y - H:i'); //Utile essenzialmente per i test
 	$XML_anno_riferimento =  $anno;
 
+	query_posts( array( 'post_type' => 'avcp', 'posts_per_page' => '-1', 'annirif' => $anno) ); global $post;
+	$ng = 0;
+	if ( have_posts() ) : while ( have_posts() ) : the_post();
+			$ng++;
+	endwhile; else:
+	endif;
+	
 	$XML_FILE .= '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
 	$XML_FILE .= '
 	<legge190:pubblicazione xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:legge190="legge190_1_0" xsi:schemaLocation="legge190_1_0 datasetAppaltiL190.xsd">
 	<metadata>
 	<titolo>Pubblicazione 1 legge 190</titolo>
-	<abstract>Pubblicazione 1 legge 190 anno 1 rif. 2013 M - ' . $XML_data_completa_aggiornamento . ' - Generato con AVCP XML ' . get_option('avcp_version_number') . ' di Marco Milesi</abstract>
+	<abstract>Pubblicazione 1 legge 190 anno 1 rif. 2013 M | ' . $ng . ' gare - ' . $XML_data_completa_aggiornamento . ' | Generato con AVCP XML ' . get_option('avcp_version_number') . ' di Marco Milesi</abstract>
 	<dataPubbicazioneDataset>' . $anno . '-12-31</dataPubbicazioneDataset>
 	<entePubblicatore>' . $avcp_denominazione_ente . '</entePubblicatore>
 	<dataUltimoAggiornamentoDataset>' . $XML_data_aggiornamento . '</dataUltimoAggiornamentoDataset>
@@ -38,9 +45,18 @@ function creafilexml ($anno) {
 	$XML_FILE .= '<lotto>
 	<cig>' . $avcp_cig . '</cig>
 	<strutturaProponente>
-	<codiceFiscaleProp>' . $avcp_codicefiscale_ente . '</codiceFiscaleProp>
-	<denominazione>' . $avcp_denominazione_ente . '</denominazione>
-	</strutturaProponente>
+	<codiceFiscaleProp>' . $avcp_codicefiscale_ente . '</codiceFiscaleProp>';
+	
+	$XML_FILE .= '<denominazione>' . $avcp_denominazione_ente;
+	
+	$queried_term = get_query_var($taxonomy);
+	$terms = get_the_terms( $post->ID, 'areesettori' );
+	if ($terms) {
+	  foreach($terms as $term) {
+		$XML_FILE .= ' - ' . $term->name;
+	  }
+	}
+	$XML_FILE .= '</denominazione></strutturaProponente>
 	<oggetto>' . get_the_title() . '</oggetto>
 	<sceltaContraente>' . $avcp_contraente . '</sceltaContraente>
 	<partecipanti>';
