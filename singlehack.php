@@ -92,7 +92,7 @@ if ($get_avcp_dis_archivioditte == '1') {
 	}
 	echo '</table>';
 	
-	echo '<h3>Aggiudicatari</h3>';
+	echo '<h3>Elenco degli operatori aggiudicari</h3>';
 	echo '<table>';
 	global $post;
 	$dittepartecipanti = get_the_terms( $post->ID, 'ditte' );
@@ -107,9 +107,14 @@ if ($get_avcp_dis_archivioditte == '1') {
 			$stato_var = get_tax_meta($cat_id,'avcp_is_ditta_estera');
 			if (empty($stato_var)) {$is_estera = '<acronym title="Identificativo Fiscale Italiano">IT</acronym>';}else{$is_estera = '<acronym title="Identificativo Fiscale Estero">EE</acronym>';}
 			if ($checked) {
-				echo '<tr>
-				<td><a href="' . get_term_link( $cterm->term_id, 'ditte' ) . '" title="' . $term->name . '">' . $term->name . '</a></td>
-				<td>' . $term_return . ' - <b>' . $is_estera . '</b></td>
+				echo '<tr><td>';
+				$get_avcp_dis_archivioditte = get_option('avcp_dis_archivioditte');
+					if ($get_avcp_dis_archivioditte != '1') {
+						echo '<a href="' . get_term_link( $cterm->term_id, 'ditte' ) . '" title="' . $term->name . '">';
+					}
+					echo $term->name;
+					if ($get_avcp_dis_archivioditte != '1') { echo '</a>'; }
+				echo '</td><td>' . $term_return . ' - <b>' . $is_estera . '</b></td>
 				</tr>';
 			}
 		}

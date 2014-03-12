@@ -4,8 +4,8 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: avcp, autorita, vigilanza, lavori, pubblici, amministrazione, trasparente, legge, obblighi, marco, milesi, normativa, pubblicazione
 Requires at least: 3.3
 Tested up to: 3.8
-Version: 4
-Stable tag: 4
+Version: 4.1
+Stable tag: 4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,9 +16,13 @@ Generatore XML per l’AVCP (Autorità per la Vigilanza sui Contratti Pubblici d
 
 > Questo plugin al momento non supporta i raggruppamenti temporanei di impresa.
 
-Dopo il positivo feedback ricevuto per il plugin [Amministrazione Trasparente](http://wordpress.org/plugins/amministrazione-trasparente/), è arrivato su Wordpress.org anche il nuovo software per l'adeguamento normativo richiesto per l’Autorità per la Vigilanza sui Contratti Pubblici di Lavori, Servizi e Forniture, conforme alle specifiche tecniche ai sensi dell’art. 1 comma 32 Legge n. 190/2012. Sulla scia di Amministrazione Trasparente questo plugin, costantemente aggiornato, è focalizzato su flessibilità, semplicità e intuitività nell'aggiornamento delle informazioni, direttamente dall'interfaccia di amministrazione di Wordpress.
+Dopo il positivo feedback ricevuto per il plugin [Amministrazione Trasparente](http://wordpress.org/plugins/amministrazione-trasparente/), è disponibile il nuovo software per la pubblicazione dei bandi di gara (D.lgs 33/2013) e l'adeguamento normativo richiesto dall’Autorità per la Vigilanza sui Contratti Pubblici di Lavori, Servizi e Forniture, conforme alle specifiche tecniche ai sensi dell’art. 1 comma 32 Legge n. 190/2012. Con AVCP XML infatti puoi generare una tabella dinamica, filtrabile e esportabile nelle tue pagine WordPress e contemporaneamente creare il dataset xml secondo le specifiche tecniche di Avcp.
 
-AVCP XML per Wordpress è il più semplice e intuitivo software per la gestione dei bandi di gara attualmente presente nel panorama open-source. Sfruttando le potenzialità native del cms su cui è sviluppato, questo plugin presenta un'interfaccia familiare che può essere sfruttata anche dai principianti di questa piattaforma, presentandosi come soluzione ideale per i siti della pubblica amministrazione "Powered by Wordpress" e per tutti gli enti che desiderano una soluzione gratuita, stabile, aggiornata e supportata. ...E installabile in pochi secondi!!
+AVCP XML per WordPress è il più **flessibile, **semplice** e **intuitivo** software per la gestione dei bandi di gara attualmente presente nel panorama open-source. Sfruttando le potenzialità native del cms su cui è sviluppato, questo plugin presenta un'interfaccia molto integrata con WordPress adatta anche per i principianti di questa piattaforma, presentandosi come soluzione ideale per i siti della pubblica amministrazione "Powered by Wordpress" e per tutti gli enti che desiderano una soluzione gratuita, stabile, aggiornata e supportata.
+
+Un altro vantaggio di questo plugin è la facilità di installazione (installabile in pochi secondi) e di aggiornamento direttamente dal back-end di WordPress!
+
+> Più di **1200** portali della PA si appoggiano a questo plugin, tra cui USR Lombardia (dati rankwp.com)
 
 = Funzioni =
 * Creazione e gestione dei bandi di gara tramite Custom Post Type (stessa impostazione di pagine e articoli)
@@ -26,11 +30,12 @@ AVCP XML per Wordpress è il più semplice e intuitivo software per la gestione 
 * Assegnazione ditte partecipanti e aggiudicatari direttamente nella pagina di creazione del bando
 * Generazione di tabelle di riepilogo tramite shortcode [avcp] // [avcp anno="2013"] // [avcp anno="%%%%"]
 * Generazione **automatica** o manuale del file indice XML per la trasmissione ad AVCP e delle annualità singole
-* Gestione completa dei Settori - **Centri di Costo** (per scrittura dataset) e dei responsabili (per vista sul sito)
+* Gestione completa dei **Centri di Costo** (per scrittura dataset) e dei responsabili (per front-end sito)
 * Supporto editor **WYSIWYG** per testo libero e documenti allegati (per vista sul sito)
 * Codice leggero, commentato e facilmente modificabile
 * Compatibilità completa per i temi Wordpress
 * Generazione di dataset .xml vuoti
+* **Esportazione**, stampa e copia dei dati delle gare per l'utente
 
 = Caratteristiche Salienti =
 Oltre all'adempimento degli obblighi di legge, AVCP XML per Wordpress offre alcune funzioni in grado di dare valore aggiunto al vostro operato:
@@ -38,10 +43,6 @@ Oltre all'adempimento degli obblighi di legge, AVCP XML per Wordpress offre alcu
 * Visualizzazione pubblica dei file .xml in una pagina dedicata: www.example.com**/avcp**
 * Visualizzazione singola delle voci, con possibilità di aggiunta testo a piacere, documenti, link,...
 * Visualizzazione **archivio** di tutte le gare partecipate da ogni ditta [opzionale]
-
-= Idee di sviluppo future =
-* Importazione gare e ditte da file csv/excel
-* Controllo validazione XML
 
 = BACKUP & RIPRISTINO =
 AVCP XML permette il backup e il ripristino nativo delle voci dei bandi (per trasferimento sito Wordpress o solo per avere una copia di sicurezza). Accedendo a Strumenti -> Esporta è possibile scaricare il file xml di backup (da non confondere con quello generato per l'avcp, che ha una struttura completamente diversa). Per il ripristino delle voci in un altro sito è sufficiente caricare questo file in un'altra installazione utilizzando il menù Strumenti -> Importa
@@ -107,6 +108,17 @@ Se dopo questi passaggi "System Check-UP" rileva ancora alcuni problemi, è prob
 
 == Changelog ==
 > Questa è la lista completa di tutti gli aggiornamenti, test e correzioni. Ogni volta che una nuova versione viene rilasciata assicuratevi di aggiornare il prima possibile per usufruire delle ultime migliorie!
+
+= Versione 4.1 12/03/2014 =
+* **Aggiunta** funzione righe multiple per la tabella
+* **Aggiunti** tutti i dati delle gare per l'esportazione, copia e salvataggio della tabella
+* **Aggiunta** possibilità di filtrare la tabella per dati non visibili all'utente (ditte, procedura scelta,...)
+* **Corretta** mancata disabilitazione link ditte aggiudicatarie nella vista singola (se disabilitata)
+* **Aggiunta** opzione per nascondere l'esportazione
+* **Aggiunta** opzione per nascondere il menù centri di costo
+* **Aggiunta** funzione COPIA/STAMPA tabella e raggruppamento esportazione CSV/EXCEL/PDF
+* **Corretto** titolo errato file pdf esportato
+* **Cambiato** messaggio tabella front-end in caso di assenza di gare (da "Errore Query" a "Nessuna gara trovata"
 
 = Versione 4 31/01/2014 =
 * **Aggiunta** gestione **Settori-Centri di Costo** (tassonomia+optionbox) con responsabile e link pagina per la vis. singola

@@ -36,6 +36,8 @@ function avcp_reg_settings() {
 	register_setting( 'avcp_options', 'avcp_invalid');
 	register_setting( 'avcp_options', 'avcp_enable_editor');
 	register_setting( 'avcp_options', 'avcp_abilita_ruoli');
+	register_setting( 'avcp_options', 'avcp_centricosto');
+	register_setting( 'avcp_options', 'avcp_export');
 }
 
 function avcp_setting_menu()
@@ -91,6 +93,16 @@ function avcp_settings_menu()
 				update_option('avcp_dis_styledbackend', '0'); //Invertito
 			} else {
 				update_option('avcp_dis_styledbackend', '1');
+		}
+		if (isset($_POST['avcp_centricosto_n'])){
+				update_option('avcp_centricosto', '0'); //Invertito
+			} else {
+				update_option('avcp_centricosto', '1');
+		}
+		if (isset($_POST['avcp_export_n'])){
+				update_option('avcp_export', '0'); //Invertito
+			} else {
+				update_option('avcp_export', '1');
 		}
 		if (isset($_POST['avcp_enable_editor_n'])){
 				update_option('avcp_enable_editor', '1');
@@ -296,6 +308,26 @@ function avcp_settings_menu()
 			echo 'checked="checked" ';
 		}
 	echo '><span class="description">Spunta questa casella se vuoi abilitare l\'editor <b>WYSIWYG</b> per le gare, con la possibilità di inserire testo a piacere e documenti allegati al bando.</span></td>';
+	echo '</tr>';
+	
+	echo '<tr>';
+	echo '<th><label>Abilita Centri di Costo</label></th>';
+	echo '<td><input type="checkbox" name="avcp_centricosto_n" ';
+	$get_avcp_centricosto = get_option('avcp_centricosto');
+		if ($get_avcp_centricosto == '0') {
+			echo 'checked="checked" ';
+		}
+	echo '><span class="description">La funzionalità Centri di Costo è abilitata di default. Se l\'ente non li prevede, puoi disabilitarli per fare scomparire la voce di menù.</span></td>';
+	echo '</tr>';
+	
+	echo '<tr>';
+	echo '<th><label>Abilita Esportazione</label></th>';
+	echo '<td><input type="checkbox" name="avcp_export_n" ';
+	$get_avcp_export = get_option('avcp_export');
+		if ($get_avcp_export == '0') {
+			echo 'checked="checked" ';
+		}
+	echo '><span class="description">Spunta questa casella se vuoi abilitare l\'esportazione, copia e stampa dei dati della tabella.</span></td>';
 	echo '</tr>';
 	
 	echo '<tr>';

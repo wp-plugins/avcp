@@ -496,7 +496,31 @@ TableTools.prototype = {
 	 *  @param   {Object} oConfig Button configuration object
 	 *  @returns {Array} Unity array of column ratios
 	 */
-	"fnCalcColRatios": function (oConfig) {    var    aoCols = this.s.dt.aoColumns,        aColumnsInc = this._fnColumnTargets(oConfig.mColumns),        aColWidths = [],        iWidth = 0,        iTotal = 0,        i, iLen;     for (i = 0, iLen = aColumnsInc.length; i < iLen; i++) {        if (aColumnsInc[i]) {            iWidth = aoCols[i].nTh.offsetWidth;  /*-------- BEGIN NEW CODE ---------------------------------*/            if (iWidth == 0) {                var oTable = this.s.dt.oInstance;                oTable.fnSetColumnVis(i, true);                iWidth = aoCols[i].nTh.offsetWidth;                oTable.fnSetColumnVis(i, false);            } /*-------- END NEW CODE -----------------------------------*/              iTotal += iWidth;            aColWidths.push(iWidth);        }    }     for (i = 0, iLen = aColWidths.length; i < iLen; i++) {        aColWidths[i] = aColWidths[i] / iTotal;    }     return aColWidths.join('\t');},
+	"fnCalcColRatios": function ( oConfig )
+	{
+		var
+			aoCols = this.s.dt.aoColumns,
+			aColumnsInc = this._fnColumnTargets( oConfig.mColumns ),
+			aColWidths = [],
+			iWidth = 0, iTotal = 0, i, iLen;
+		
+		for ( i=0, iLen=aColumnsInc.length ; i<iLen ; i++ )
+		{
+			if ( aColumnsInc[i] )
+			{
+				iWidth = aoCols[i].nTh.offsetWidth;
+				iTotal += iWidth;
+				aColWidths.push( iWidth );
+			}
+		}
+		
+		for ( i=0, iLen=aColWidths.length ; i<iLen ; i++ )
+		{
+			aColWidths[i] = aColWidths[i] / iTotal;
+		}
+		
+		return aColWidths.join('\t');
+	},
 	
 	
 	/**

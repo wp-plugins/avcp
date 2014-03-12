@@ -155,10 +155,6 @@ margin-bottom:10px
 	padding:10px;
 	cursor: pointer
 }
-.DTTT_container:before {
-  content: " Esporta in:";
-}
-
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * DataTables display
  */
