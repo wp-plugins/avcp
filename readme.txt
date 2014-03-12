@@ -14,7 +14,7 @@ Generatore XML per l’AVCP (Autorità per la Vigilanza sui Contratti Pubblici d
 
 == Description ==
 
-> Questo plugin al momento non supporta i raggruppamenti temporanei di impresa.
+> Questo plugin al momento non supporta i raggruppamenti temporanei di impresa
 
 Dopo il positivo feedback ricevuto per il plugin [Amministrazione Trasparente](http://wordpress.org/plugins/amministrazione-trasparente/), è disponibile il nuovo software per la pubblicazione dei bandi di gara (D.lgs 33/2013) e l'adeguamento normativo richiesto dall’Autorità per la Vigilanza sui Contratti Pubblici di Lavori, Servizi e Forniture, conforme alle specifiche tecniche ai sensi dell’art. 1 comma 32 Legge n. 190/2012. Con AVCP XML infatti puoi generare una tabella dinamica, filtrabile e esportabile nelle tue pagine WordPress e contemporaneamente creare il dataset xml secondo le specifiche tecniche di Avcp.
 
