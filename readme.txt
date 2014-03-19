@@ -22,7 +22,7 @@ AVCP XML per WordPress è il più **flessibile, **semplice** e **intuitivo** sof
 
 Un altro vantaggio di questo plugin è la facilità di installazione (installabile in pochi secondi) e di aggiornamento direttamente dal back-end di WordPress!
 
-> Più di **1200** portali della PA si appoggiano a questo plugin, tra cui USR Lombardia (dati rankwp.com)
+> Più di **1200** portali della PA si appoggiano a questo plugin (dati rankwp.com), tra cui USR Lombardia e USR Veneto
 
 = Funzioni =
 * Creazione e gestione dei bandi di gara tramite Custom Post Type (stessa impostazione di pagine e articoli)
