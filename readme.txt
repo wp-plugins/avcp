@@ -4,8 +4,8 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: avcp, autorita, vigilanza, lavori, pubblici, amministrazione, trasparente, legge, obblighi, marco, milesi, normativa, pubblicazione
 Requires at least: 3.3
 Tested up to: 3.8
-Version: 4.1.1
-Stable tag: 4.1.1
+Version: 4.1.2
+Stable tag: 4.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -112,6 +112,9 @@ Se dopo questi passaggi "System Check-UP" rileva ancora alcuni problemi, è prob
 
 == Changelog ==
 > Questa è la lista completa di tutti gli aggiornamenti, test e correzioni. Ogni volta che una nuova versione viene rilasciata assicuratevi di aggiornare il prima possibile per usufruire delle ultime migliorie!
+
+= Versione 4.1.2 12/03/2014 =
+* **Miglioramenti** plugin integrato SearchTaxonomyGT (in parallello a Amministrazione Trasparente)
 
 = Versione 4.1.1 12/03/2014 =
 * **Miglioramenti** css per i pulsanti di esportazione della tabella
