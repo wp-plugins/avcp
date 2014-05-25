@@ -1,11 +1,11 @@
-﻿=== AVCP XML ===
+﻿=== AVCP XML Bandi di Gara ===
 Contributors: Milmor
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=F2JK36SCXKTE2
 Tags: avcp, autorita, vigilanza, lavori, pubblici, amministrazione, trasparente, legge, obblighi, marco, milesi, normativa, pubblicazione
 Requires at least: 3.3
 Tested up to: 3.8
-Version: 4.1.2
-Stable tag: 4.1.2
+Version: 5
+Stable tag: 5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,15 +49,6 @@ AVCP XML permette il backup e il ripristino nativo delle voci dei bandi (per tra
 
 = CONTATTI & SUPPORTO =
 Per qualsiasi informazione, per segnalare problemi o per suggerire nuove funzioni, è attivo il forum di supporto su [www.marcomilesi.ml/supporto](http://marcomilesi.ml/supporto/)
-
-= Ringraziamenti =
-
-* Roberta Ghisalberti (Comune di San Pellegrino Terme)
-* Igor Vita (Comune di Grottammare / Comune di Acquaviva Picena)
-* Emanuele Ferrarini [testidigitali.eu](http://testidigitali.eu/)
-* CentroSistema Ponte San Pietro [centrosistema.it](http://centrosistema.it)
-* Tutta la Comunità di pratica [PorteAperteSulWeb](http://www.porteapertesulweb.it/), ed in particolare:
-* Alberto Ardizzone, Renata Durighello, Riccardo Boccaccio, Giovanna Orrù, Giorgio Galli, Andrea Smith, Claudia Cantaluppi
 
 http://www.youtube.com/watch?v=D_nmx_XXo8o
 
@@ -113,8 +104,15 @@ Se dopo questi passaggi "System Check-UP" rileva ancora alcuni problemi, è prob
 == Changelog ==
 > Questa è la lista completa di tutti gli aggiornamenti, test e correzioni. Ogni volta che una nuova versione viene rilasciata assicuratevi di aggiornare il prima possibile per usufruire delle ultime migliorie!
 
-= Versione 4.1.2 12/03/2014 =
-* **Miglioramenti** plugin integrato SearchTaxonomyGT (in parallello a Amministrazione Trasparente)
+
+= Versione 5 #Gasw (Giornata Apera sul Web) - 26.05.2014 =
+* Rebranding wpgov.it
+* Revisione delle divisioni delle pagine
+* Molto altro, da scoprire a #gasw2014 :))
+
+= =
+* Notevoli **miglioramenti** nelle performance grazie ad alcune ottimizzazioni nel lancio di funzioni "admin_init" & "init" & "include()"
+* **Rimosso** supporto compatibilità per aggiornamenti da versione < 3 del 9 gennaio 2014
 
 = Versione 4.1.1 12/03/2014 =
 * **Miglioramenti** css per i pulsanti di esportazione della tabella

@@ -21,6 +21,11 @@ $title = cleanTitle(basename(dirname(__FILE__)));
 	<style>
 		body { font-family: 'Calibri', sans-serif; padding: 0; margin: 0; background: #f5f5f5 url('<?php echo $url; ?>wp-content/plugins/avcp/includes/bandieraitaliana.png') no-repeat; }
 		.wrap { width: 515px; margin: 4em auto; background: white; padding: 25px; border: solid 1px #ECE9E9; -moz-border-radius: 10px; -webkit-border-radius: 10px; }
+		.wpgov-message {
+		border-radius:20px;
+		background: url('<?php echo $url; ?>wp-content/plugins/avcp/includes/back.png') repeat;
+		text-align:center; width:60%; padding:10px; margin: 0px auto;box-shadow: 0px 0px 1px;font-family: "Open Sans",sans-serif;
+		}
 		h1 { margin: 0 0 5px 0; font-size:120%; font-weight:normal; color: #666; }
 		a { color: #399ae5; text-decoration: none; } a:hover { color: #206ba4; text-decoration: underline; }
 		.note { padding:  0 5px 25px 0; font-size:80%; color: #666; line-height: 18px; }
@@ -124,6 +129,9 @@ foreach($files as $file)
 ?>
 	</div>
 	
-<center><small>Software pubblicazione bandi di gara e generazione dataset per Avcp realizzato da <a href="http://www.marcomilesi.ml" target="_blank">Marco Milesi</a> su piattaforma <a href="http://wordpress.org/plugins/avcp" target="_blank">Wordpress</a></small></center>
+
+<div class="wpgov-message">
+	<small>Software pubblicazione bandi di gara e generazione dataset per Avcp realizzato da <a href="http://www.marcomilesi.ml" target="_blank">Marco Milesi</a> nell'ambito del progetto <a href="http://wpgov.it" title="WP GOV - Soluzioni open source per la PA su WordPress">WPGov.it</a></small>
+</div>
 </body>
 </html>
