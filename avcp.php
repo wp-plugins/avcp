@@ -4,7 +4,7 @@ Plugin Name: AVCP XML Bandi di Gara
 Plugin URI: http://www.wpgov.it
 Description: Generatore XML per l’AVCP (Autorità per la Vigilanza sui Contratti Pubblici di Lavori, Servizi e Forniture) // Art. 1 comma 32 Legge 190/2012.
 Author: Marco Milesi
-Version: 5.0.3
+Version: 5.0.4
 Author URI: http://www.marcomilesi.ml
 */
 
