@@ -1,26 +1,26 @@
-﻿=== AVCP XML Bandi di Gara ===
+=== AVCP XML Bandi di Gara ===
 Contributors: Milmor
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=F2JK36SCXKTE2
 Tags: avcp, autorita, vigilanza, lavori, pubblici, amministrazione, trasparente, legge, obblighi, marco, milesi, normativa, pubblicazione
 Requires at least: 3.3
 Tested up to: 3.8
-Version: 5.0.4
-Stable tag: 5.0.4
+Version: 5.1
+Stable tag: 5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Generatore XML per l’AVCP (Autorità per la Vigilanza sui Contratti Pubblici di Lavori, Servizi e Forniture) // Art. 1 comma 32 Legge 190/2012.
+Generatore XML per AVCP (Autorità per la Vigilanza sui Contratti Pubblici di Lavori, Servizi e Forniture) // Art. 1 comma 32 Legge 190/2012.
 
 
 == Description ==
 
-> Questo plugin al momento non supporta i raggruppamenti temporanei di impresa
+> Questo plugin non supporta i raggruppamenti temporanei di impresa
 
-Dopo il positivo feedback ricevuto per il plugin [Amministrazione Trasparente](http://wordpress.org/plugins/amministrazione-trasparente/), è disponibile il nuovo software per la pubblicazione dei bandi di gara (D.lgs 33/2013) e l'adeguamento normativo richiesto dall’Autorità per la Vigilanza sui Contratti Pubblici di Lavori, Servizi e Forniture, conforme alle specifiche tecniche ai sensi dell’art. 1 comma 32 Legge n. 190/2012. Con AVCP XML infatti puoi generare una tabella dinamica, filtrabile e esportabile nelle tue pagine WordPress e contemporaneamente creare il dataset xml secondo le specifiche tecniche di Avcp.
+AVCP XML BANDI DI GARA è un plugin WordPress pensato per la P.A. utile alla pubblicazione di bandi di gara (D.lgs 33/2013) e l'adeguamento normativo richiesto dall’Autorità per la Vigilanza sui Contratti Pubblici di Lavori, Servizi e Forniture (specifiche tecniche art. 1 comma 32 Legge n. 190/2012).
 
-AVCP XML per WordPress è il più **flessibile, **semplice** e **intuitivo** software per la gestione dei bandi di gara attualmente presente nel panorama open-source. Sfruttando le potenzialità native del cms su cui è sviluppato, questo plugin presenta un'interfaccia molto integrata con WordPress adatta anche per i principianti di questa piattaforma, presentandosi come soluzione ideale per i siti della pubblica amministrazione "Powered by Wordpress" e per tutti gli enti che desiderano una soluzione gratuita, stabile, aggiornata e supportata.
+**Flessibilità, **Semplicità** e **Intuitività** sono i 3 pilastri con cui è stato pensato questo software per la gestione **completa** dei bandi di gara. Sfruttando le potenzialità native del cms WordPress, questo plugin presenta un'interfaccia molto integrata adatta anche per i principianti di questa piattaforma, presentandosi come soluzione ideale per i siti della pubblica amministrazione "Powered by Wordpress" e per tutti gli enti che desiderano una soluzione gratuita, stabile, aggiornata e supportata, anche da installare in un secondo spazio come piattaforma di appoggio,
 
-Un altro vantaggio di questo plugin è la facilità di installazione (installabile in pochi secondi) e di aggiornamento direttamente dal back-end di WordPress!
+Un altro vantaggio di questo plugin è la facilità di installazione (che richiede più di 5 minuti) e di aggiornamento direttamente dal back-end di WordPress! Regolarmente rilasciamo patch di sicurezza, miglioramento e nuove funzioni. Il tutto scaricabile liberamente 
 
 > Più di **1200** portali della PA si appoggiano a questo plugin (dati rankwp.com), tra cui USR Lombardia e USR Veneto
 
@@ -103,6 +103,10 @@ Se dopo questi passaggi "System Check-UP" rileva ancora alcuni problemi, è prob
 
 == Changelog ==
 > Questa è la lista completa di tutti gli aggiornamenti, test e correzioni. Ogni volta che una nuova versione viene rilasciata assicuratevi di aggiornare il prima possibile per usufruire delle ultime migliorie!
+
+= Versione 5.1 - 10.10.2014 [!!!] =
+* **Aggiunta divisione somme liquidate su più anni e completo supporto durante la creazione
+* **Migliorato** javascript per la creazione/modifica di una gara
 
 = Versione 5.0.4 - 20.07.2014 =
 * **Testato** su WordPress 4.0
