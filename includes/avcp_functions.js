@@ -20,9 +20,9 @@ function datespan() {
         if (jdate1 == jdate2) {
             $('label[for=avcp_somme_liquidate]').html('Importo somme liquidate (<b>' + jdate1 + '</b>) <b>€</b>');
 
-			$('label[for=avcp_somme_liquidate').parent().parent().fadeIn();
-            $('label[for=avcp_somme_liquidate_prev').parent().parent().fadeOut();
-            $('label[for=avcp_somme_liquidate_prevprev').parent().parent().fadeOut();
+			$('label[for=avcp_somme_liquidate]').parent().parent().fadeIn();
+            $('label[for=avcp_somme_liquidate_prev]').parent().parent().fadeOut();
+            $('label[for=avcp_somme_liquidate_prevprev]').parent().parent().fadeOut();
 
             $("#avcp_somme_liquidate_prev").val("0.00");
             $("#avcp_somme_liquidate_prevprev").val("0.00");
@@ -39,8 +39,8 @@ function datespan() {
                 year_check_only('2015');
             }
         } else if (jdate2 - jdate1 == 1) {
-            $('label[for=avcp_somme_liquidate_prev').parent().parent().fadeIn();
-			$('label[for=avcp_somme_liquidate_prevprev').parent().parent().fadeOut();
+            $('label[for=avcp_somme_liquidate_prev]').parent().parent().fadeIn();
+			$('label[for=avcp_somme_liquidate_prevprev]').parent().parent().fadeOut();
             $('label[for=avcp_somme_liquidate]').html('Importo somme liquidate <b>' + jdate2 + '</b> <b>€</b>');
 
             $('label[for=avcp_somme_liquidate_prev]').html('Importo somme liquidate <b>' + jdate1 + '</b> <b>€</b>');
@@ -60,9 +60,9 @@ function datespan() {
                 year_check('2015');
             }
         } else if (jdate2 - jdate1 == 2) {
-		$('label[for=avcp_somme_liquidate_prev').parent().parent().fadeOut();
-            $('label[for=avcp_somme_liquidate_prev').parent().parent().fadeIn();
-            $('label[for=avcp_somme_liquidate_prevprev').parent().parent().fadeIn();
+			$('label[for=avcp_somme_liquidate_prev]').parent().parent().fadeOut();
+            $('label[for=avcp_somme_liquidate_prev]').parent().parent().fadeIn();
+            $('label[for=avcp_somme_liquidate_prevprev]').parent().parent().fadeIn();
 
             $('label[for=avcp_somme_liquidate]').html('Importo somme liquidate <b>' + jdate2 + '</b> <b>€</b>');
             $('label[for=avcp_somme_liquidate_prev]').html('Importo somme liquidate <b>' + (jdate2 - 1) + '</b> <b>€</b>');
@@ -88,8 +88,8 @@ function datespan() {
             window.alert('Eccezione non prevista. Contattare il servizio di supporto...');
         }
     } else {
-        $('label[for=avcp_somme_liquidate_prev').parent().parent().fadeOut();
-        $('label[for=avcp_somme_liquidate_prevprev').parent().parent().fadeOut();
+        $('label[for=avcp_somme_liquidate_prev]').parent().parent().fadeOut();
+        $('label[for=avcp_somme_liquidate_prevprev]').parent().parent().fadeOut();
     }
 }
 

@@ -2,7 +2,7 @@
 
     $pluginversion = get_option('avcp_version_number');
     if ($pluginversion == '') {
-        update_option( 'avcp_version_number', '5.1' );
+        update_option( 'avcp_version_number', '5.1.1' );
     } else {
 
         //In questo blocco sono impostati i vari aggiornamenti ad alcuni campi del database che vanno modificati per poter eseguire la versione relativa all'aggiornamento stesso...
@@ -39,6 +39,6 @@
             creafilexml('2015');
         }
 
-        update_option( 'avcp_version_number', '5.1' );
+        update_option( 'avcp_version_number', '5.1.1' );
     }
 ?>

@@ -4,19 +4,19 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: avcp, autorita, vigilanza, lavori, pubblici, amministrazione, trasparente, legge, obblighi, marco, milesi, normativa, pubblicazione
 Requires at least: 3.3
 Tested up to: 3.8
-Version: 5.1
-Stable tag: 5.1
+Version: 5.1.1
+Stable tag: 5.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Generatore XML per AVCP (Autorità per la Vigilanza sui Contratti Pubblici di Lavori, Servizi e Forniture) // Art. 1 comma 32 Legge 190/2012.
+Software per la gestione dei Bandi di Gara e generazione automatica del dataset XML per AVCP (Legge 190/2012 Art 1.32).
 
 
 == Description ==
 
-> Questo plugin non supporta i raggruppamenti temporanei di impresa
+AVCP XML BANDI DI GARA è un plugin WordPress pensato per le PA utile alla pubblicazione di bandi di gara ai fini della trasparenza (D.lgs 33/2013) e l'adeguamento normativo richiesto dall’Autorità per la Vigilanza sui Contratti Pubblici di Lavori, Servizi e Forniture (specifiche tecniche art. 1 comma 32 Legge n. 190/2012).
 
-AVCP XML BANDI DI GARA è un plugin WordPress pensato per la P.A. utile alla pubblicazione di bandi di gara (D.lgs 33/2013) e l'adeguamento normativo richiesto dall’Autorità per la Vigilanza sui Contratti Pubblici di Lavori, Servizi e Forniture (specifiche tecniche art. 1 comma 32 Legge n. 190/2012).
+> Questo plugin non supporta i raggruppamenti temporanei di impresa
 
 **Flessibilità, **Semplicità** e **Intuitività** sono i 3 pilastri con cui è stato pensato questo software per la gestione **completa** dei bandi di gara. Sfruttando le potenzialità native del cms WordPress, questo plugin presenta un'interfaccia molto integrata adatta anche per i principianti di questa piattaforma, presentandosi come soluzione ideale per i siti della pubblica amministrazione "Powered by Wordpress" e per tutti gli enti che desiderano una soluzione gratuita, stabile, aggiornata e supportata, anche da installare in un secondo spazio come piattaforma di appoggio,
 
@@ -103,6 +103,9 @@ Se dopo questi passaggi "System Check-UP" rileva ancora alcuni problemi, è prob
 
 == Changelog ==
 > Questa è la lista completa di tutti gli aggiornamenti, test e correzioni. Ogni volta che una nuova versione viene rilasciata assicuratevi di aggiornare il prima possibile per usufruire delle ultime migliorie!
+
+= Versione 5.1.1 - 10.11.2014 [!] =
+* **Corretto** malfunzionamento dell'importo somme liquidate (back-end) con il browser Firefox
 
 = Versione 5.1 - 10.10.2014 [!!!] =
 * **Aggiunta divisione somme liquidate su più anni e completo supporto durante la creazione
