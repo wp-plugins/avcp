@@ -4,7 +4,7 @@ Plugin Name: AVCP XML Bandi di Gara
 Plugin URI: http://www.wpgov.it
 Description: Generatore XML per AVCP (Autorità per la Vigilanza sui Contratti Pubblici di Lavori, Servizi e Forniture) // Art. 1 comma 32 Legge 190/2012.
 Author: Marco Milesi
-Version: 5.1.1
+Version: 5.2
 Author URI: http://www.marcomilesi.ml
 */
 
@@ -255,15 +255,15 @@ function avcp_remove_row_actions( $actions )
 
 function avcp_func($atts)
 {
-extract(shortcode_atts(array(
-      'anno' => 'all',
-   ), $atts));
-ob_start();
-include(plugin_dir_path(__FILE__) . 'tablegen.php');
-$atshortcode = ob_get_clean();
-return $atshortcode;
+    extract(shortcode_atts(array('anno' => 'all'), $atts));
+
+    ob_start();
+    include(plugin_dir_path(__FILE__) . 'tablegen.php');
+    $atshortcode = ob_get_clean();
+    return $atshortcode;
 }
 add_shortcode('avcp', 'avcp_func');
+add_shortcode('gare', 'avcp_func');
 
 add_action( 'init', 'atg_caricamoduli' );
 function atg_caricamoduli() {
@@ -275,6 +275,10 @@ function atg_caricamoduli() {
     require_once(plugin_dir_path(__FILE__) . 'avcp_index_generator.php');
     require_once(plugin_dir_path(__FILE__) . 'singlehack.php');
     require_once(plugin_dir_path(__FILE__) . 'avcp_xml_generator.php');
+    require_once(plugin_dir_path(__FILE__) . 'opendata/loader.php');
+
+    //Funzioni
+    require_once(plugin_dir_path(__FILE__) . 'getsommeliquidate.php');
 
     //Include sistemi di validazione
     require_once(plugin_dir_path(__FILE__) . 'valid_check.php');

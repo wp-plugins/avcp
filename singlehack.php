@@ -48,8 +48,8 @@ function avcp_job_cpt_template_filter($content)
 
     echo '<br/>' . get_option('avcp_codicefiscale_ente') . '</td></tr>';
     echo '<tr><td>Oggetto del bando:</td><td>' . get_the_title(get_the_ID()) . '</td></tr>';
-    echo '<tr><td>Procedura di scelta del contraente:</td><td>' .  get_post_meta(get_the_ID(), 'avcp_contraente', true) . '</td></tr>';
-    echo '<tr><td>Importo di aggiudicazione:</td><td>' .  get_post_meta(get_the_ID(), 'avcp_aggiudicazione', true) . '</td></tr>';
+    echo '<tr><td>Procedura di scelta del contraente:</td><td>' . strtolower(substr(get_post_meta(get_the_ID(), 'avcp_contraente', true), 3)) . '</td></tr>';
+    echo '<tr><td>Importo di aggiudicazione:</td><td>€ <strong>' .  get_post_meta(get_the_ID(), 'avcp_aggiudicazione', true) . '</strong></td></tr>';
     echo '<tr><td>Data di effettivo inizio:</td><td>' .  $avcp_data_inizio . '</td></tr>';
     echo '<tr><td>Data di ultimazione:</td><td>' .  $avcp_data_fine . '</td></tr>';
 
@@ -153,15 +153,16 @@ if ($get_avcp_dis_archivioditte == '1') {
             }
         }
         if (empty($cats)) {
-            echo 'Nessun aggiudicatario...';
+            echo '<tr><td>Nessun aggiudicatario...</td></tr>';
         }
     }
 
     echo '</table>';
 
-    $get_avcp_showlove = get_option('avcp_showlove');
-    if ($get_avcp_showlove == '1') {
-        echo '<center><small>Pagina creata con il plugin <a href="http://wordpress.org/plugins/avcp/" target="_blank" title="AVCP Wordpress Plugin">AVCP XML per Wordpress</a></small></center>';
+     echo '<h3>Statistiche</h3>';
+
+    if (get_option('avcp_showlove') == '1') {
+        echo '<center><a href="http://www.wpgov.it" target="_blank" title="Software &copy; WPGov"><img style="margin:5px;" src="' . plugin_dir_url(__FILE__) . 'images/wpgov.png" /></a></center>';
     }
 }
 ?>
