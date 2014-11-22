@@ -40,16 +40,18 @@
             }
         echo '</strong></td>';
 
-$date1 = new DateTime(get_post_meta(get_the_ID(), 'avcp_data_inizio', true));
-$date2 = new DateTime(get_post_meta(get_the_ID(), 'avcp_data_fine', true));
-
-$diff = $date2->diff($date1)->format("%a");
-
         echo '<td align="center">' . date("d/m/Y", strtotime(get_post_meta(get_the_ID(), 'avcp_data_inizio', true))) . '<br/>' .
-        date("d/m/Y", strtotime(get_post_meta(get_the_ID(), 'avcp_data_fine', true))) . '<br/>' .
-            '<small><strong>' . $diff . '</strong> gg</small>
+        date("d/m/Y", strtotime(get_post_meta(get_the_ID(), 'avcp_data_fine', true))) . '<br/>';
 
-            </td>';
+        if (function_exists('DateTime')) {
+            $date1 = new DateTime(get_post_meta(get_the_ID(), 'avcp_data_inizio', true));
+            $date2 = new DateTime(get_post_meta(get_the_ID(), 'avcp_data_fine', true));
+            $diff = $date2->diff($date1)->format("%a");
+            echo '<small><strong>' . $diff . '</strong> gg</small>';
+        }
+
+        echo '</td>';
+
         echo '<td>' . strtolower(substr(get_post_meta(get_the_ID(), 'avcp_contraente', true), 3)) . '</td>';
         echo '</tr>';
 
