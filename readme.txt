@@ -4,8 +4,8 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: avcp, autorita, vigilanza, lavori, pubblici, amministrazione, trasparente, legge, obblighi, marco, milesi, normativa, pubblicazione
 Requires at least: 3.7
 Tested up to: 4.1
-Version: 5.2.1
-Stable tag: 5.2.1
+Version: 5.2.3
+Stable tag: 5.2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -103,6 +103,13 @@ Se dopo questi passaggi "System Check-UP" rileva ancora alcuni problemi, è prob
 
 == Changelog ==
 > Questa è la lista completa di tutti gli aggiornamenti, test e correzioni. Ogni volta che una nuova versione viene rilasciata assicuratevi di aggiornare il prima possibile per usufruire delle ultime migliorie!
+
+= Versione 5.2.3 - 25.11.2014 =
+* **Readme.txt** correction
+
+= Versione 5.2.2 - 25.11.2014 = 
+* **Corretta** mancata visualizzazione pulsanti di esportazione in alcune configurazioni
+* **Migliorati** shortcode (beta)
 
 = Versione 5.2.1 - 22.11.2014 =
 * **Aggiunta** verifica per la funzione DateTime
