@@ -33,9 +33,9 @@ echo '
             <tr>
                 <th><a href="' . esc_url(get_term_link( $term->name, 'annirif' )) . '">' . $term->name . '</a></th>
                 <td>' . $numero_gare_{$term->name} . '</td>
-                <td>€' . $tot_agg_{$term->name} . '</td>
-                <td>€' . $tot_liq_{$term->name} . '</td>
-                <td>' . intval($gap_tot_giorni_{$term->name} / $numero_gare_{$term->name}) . ' gg</td>
+                <td>€<strong>' . $tot_agg_{$term->name} . '</strong></td>
+                <td>€<strong>' . $tot_liq_{$term->name} . '</strong></td>
+                <td>' . @intval($gap_tot_giorni_{$term->name} / $numero_gare_{$term->name}) . ' gg</td>
             </tr>
         ';
 

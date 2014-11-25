@@ -64,15 +64,13 @@
         <tr>
             <td colspan="6">';
 
-                if (get_option('avcp_showxml') == '1') {
-                    echo '<div style="float:right;">
+            echo '<div style="float:right;">
                         Scarica in
 
             <a href="' . get_site_url() . '/avcp" target="_blank" title="File .xml"><button>XML</button></a>
             <a download="' . get_bloginfo('name') . '-gare' . $anno . '.xls" href="#" onclick="return ExcellentExport.excel(this, \'gare\', \'Gare\');"><button>EXCEL</button></a>
             <a download="' . get_bloginfo('name') . '-gare' . $anno . '.csv" href="#" onclick="return ExcellentExport.csv(this, \'gare\');"><button>CSV</button></a>
             </div>';
-                }
 
                 if (get_option('avcp_showlove') == '1') {
                     echo '<a href="http://www.wpgov.it" target="_blank" title="Software &copy; WPGov"><img src="' . plugin_dir_url(__FILE__) . 'images/wpgov.png" /></a>';
