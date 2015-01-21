@@ -221,7 +221,7 @@ function check_annoimpostato() {
     $ng = 0;
     if ( have_posts() ) : while ( have_posts() ) : the_post();
             $ng++;
-            if(!( has_term( '2013', 'annirif' ) || has_term( '2014', 'annirif' ) )) {
+            if(!( has_term( '', 'annirif' ) )) {
                 $erroreanno = true;
             }
     endwhile; else:
