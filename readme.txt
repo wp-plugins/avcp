@@ -1,20 +1,20 @@
-﻿=== AVCP XML Bandi di Gara ===
+﻿=== ANAC XML Bandi di Gara (AVCP) ===
 Contributors: Milmor
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=F2JK36SCXKTE2
-Tags: avcp, autorita, vigilanza, lavori, pubblici, amministrazione, trasparente, legge, obblighi, marco, milesi, normativa, pubblicazione
+Tags: anac, anticorruzione, avcp, autorita, vigilanza, lavori, pubblici, amministrazione, trasparente, legge, obblighi, marco, milesi, wpgov, pubblicazione
 Requires at least: 3.7
 Tested up to: 4.1
-Version: 5.2.5
-Stable tag: 5.2.5
+Version: 6.0
+Stable tag: 6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Software per la gestione dei Bandi di Gara e generazione automatica del dataset XML per AVCP (Legge 190/2012 Art 1.32).
+Software per la gestione dei Bandi di Gara e generazione automatica del dataset XML per ANAC (ex AVCP -Legge 190/2012 Art 1.32).
 
 
 == Description ==
 
-AVCP XML BANDI DI GARA è un plugin WordPress pensato per le PA utile alla pubblicazione di bandi di gara ai fini della trasparenza (D.lgs 33/2013) e l'adeguamento normativo richiesto dall’Autorità per la Vigilanza sui Contratti Pubblici di Lavori, Servizi e Forniture (specifiche tecniche art. 1 comma 32 Legge n. 190/2012).
+ANAC XML BANDI DI GARA è un plugin WordPress pensato per le PA utile alla pubblicazione di bandi di gara ai fini della trasparenza (D.lgs 33/2013) e l'adeguamento normativo richiesto dall’Autorità Nazionale Anticorruzione (specifiche tecniche art. 1 comma 32 Legge n. 190/2012).
 
 > Questo plugin non supporta i raggruppamenti temporanei di impresa
 
@@ -28,10 +28,9 @@ Un altro vantaggio di questo plugin è la facilità di installazione (che richie
 * Creazione e gestione dei bandi di gara tramite Custom Post Type (stessa impostazione di pagine e articoli)
 * Creazione e gestione delle ditte tramite Taxonomy (tassonomia, stessa impostazione delle categorie)
 * Assegnazione ditte partecipanti e aggiudicatari direttamente nella pagina di creazione del bando
-* Generazione di tabelle di riepilogo tramite shortcode [avcp] // [avcp anno="2013"] // [avcp anno="%%%%"]
+* Generazione di tabelle di riepilogo tramite shortcode [gare] // [gare anno="2013"] // [gare anno="%%%%"]
 * Generazione **automatica** o manuale del file indice XML per la trasmissione ad AVCP e delle annualità singole
 * Gestione completa dei **Centri di Costo** (per scrittura dataset) e dei responsabili (per front-end sito)
-* Supporto editor **WYSIWYG** per testo libero e documenti allegati (per vista sul sito)
 * Codice leggero, commentato e facilmente modificabile
 * Compatibilità completa per i temi Wordpress
 * Generazione di dataset .xml vuoti
@@ -45,10 +44,10 @@ Oltre all'adempimento degli obblighi di legge, AVCP XML per Wordpress offre alcu
 * Visualizzazione **archivio** di tutte le gare partecipate da ogni ditta [opzionale]
 
 = BACKUP & RIPRISTINO =
-AVCP XML permette il backup e il ripristino nativo delle voci dei bandi (per trasferimento sito Wordpress o solo per avere una copia di sicurezza). Accedendo a Strumenti -> Esporta è possibile scaricare il file xml di backup (da non confondere con quello generato per l'avcp, che ha una struttura completamente diversa). Per il ripristino delle voci in un altro sito è sufficiente caricare questo file in un'altra installazione utilizzando il menù Strumenti -> Importa
+ANAC XML permette il backup e il ripristino nativo delle voci dei bandi (per trasferimento sito Wordpress o solo per avere una copia di sicurezza). Accedendo a Strumenti -> Esporta è possibile scaricare il file xml di backup (da non confondere con quello generato per l'avcp, che ha una struttura completamente diversa). Per il ripristino delle voci in un altro sito è sufficiente caricare questo file in un'altra installazione utilizzando il menù Strumenti -> Importa
 
 = CONTATTI & SUPPORTO =
-Per qualsiasi informazione, per segnalare problemi o per suggerire nuove funzioni, è attivo il forum di supporto su [www.marcomilesi.ml/supporto](http://marcomilesi.ml/supporto/)
+Per qualsiasi informazione, per segnalare problemi o per suggerire nuove funzioni, è attivo il forum di supporto su [wpgov.it/supporto](https://wpgov.it/supporto/)
 
 http://www.youtube.com/watch?v=D_nmx_XXo8o
 
@@ -60,36 +59,7 @@ http://www.youtube.com/watch?v=D_nmx_XXo8o
 
 http://www.youtube.com/watch?v=D_nmx_XXo8o
 
-1. Carica il contenuto estratto nella cartella `/wp-content/plugins/`
-2. Attiva il plugin dal menu 'Plugins' in WordPress
-3. Aggiungi le informazioni dell'ente in AVCP -> Impostazioni
-4. Dai un'occhiata alle altre impostazioni
-5. Predisponi un'area del sito in cui mostrare l'elenco dei bandi (per assolvere anche all'obbligo di pubblicazione sul sito istituzionale). Di seguito trovi tutte le informazioni nella sezione **Shortcode**
-6. Inserisci le ditte, con Codice Fiscale/Partita IVA, dal menù AVCP -> Ditte
-7. Inserisci le gare, avendo cura di riempire in modo corretto tutti i campi, dal menù AVCP -> Nuova Gara
-8. Per la generazione del file .xml e la sua comunicazione all'Avcp, leggi il paragrafo successivo
-
-= SHORTCODE =
-AVCP XML permette, oltre alla creazione del file xml per la trasmissione ad AVCP, di assolvere anche l'obbligo di pubblicazione delle informazioni sul sito istituzionale. E' infatti possibile utilizzare lo shortcode [avcp] in una pagina/articolo per visualizzare una tabella (con funzioni di filtraggio avanzate) contenente tutti i bandi.
-E' possibile configurare lo shortcode inserendo il parametro dell'anno:
-
-* [avcp] -> Mostra una lista di **tutti** i bandi (può rallentare il caricamento della pagina in presenza di molte informazioni
-* [avcp anno="2013"] -> Mostra una lista dei bandi relativi all'anno impostato. L'anno preso in considerazione **non** è la data di pubblicazione del bando, ma l'**anno di riferimento** che si inserisce creando il nuovo bando.
-
-= GENERAZIONE FILE .XML E COMUNICAZIONE AD AVCP =
-
-= SYSTEM CHECK-UP =
-AVCP XML integra, nella pagina delle impostazioni, un piccolo sistema di auto-diagnostica che permette di conoscere facilmente se la configurazione del server permette il corretto funzionamento del plugin. In particolare vengono effettuati 4 test:
-
-* 1. Presenza della cartella www.miodominio.com**/avcp** (creata dal plugin durante l'attivazione).
-* 2. Permessi di scrittura/lettura della cartella precedente (impostati dal plugin durante l'attivazione).
-* 3. Presenza del file index.php nella cartella precedente (copiato dal .zip del plugin alla cartella /avcp durante l'attivazione).
-* 4. Controllo dell'effettivo accesso pubblico al link
-
-Se tutti i parametri vengono rispettati, accanto alle 4 voci precedenti compare la dicitura 'OK'. In caso contrario, il sistema avvisa di un problema critico. Se questo dovesse accadere, è probabile che la cartella /avcp o i file in essa contenuti siano stati rimossi o spostati mentre il plugin era attivo e per ricrearli è sufficiente disattivare e riattivare il plugin, avendo poi cura di ricontrollare se "System Check-UP" indica che gli errori sono stati risolti.
-
-**Attenzione! Anche i file .xml generati dal plugin vengono salvati nella cartella /avcp quindi è necessario ricreare questi file avviando rigenerando manualmente il dataset .xml da AVCP -> Impostazioni**.
-Se dopo questi passaggi "System Check-UP" rileva ancora alcuni problemi, è probabile che il server non sia configurato correttamente. In questo caso usa il forum di supporto www.marcomilesi.ml/supporto
+Puoi trovare la documentazione su [wpgov.it](https://wpgov.it/soluzioni/avcp-xml-bandi-di-gara/)
 
 == Screenshots ==
 
@@ -103,6 +73,19 @@ Se dopo questi passaggi "System Check-UP" rileva ancora alcuni problemi, è prob
 
 == Changelog ==
 > Questa è la lista completa di tutti gli aggiornamenti, test e correzioni. Ogni volta che una nuova versione viene rilasciata assicuratevi di aggiornare il prima possibile per usufruire delle ultime migliorie!
+
+= Versione 6.0 - 01.02.2015 =
+* **SI CONSIGLIA DI FARE UN BACKUP MYSQL PRIMA DI ESEGUIRE L'AGGIORNAMENTO**
+* Riscritto sistema di gestione somme liquidate
+* Aggiunto supporto fino al 2018
+* Aggiunto supporto per gare > 3 anni
+* Aggiunto supporto per somme liquidate dopo termine gara
+* Sensibili miglioramenti performance
+* Messaggi e pannelli rivisti tecnicamente e graficamente
+* Aggiunta funzionalità di "log"
+* Aggiunta **importazione** da file xml (sperimentale e solo per la prima volta)
+* Aggiunti automatismi javascript nel back-end (creazione nuova gara)
+* Migliorata tabella
 
 = Versione 5.2.5 - 21.01.2015 =
 * Corretto falso allarme in caso di gare con solo anno 2015 impostato

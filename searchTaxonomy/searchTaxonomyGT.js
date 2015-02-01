@@ -2,9 +2,11 @@ jQuery(document).ready(function($){
 
 	if($('#taxonomy-ditte').length>0){	
 	
-	$('#annirif-tabs').prepend('Dal 1.12.2012 al 31.12.2013 -> <b>2013</b>.xml<br/>Dal 1.01.2014 al 31.12.2014 -> <b>2014</b>.xml<hr/>');
+	$('#annirif-tabs').prepend('File xml in cui la gara verrà stampata<br><br>');
 	$('#areesettori-adder').hide();
-	$("#ditte-adder").hide();
+	//$("#ditte-adder").hide();
+	$('#ditte-add').prepend('<small>Il codice fiscale bisogna inserirlo dal menù "Ditte"</small><br><br>Nome/Ragione sociale:<br>');
+	$("#newditte_parent").hide();
 		$('#taxonomy-ditte>.tabs-panel').eq(1).prepend('<span class="searchTaxonomyGTdiv"><label for="#searchTaxonomyGT">Cerca: </label><input type="text" value="" id="searchTaxonomyGT" style="border-radius: 10px;font-size: 11px;margin: 5px;"/><br/></span>');
 		//<input type="checkbox" checked id="searchTaxonomyGT_keephierarchy"/><label for="#searchTaxonomyGT_keephierarchy">Keep Hierarchy</label></span>');
 		

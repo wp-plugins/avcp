@@ -1,5 +1,6 @@
 <?php
 function creafilexml ($anno) {
+    anac_add_log('Inizio generazione file XML ' . $anno, 0);
     //creafileindice();
     $avcp_denominazione_ente = get_option('avcp_denominazione_ente');
     $XML_data_aggiornamento =  date("Y-m-d");
@@ -18,7 +19,7 @@ function creafilexml ($anno) {
     <legge190:pubblicazione xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:legge190="legge190_1_0" xsi:schemaLocation="legge190_1_0 datasetAppaltiL190.xsd">
     <metadata>
     <titolo>Pubblicazione 1 legge 190</titolo>
-    <abstract>Pubblicazione 1 legge 190 anno 1 rif. 2013 M | ' . $ng . ' gare - ' . $XML_data_completa_aggiornamento . ' | Generato con AVCP XML ' . get_option('avcp_version_number') . ' di Marco Milesi</abstract>
+    <abstract>Pubblicazione 1 legge 190 rif. 2013 M - ' . $ng . ' gare - ' . $XML_data_completa_aggiornamento . ' - Generato con WPGov ANAC XML ' . get_option('avcp_version_number') . ' di Marco Milesi</abstract>
     <dataPubbicazioneDataset>' . $anno . '-12-31</dataPubbicazioneDataset>
     <entePubblicatore>' . $avcp_denominazione_ente . '</entePubblicatore>
     <dataUltimoAggiornamentoDataset>' . $XML_data_aggiornamento . '</dataUltimoAggiornamentoDataset>
@@ -35,16 +36,6 @@ function creafilexml ($anno) {
     $avcp_codicefiscale_ente = get_option('avcp_codicefiscale_ente');
     $avcp_contraente = get_post_meta($post->ID, 'avcp_contraente', true);
     $avcp_importo_aggiudicazione = get_post_meta($post->ID, 'avcp_aggiudicazione', true);
-
-
-    // 3 CAMPI SOMME LIQUIDATE (ANNO, ANNOPRIMA, ANNOPRIMAPRIMA)
-    $avcp_somme_liquidate = get_post_meta($post->ID, 'avcp_somme_liquidate', true);
-    $avcp_somme_liquidate_annoprima =  get_post_meta($post->ID, 'avcp_somme_liquidate_prev', true);
-    $avcp_somme_liquidate_annoprimaprima =  get_post_meta($post->ID, 'avcp_somme_liquidate_prevprev', true);
-
-    if ($avcp_somme_liquidate == '') { $avcp_somme_liquidate = '0.00'; }
-    if ($avcp_somme_liquidate_annoprima == '') { $avcp_somme_liquidate_annoprima = '0.00'; }
-    if ($avcp_somme_liquidate_annoprimaprima == '') { $avcp_somme_liquidate_annoprimaprima = '0.00'; }
 
     $avcp_data_inizio = date("Y-m-d", strtotime(get_post_meta(get_the_ID(), 'avcp_data_inizio', true)));
     $avcp_data_ultimazione = date("Y-m-d", strtotime(get_post_meta(get_the_ID(), 'avcp_data_fine', true)));
@@ -118,37 +109,24 @@ function creafilexml ($anno) {
     </tempiCompletamento>
     <importoSommeLiquidate>';
 
-    $counter_terms = 0;
-    $ultimo_anno_gara = 0;
+    $somme_liquidate[2013] = get_post_meta($post->ID, 'avcp_s_l_2013', true);
+    $somme_liquidate[2014] = get_post_meta($post->ID, 'avcp_s_l_2014', true);
+    $somme_liquidate[2015] = get_post_meta($post->ID, 'avcp_s_l_2015', true);
+    $somme_liquidate[2016] = get_post_meta($post->ID, 'avcp_s_l_2016', true);
+    $somme_liquidate[2017] = get_post_meta($post->ID, 'avcp_s_l_2017', true);
+    $somme_liquidate[2018] = get_post_meta($post->ID, 'avcp_s_l_2018', true);
 
-    $terms = get_terms( 'annirif', array('hide_empty' => 0) );
-    foreach ( $terms as $term ) {
-        if (has_term( $term->name, 'annirif', $post->ID )) {
-            $counter_terms++;
-            if ($term->name > $ultimo_anno_gara) {
-                $ultimo_anno_gara = $term->name;
-            }
+    for ($i = 2013; $i < 2019; $i++) {
+        if ($somme_liquidate[$i] == '') {
+            $somme_liquidate[$i] = '0.00';
         }
     }
 
-    if ($counter_terms == 1) {
-        $XML_FILE .= $avcp_somme_liquidate;
-    } else if ($counter_terms == 2) {
-        //Stampa liquidate se $anno è
-        if ($anno == $ultimo_anno_gara) {
-            $XML_FILE .= number_format((float)($avcp_somme_liquidate + $avcp_somme_liquidate_annoprima), 2, '.', '');
-        } else if ($anno == $ultimo_anno_gara -1) {
-            $XML_FILE .= $avcp_somme_liquidate_annoprima;
-        }
-    } else if ($counter_terms == 3) {
-        if ($anno == $ultimo_anno_gara) {
-            $XML_FILE .= number_format((float)($avcp_somme_liquidate + $avcp_somme_liquidate_annoprima + $avcp_somme_liquidate_annoprimaprima), 2, '.', '');
-        } else if ($anno == $ultimo_anno_gara -1) {
-             $XML_FILE .= number_format((float)($avcp_somme_liquidate_annoprima + $avcp_somme_liquidate_annoprimaprima), 2, '.', '');
-        } else if ($anno == $ultimo_anno_gara -2) {
-            $XML_FILE .= $avcp_somme_liquidate_annoprimaprima;
-        }
+    $importo_liquidato_scalare = 0.00;
+    for ($i = 2013; $i < $anno + 1; $i++) {
+        $importo_liquidato_scalare = number_format((float)($importo_liquidato_scalare + $somme_liquidate[$i]), 2, '.', '');
     }
+    $XML_FILE .= $importo_liquidato_scalare;
 
     $XML_FILE .= '</importoSommeLiquidate></lotto>';
     endwhile; else:
@@ -167,6 +145,8 @@ function creafilexml ($anno) {
 
     // Close 'er up
     fclose($my_file);
+
+    anac_add_log('Fine generazione', 0);
 
     avcp_valid_check();
 }

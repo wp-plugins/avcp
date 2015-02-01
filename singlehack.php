@@ -55,34 +55,14 @@ function avcp_job_cpt_template_filter($content)
 
 
 
-    echo '<tr><td>Importo delle somme liquidate:</td>';
+    echo '<tr><td>Importo delle somme liquidate:</td><td>';
 
-
-
-
-
-    $counter_terms = 0;
-    $ultimo_anno_gara = 0;
-
-    $terms = get_terms( 'annirif', array('hide_empty' => 0) );
-    foreach ( $terms as $term ) {
-        if (has_term( $term->name, 'annirif', $post->ID )) {
-            $counter_terms++;
-            if ($term->name > $ultimo_anno_gara) {
-                $ultimo_anno_gara = $term->name;
-            }
+    for ($i = 2013; $i < 2019; $i++) {
+        if ( get_post_meta(get_the_ID(), 'avcp_s_l_'.$i, true) > 0) {
+            echo '<strong>'.$i.'</strong>: '.get_post_meta(get_the_ID(), 'avcp_s_l_'.$i, true).'<br>';
         }
     }
-
-    echo '<td>';
-    if ($counter_terms == 1) {
-        echo get_post_meta(get_the_ID(), 'avcp_somme_liquidate', true);
-    } else if ($counter_terms == 2) {
-        echo ($ultimo_anno_gara -1) . ': €' .  get_post_meta(get_the_ID(), 'avcp_somme_liquidate_prev', true) . '<br/>';
-        echo ($ultimo_anno_gara) . ': €' .  get_post_meta(get_the_ID(), 'avcp_somme_liquidate', true);
-    }
     echo '</td>';
-
 
     echo '</tr>';
 
@@ -159,7 +139,7 @@ if ($get_avcp_dis_archivioditte == '1') {
 
     echo '</table>';
 
-     echo '<h3>Statistiche</h3>';
+    //echo '<h3>Statistiche</h3>';
 
     if (get_option('avcp_showlove') == '1') {
         echo '<center><a href="http://www.wpgov.it" target="_blank" title="Software &copy; WPGov"><img style="margin:5px;" src="' . plugin_dir_url(__FILE__) . 'images/wpgov.png" /></a></center>';

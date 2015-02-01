@@ -1,9 +1,4 @@
 <?php
-add_action('admin_menu', 'avcp_valid_menu');
-function avcp_valid_menu()
-{
-    add_submenu_page('edit.php?post_type=avcp', 'Dataset XML AVCP', 'Dataset XML AVCP', 'manage_options', 'avcp_v_dataset', 'avcp_v_dataset_load');
-}
 
 function avcp_v_dataset_load()
 {
@@ -15,19 +10,18 @@ function avcp_v_dataset_load()
                   creafilexml ($term->name);
                   $verificafilecreati = $term->name . ' - ' . $verificafilecreati;
                   echo '<div class="updated"><p>';
-                  printf(__('AVCP | Il seguente file .xml è generato: <b>' . $term->name . '</b>'));
+                  printf(__('Il seguente file .xml è generato: <b>' . $term->name . '</b>'));
                   echo "</p></div>";
                 }
             } else {
-                echo '<div class="error"><p>';
-                printf(__('AVCP | Impossibile creare il file .xml!<br/>Controlla che sia presente qualche gara e che siano collegate al proprio "Anno di Riferimento"...'));
-                echo "</p></div>";
+                echo '<div class="error"><p>ERRORE CRITICO--VEDERE FILE DI LOG</p></div>';
+                anac_add_log('Impossibile generare i file xml a causa della tassonomia vuota. Contattare il supporto', 1);
             }
         }
 
     echo '<div class="wrap">';
     screen_icon();
-    echo '<h2>Validazione Dataset XML per l\'Autorità per la Vigilanza sui Contratti Pubblici di Lavori, Servizi e Forniture</h2>';
+    echo '<h2><strong>Validazione dataset</strong> XML<br><small>In questa pagina puoi verificare lo stato dei dataset generati</small></h2>';
 
     // SYSTEM CHECK
     echo '<form method="post" name="options" target="_self">';
@@ -36,10 +30,13 @@ function avcp_v_dataset_load()
     <h3><span>Generazione file .xml</span></h3>
     I dataset generati sono salvati nella cartella <b><a href="' . get_site_url() . '/avcp' . '" target="_blank">' . get_site_url() . '/avcp' . '</a></b>';
 
-    echo'<p style="text-align:center;" class="submit"><input type="submit" class="button-primary" name="XMLgenBUTTON" value="Crea Dataset" /><br/><hr/><font style="color:red;">Ecco i link dei dataset da comunicare ad AVCP:</font>
-    <br/>Gare anno 2012+2013: <b><a href="' . get_site_url() . '/avcp/2013.xml' . '" target="_blank">' . get_site_url() . '/avcp/2013.xml' . '</a></b>
-    <br/>Gare anno 2014: <b><a href="' . get_site_url() . '/avcp/2014.xml' . '" target="_blank">' . get_site_url() . '/avcp/2014.xml' . '</a></b>
-    <br/>Gare anno 2015: <b><a href="' . get_site_url() . '/avcp/2015.xml' . '" target="_blank">' . get_site_url() . '/avcp/2015.xml' . '</a></b>
+    echo'<p style="text-align:center;" class="submit"><input type="submit" class="button-primary" name="XMLgenBUTTON" value="Genera dataset" /><br/><hr/><font style="color:red;">Link dei dataset da comunicare ad AVCP:</font>
+    <a href="' . get_site_url() . '/avcp/2013.xml' . '" target="_blank">2012+2013</a> &bull;
+    <a href="' . get_site_url() . '/avcp/2014.xml' . '" target="_blank">2014</a> &bull;
+    <a href="' . get_site_url() . '/avcp/2015.xml' . '" target="_blank">2015</a> &bull;
+    <a href="' . get_site_url() . '/avcp/2015.xml' . '" target="_blank">2016</a> &bull;
+    <a href="' . get_site_url() . '/avcp/2015.xml' . '" target="_blank">2017</a> &bull;
+    <a href="' . get_site_url() . '/avcp/2015.xml' . '" target="_blank">2018</a>
     </p>';
 
     echo '</div>';
@@ -124,9 +121,8 @@ function avcp_v_dataset_load()
     }
 
 
-    echo '<h4>Esito:</h4>';
     if ($system_ok) {
-        echo 'Nessun problema tecnico rilevato con il server. Molto bene!<br/><br/>';
+        echo '<br/><center><code>Nessun problema trovato.</code></center>';
     } else {
         echo '
         <style>
@@ -139,7 +135,7 @@ function avcp_v_dataset_load()
     echo '</div>
     <div class="clear"></div>';
 
-    echo'<div class="updated" id="wpgov-message"><p>Su questa pagina puoi controllare eventuali problemi con i file .xml per A.V.C.P.<br/>
+    echo'<div class="updated"><p>Su questa pagina puoi controllare eventuali problemi con i dataset richiesti da ANAC (ex.AVCP)<br/>
     Questo test non garantisce, e anzi <b>ignora</b>, la completezza e veridicita\' dei dati inseriti o omessi</p></div>';
 
     echo '<div class="wpgov-box">';
@@ -148,18 +144,18 @@ function avcp_v_dataset_load()
     foreach ( $terms as $term ) {
         $xml = new DOMDocument();
         $xml->load(ABSPATH  . '/avcp/' . $term->name. '.xml');
-        echo '<hr/><center><h3 style="margin-bottom: 0px;">Dataset Anno ' . $term->name . '</h3><small><a target="_blank" href="' . get_site_url()  . '/avcp/' . $term->name. '.xml">' . get_site_url()  . '/avcp/' . $term->name. '.xml</a></small></center>';
+        echo '<hr/><h3 style="margin-bottom: 0px;">Dataset Anno ' . $term->name . '</h3><small style="float:right;"><a target="_blank" href="' . get_site_url()  . '/avcp/' . $term->name. '.xml"><code>' . get_site_url()  . '/avcp/' . $term->name. '.xml</code></a></small>';
         if (!$xml->schemaValidate(ABSPATH  . '/wp-content/plugins/avcp/includes/datasetAppaltiL190.xsd')) {
             libxml_display_errors();
-            echo '<br/><center><font style="background-color:red;color:white;padding:2px;border-radius:3px;font-weight:bold;font-family:verdana;">ERRORE VALIDAZIONE AVCP<br/>Risolvere i problemi riportati qui sopra, poi procedere con la rigenerazione dei dataset .xml!</font></center><br/>';
+            echo '<br/><font style="background-color:red;color:white;padding:2px;border-radius:3px;font-weight:bold;f">Errore validazione ANAC su tracciato XSD: risolvere i problemi segnalati e rigenerare i dataset!</font><br/>';
             check_software($term->name);
         } else {
-            echo '<center><br/><font style="background-color:lime;padding:2px;border-radius:3px;font-weight:bold;font-family:verdana;">Validazione sintattica passata!</font></center>';
+            echo '<br/><font style="background-color:lime;padding:2px;border-radius:3px;">Validazione su tracciato XSD passata!</font>';
             check_software($term->name);
         }
     }
-    echo '</div>
-    Puoi controllare online i dataset anche con il validatore gratuito offerto da <b><a href="https://avcp.centrosistema.it/validator">CentroSistema</a></b>';
+    echo '</div><br/>
+    Puoi controllare online i dataset anche con il validatore gratuito offerto da <b><a href="https://avcp.centrosistema.it/validator">CentroSistema e SoftCare</a></b>';
 
 }
 
@@ -209,9 +205,9 @@ query_posts( array( 'post_type' => 'avcp', 'annirif' => $anno, 'posts_per_page' 
     endwhile; else:
     endif;
     if ($erroredate == true) {
-        echo '<center><font style="background-color:red;color:white;padding:2px;border-radius:3px;font-weight:bold;font-family:verdana;">ERRORE VALIDAZIONE SOFTWARE: data_inizio / data_fine<br/>' . $logerrori . '</font></center><br/>';
+        echo '<br/><font style="background-color:red;color:white;padding:2px;border-radius:3px;font-weight:bold;">ERRORE VALIDAZIONE SOFTWARE: data_inizio / data_fine<br/>' . $logerrori . '</font><br/>';
     } else {
-        echo '<center><font style="background-color:lime;padding:2px;border-radius:3px;font-weight:bold;font-family:verdana;">Validazione software completata per i campi data_inizio e data_fine</font></center>';
+        echo '<br/><font style="background-color:lime;padding:2px;border-radius:3px;">Validazione software completata per i campi data_inizio e data_fine</font></center>';
     }
 }
 
@@ -227,9 +223,9 @@ function check_annoimpostato() {
     endwhile; else:
     endif;
     if ($erroreanno == true) {
-        echo '<center><font style="background-color:red;color:white;padding:2px;border-radius:3px;font-weight:bold;font-family:verdana;">ATTENZIONE || E\' PRESENTE UNA O PIU\' GARE SENZA ANNO DI RIFERIMENTO!!</font></center><br/>';
+        echo '<center><font style="background-color:red;color:white;padding:2px;border-radius:3px;font-weight:bold;">Una o più gare sono registrate senza anno di riferimento. Correggere!</font></center><br/>';
     } else {
-        echo '<center><font style="background-color:lime;padding:2px;border-radius:3px;font-weight:bold;font-family:verdana;">Tutte le ' . $ng . ' gare hanno un anno di riferimento e saranno incluse nel relativo dataset :)</font></center>';
+        echo '<center><font style="background-color:lime;padding:2px;border-radius:3px;">Tutte le ' . $ng . ' gare hanno un anno di riferimento e saranno incluse nel loro dataset!</font></center>';
     }
 }
 

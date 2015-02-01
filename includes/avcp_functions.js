@@ -2,119 +2,79 @@ document.getElementById("avcp_data_inizio").setAttribute("readonly", "true");
 document.getElementById("avcp_data_fine").setAttribute("readonly", "true");
 document.getElementById("avcp_cig").setAttribute("onkeyup", "validcig(this)");
 
-$("#avcp_somme_liquidate").prop('disabled', true);
-$("#avcp_somme_liquidate_prev").prop('disabled', true);
-$("#avcp_somme_liquidate_prevprev").prop('disabled', true);
+
+$('label[for=avcp_aggiudicazione]').parent().parent().parent().css('border-top','1px solid grey');
+$('label[for=avcp_aggiudicazione]').parent().parent().parent().prepend('<center><small>Gli importi vanno inseriti nel formato 12345<strong>.</strong>67 o, in assenza di decimali, 12345<strong>.00</strong></small></center><br>');
+$('label[for=avcp_aggiudicazione').parent().parent().css('float','left');
+$('label[for=avcp_aggiudicazione').parent().parent().css('width','100%');
+
+$('label[for=avcp_s_l_2013]').parent().parent().parent().css('float','left');
+$('label[for=avcp_s_l_2014]').parent().parent().parent().css('float','left');
+$('label[for=avcp_s_l_2015]').parent().parent().parent().css('float','left');
+$('label[for=avcp_s_l_2016]').parent().parent().parent().css('float','left');
+$('label[for=avcp_s_l_2017]').parent().parent().parent().css('float','left');
+$('label[for=avcp_s_l_2018]').parent().parent().parent().css('float','left');
+
+$('label[for=avcp_s_l_2013]').parent().parent().parent().css('width','50%');
+$('label[for=avcp_s_l_2014]').parent().parent().parent().css('width','50%');
+$('label[for=avcp_s_l_2015]').parent().parent().parent().css('width','50%');
+$('label[for=avcp_s_l_2016]').parent().parent().parent().css('width','50%');
+$('label[for=avcp_s_l_2017]').parent().parent().parent().css('width','50%');
+$('label[for=avcp_s_l_2018]').parent().parent().parent().css('width','50%');
+
+$('#annirif-tabs li').first().remove();
+$('#annirif-tabs li').first().remove();
+$('#areesettori-tabs li').first().remove();
+$('#areesettori-tabs li').first().remove();
 
 
 document.getElementById("avcp_data_inizio").setAttribute("onchange", "datespan()");
 document.getElementById("avcp_data_fine").setAttribute("onchange", "datespan()");
 
-datespan();
+document.getElementById("avcp_s_l_2013").setAttribute("onchange", "datespan()");
+document.getElementById("avcp_s_l_2014").setAttribute("onchange", "datespan()");
+document.getElementById("avcp_s_l_2015").setAttribute("onchange", "datespan()");
+document.getElementById("avcp_s_l_2016").setAttribute("onchange", "datespan()");
+document.getElementById("avcp_s_l_2017").setAttribute("onchange", "datespan()");
+document.getElementById("avcp_s_l_2018").setAttribute("onchange", "datespan()");
 
 function datespan() {
     var jdate1 = document.getElementById("avcp_data_inizio").value.slice(-4);
     var jdate2 = document.getElementById("avcp_data_fine").value.slice(-4);
 
     if (jdate1 != '' && jdate2 != '') { //Controlla se entrambe le date sono inserite
-        if (jdate1 == jdate2) {
-            $('label[for=avcp_somme_liquidate]').html('Importo somme liquidate (<b>' + jdate1 + '</b>) <b>€</b>');
-
-			$('label[for=avcp_somme_liquidate]').parent().parent().fadeIn();
-            $('label[for=avcp_somme_liquidate_prev]').parent().parent().fadeOut();
-            $('label[for=avcp_somme_liquidate_prevprev]').parent().parent().fadeOut();
-
-            $("#avcp_somme_liquidate_prev").val("0.00");
-            $("#avcp_somme_liquidate_prevprev").val("0.00");
-			
-			$("#avcp_somme_liquidate").prop('disabled', false);
-			$("#avcp_somme_liquidate_prev").prop('disabled', true);
-			$("#avcp_somme_liquidate_prevprev").prop('disabled', true);
-
-            if (jdate1 == '2013') {
-                year_check_only('2013');
-            } else if (jdate1 == '2014') {
-                year_check_only('2014');
-            } else if (jdate1 == '2015') {
-                year_check_only('2015');
-            }
-        } else if (jdate2 - jdate1 == 1) {
-            $('label[for=avcp_somme_liquidate_prev]').parent().parent().fadeIn();
-			$('label[for=avcp_somme_liquidate_prevprev]').parent().parent().fadeOut();
-            $('label[for=avcp_somme_liquidate]').html('Importo somme liquidate <b>' + jdate2 + '</b> <b>€</b>');
-
-            $('label[for=avcp_somme_liquidate_prev]').html('Importo somme liquidate <b>' + jdate1 + '</b> <b>€</b>');
-			
-			
-			$("#avcp_somme_liquidate").prop('disabled', false);
-			$("#avcp_somme_liquidate_prev").prop('disabled', false);
-			$("#avcp_somme_liquidate_prevprev").prop('disabled', true);
-			
-            if (jdate1 == '2013' || jdate2 == '2013') {
-                year_check('2013');
-            }
-            if (jdate1 == '2014' || jdate2 == '2014') {
-                year_check('2014');
-            }
-            if (jdate1 == '2015' || jdate2 == '2015') {
-                year_check('2015');
-            }
-        } else if (jdate2 - jdate1 == 2) {
-			$('label[for=avcp_somme_liquidate_prev]').parent().parent().fadeOut();
-            $('label[for=avcp_somme_liquidate_prev]').parent().parent().fadeIn();
-            $('label[for=avcp_somme_liquidate_prevprev]').parent().parent().fadeIn();
-
-            $('label[for=avcp_somme_liquidate]').html('Importo somme liquidate <b>' + jdate2 + '</b> <b>€</b>');
-            $('label[for=avcp_somme_liquidate_prev]').html('Importo somme liquidate <b>' + (jdate2 - 1) + '</b> <b>€</b>');
-            $('label[for=avcp_somme_liquidate_prevprev]').html('Importo somme liquidate <b>' + jdate1 + '</b> <b>€</b>');
-			
-			$("#avcp_somme_liquidate").prop('disabled', false);
-			$("#avcp_somme_liquidate_prev").prop('disabled', false);
-			$("#avcp_somme_liquidate_prevprev").prop('disabled', false);
-
-            if (jdate1 == '2013' || jdate2 == '2013') {
-                year_check('2013');
-            }
-            if (jdate1 == '2014' || jdate2 == '2014') {
-                year_check('2014');
-            }
-            if (jdate1 == '2015' || jdate2 == '2015') {
-                year_check('2015');
-            }
-        } else if (jdate2 - jdate1 > 2) {
-            window.alert('ATTENZIONE! LE GARE SU 4 ANNI NON SONO SUPPORTATE!');
-
-        } else {
-            window.alert('Eccezione non prevista. Contattare il servizio di supporto...');
-        }
-    } else {
-        $('label[for=avcp_somme_liquidate_prev]').parent().parent().fadeOut();
-        $('label[for=avcp_somme_liquidate_prevprev]').parent().parent().fadeOut();
-    }
+			var counter_i = 0;
+			for ( counter_i = jdate1; counter_i < (jdate2*1+1); counter_i++) {
+				year_check(counter_i);
+			}
+	}
+	
+	if (document.getElementById("avcp_s_l_2013").value > 0) {
+		year_check('2013');
+	}
+	if (document.getElementById("avcp_s_l_2014").value > 0) {
+		year_check('2014');
+	}
+	if (document.getElementById("avcp_s_l_2015").value > 0) {
+		year_check('2015');
+	}
+	if (document.getElementById("avcp_s_l_2016").value > 0) {
+		year_check('2016');
+	}
+	if (document.getElementById("avcp_s_l_2017").value > 0) {
+		year_check('2017');
+	}
+	if (document.getElementById("avcp_s_l_2018").value > 0) {
+		year_check('2018');
+	}
 }
 
 function year_check(year) {
     $("label:contains('" + year + "')").find("input").prop( "checked", true );
 }
-
-function year_check_only(year) {
-    for (var i=2013; i<2016; i++) {
-        if (year == i) {
-            $("label:contains('" + i + "')").find("input").prop( "checked", true );
-        } else {
-            $("label:contains('" + i + "')").find("input").prop( "checked", false );
-        }
-    }
+function year_uncheck(year) {
+    $("label:contains('" + year + "')").find("input").prop( "checked", false );
 }
-
-    $("#clearinizio").click(function(e) {
-        e.preventDefault();
-        $("#avcp_data_inizio").val('');
-    });
- $("#clearfine").click(function(e) {
-        e.preventDefault();
-        $("#avcp_data_fine").val('');
-    });
 
 function validcig(f) {
     f.value = f.value.replace(/[^A-Z0-9-\s]/ig,'');
@@ -193,32 +153,43 @@ function formatImportoBack(value) {
 }
 
 function formattaimporto(id) {
-    newval = formatImporto(jQuery("#" + id).val(), 15);
-    jQuery("#" + id).val(newval);
+    newval = formatImporto(jQuery(id).val(), 15);
+    jQuery(id).val(newval);
 }
 
 jQuery(document).ready(function(){
-
-    if (jQuery('#avcp_somme_liquidate').length > 0){
-        jQuery('#avcp_somme_liquidate').change(function(){
-            formattaimporto('avcp_somme_liquidate');
+	if (jQuery('#avcp_s_l_2013').length > 0){
+        jQuery('#avcp_s_l_2013').change(function(){
+            formattaimporto('#avcp_s_l_2013');
+		});
+    }
+	if (jQuery('#avcp_s_l_2014').length > 0){
+        jQuery('#avcp_s_l_2014').change(function(){
+            formattaimporto('#avcp_s_l_2014');
         });
     }
-
-    if (jQuery('#avcp_somme_liquidate_prev').length > 0){
-        jQuery('#avcp_somme_liquidate_prev').change(function(){
-            formattaimporto('avcp_somme_liquidate_prev');
+	if (jQuery('#avcp_s_l_2015').length > 0){
+        jQuery('#avcp_s_l_2015').change(function(){
+            formattaimporto('#avcp_s_l_2015');
         });
     }
-
-    if (jQuery('#avcp_aggiudicazione').length > 0){
-        jQuery('#avcp_aggiudicazione').change(function(){
-            formattaimporto('avcp_aggiudicazione');
+	if (jQuery('#avcp_s_l_2016').length > 0){
+        jQuery('#avcp_s_l_2016').change(function(){
+            formattaimporto('#avcp_s_l_2016');
         });
     }
-
-})
-/* Italian initialisation for the jQuery UI date picker plugin. */
+	if (jQuery('#avcp_s_l_2017').length > 0){
+        jQuery('#avcp_s_l_2017').change(function(){
+            formattaimporto('#avcp_s_l_2017');
+        });
+    }
+	if (jQuery('#avcp_s_l_2018').length > 0){
+        jQuery('#avcp_s_l_2018').change(function(){
+            formattaimporto('#avcp_s_l_2018');
+        });
+    }
+	
+})/* Italian initialisation for the jQuery UI date picker plugin. */
 /* Written by Antonello Pasella (antonello.pasella@gmail.com). */
 (function( factory ) {
     if ( typeof define === "function" && define.amd ) {

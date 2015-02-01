@@ -54,19 +54,26 @@ add_action( 'admin_menu' , 'avcp_remove_metaboxes' );
       ),array('name'=> 'Scelta Contraente', 'std'=> array('selectkey2')));
 
       //date field
-    $my_meta->addDate($prefix.'data_inizio',array('name'=> 'Data Inizio', 'format' => 'd M yy'));
+    $my_meta->addDate($prefix.'data_inizio',array('name'=> 'Data Inizio', 'format' => 'd-m-yy'));
     //'desc' => 'Lasciare vuoto il campo se non è nota. <button id="clearinizio">pulisci</button>
 
       //date field
-    $my_meta->addDate($prefix.'data_fine',array('name'=> 'Data Fine', 'format' => 'd M yy'));
+    $my_meta->addDate($prefix.'data_fine',array('name'=> 'Data Fine', 'format' => 'd-m-yy'));
 
-      $my_meta->addText($prefix.'aggiudicazione',array('name'=> 'Importo aggiudicazione <b>€</b>', 'desc' => 'Inserire l\'importo avendo cura di riportare SEMPRE i decimali .00 esempio: 22330.00', 'std' => '0.00'));
-        $my_meta->addText($prefix.'somme_liquidate_prevprev',array('name'=> 'Importo somme liquidate <b>€</b>', 'desc' => 'Formato: 12345.12', 'std' => '0.00'));
-      $my_meta->addText($prefix.'somme_liquidate_prev',array('name'=> 'Importo somme liquidate <b>€</b>', 'desc' => 'Formato: 12345.12', 'std' => '0.00'));
-      $my_meta->addText($prefix.'somme_liquidate',array('name'=> 'Importo somme liquidate <b>€</b>', 'desc' => 'Formato: 12345.12', 'std' => '0.00'));
+      $my_meta->addText($prefix.'aggiudicazione',array('name'=> 'Importo aggiudicazione <b>€</b>', 'desc' => 'Importo di aggiudicazione', 'std' => '0.00'));
+//$my_meta->addText($prefix.'somme_liquidate_prevprev',array('name'=> 'Importo somme liquidate PREVPREV', 'desc' => 'campo rimuovendo', 'std' => '0.00'));
+//$my_meta->addText($prefix.'somme_liquidate_prev',array('name'=> 'Importo somme liquidate PREV', 'desc' => 'campo rimuovendo', 'std' => '0.00'));
+//$my_meta->addText($prefix.'somme_liquidate',array('name'=> 'Importo somme liquidate', 'campo rimuovendo' => 'Formato: 12345.12', 'std' => '0.00'));
 
       //wysiwyg field
       //$my_meta->addWysiwyg($prefix.'wysiwyg_note',array('name'=> 'Allegati e note libere '));
+
+    $my_meta->addText($prefix.'s_l_2013',array('name'=> 'Somme liquidate <strong>2013</strong>', 'desc' => 'Formato: 12345.12', 'std' => '0.00'));
+    $my_meta->addText($prefix.'s_l_2014',array('name'=> 'Somme liquidate <strong>2014</strong>', 'desc' => 'Formato: 12345.12', 'std' => '0.00'));
+    $my_meta->addText($prefix.'s_l_2015',array('name'=> 'Somme liquidate <strong>2015</strong>', 'desc' => 'Formato: 12345.12', 'std' => '0.00'));
+    $my_meta->addText($prefix.'s_l_2016',array('name'=> 'Somme liquidate <strong>2016</strong>', 'desc' => 'Formato: 12345.12', 'std' => '0.00'));
+    $my_meta->addText($prefix.'s_l_2017',array('name'=> 'Somme liquidate <strong>2017</strong>', 'desc' => 'Formato: 12345.12', 'std' => '0.00'));
+    $my_meta->addText($prefix.'s_l_2018',array('name'=> 'Somme liquidate <strong>2018</strong>', 'desc' => 'Formato: 12345.12', 'std' => '0.00'));
 
     $my_meta->Finish();
 
@@ -75,7 +82,7 @@ function avcp_pages_inner_custom_box3( $post ) { //Inizializzazione Metabox 2, s
     wp_nonce_field( plugin_basename( __FILE__ ), 'pages_noncename' );
 
     // The actual fields for data entry
-    echo 'Le ditte appena impostate come partecipanti nel riquadro "Ditte" compariranno qui solo dopo avere aggiornato/pubblicato questa gara.';
+    echo 'Le ditte inserite nel riquadro "Ditte partecipanti" compariranno qui solo dopo avere aggiornato/pubblicato questa gara.';
     $dittepartecipanti = get_the_terms( $post->ID, 'ditte' );
     $cats = get_post_meta($post->ID,'avcp_aggiudicatari',true);
     echo '<ul>';
@@ -87,7 +94,7 @@ function avcp_pages_inner_custom_box3( $post ) { //Inizializzazione Metabox 2, s
             echo'<li id="cat-'.$cat_id.'"><input type="checkbox" name="avcp_aggiudicatari[]" id="'.$cat_id.'" value="'.$cat_id.'"'.$checked.'> <label for="'.$cat_id.'">'.__($term->name, 'pages_textdomain' ).'</label></li>';
         }
     } else {
-        echo '<b>Nessuna ditta partecipante collegata a questa gara.</b>';
+        echo '<code>Nessuna ditta partecipante collegata a questa gara.</code>';
     }
     echo '</ul><input type="submit" name="publish" id="publish" class="button button-primary button-large" value="Pubblica/Aggiorna Gara" accesskey="p">';
 }

@@ -23,7 +23,7 @@ echo '
         while ( have_posts() ) : the_post();
                 $numero_gare_{$term->name}++;
                 $tot_agg_{$term->name} += get_post_meta($post->ID, 'avcp_aggiudicazione', true);
-                $tot_liq_{$term->name} += get_somme_liquidate($post->ID, $term->name);
+                $tot_liq_{$term->name} += get_post_meta($post->ID, 'avcp_s_l_'.$term->name, true);
 
                  $datediff = strtotime(get_post_meta(get_the_ID(), 'avcp_data_fine', true)) - strtotime(get_post_meta(get_the_ID(), 'avcp_data_inizio', true));
                  $gap_tot_giorni_{$term->name} += floor($datediff/(60*60*24));

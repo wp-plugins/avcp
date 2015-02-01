@@ -8,9 +8,8 @@
                 </td></tr>
             <tr>
                 <th colspan="2">Oggetto</th>
-
+                <th>CIG</th>
                 <th>Importo<br/>agg.</th>
-                <th>Importo<br/>liquidato</th>
                 <th>Durata<br/>lavori</th>
                 <th>Modalità<br/>affidamento</th>
             </tr>
@@ -29,17 +28,8 @@
 
         echo '<tr style="display: table-row;">';
         echo '<td colspan="2"><a href="' . get_permalink() . '">' . get_the_title() . '</a></td>';
-        //echo '<td>' . get_post_meta($post->ID, 'avcp_cig', true) . '</td>';
+        echo '<td>' . get_post_meta($post->ID, 'avcp_cig', true) . '</td>';
         echo '<td align="center">€<strong>' . get_post_meta($post->ID, 'avcp_aggiudicazione', true) . '</strong></td>';
-
-        echo '<td align="center">';
-            if (get_post_meta(get_the_ID(), 'avcp_somme_liquidate', true)) {
-                echo '€<strong>' . get_post_meta(get_the_ID(), 'avcp_somme_liquidate', true);
-            } else {
-                echo ' - ';
-            }
-        echo '</strong></td>';
-
         echo '<td align="center">' . date("d/m/Y", strtotime(get_post_meta(get_the_ID(), 'avcp_data_inizio', true))) . '<br/>' .
         date("d/m/Y", strtotime(get_post_meta(get_the_ID(), 'avcp_data_fine', true))) . '<br/>';
 
