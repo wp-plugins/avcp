@@ -62,7 +62,7 @@
             <a download="' . get_bloginfo('name') . '-gare' . $anno . '.csv" href="#" onclick="return ExcellentExport.csv(this, \'gare\');"><button>CSV</button></a>
             </div>';
 
-                if (get_option('avcp_showlove') == '1') {
+                if (get_option('wpgov_show_love')) {
                     echo '<a href="http://www.wpgov.it" target="_blank" title="Software &copy; WPGov"><img src="' . plugin_dir_url(__FILE__) . 'images/wpgov.png" /></a>';
                 }
 

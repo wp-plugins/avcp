@@ -141,7 +141,7 @@ if ($get_avcp_dis_archivioditte == '1') {
 
     //echo '<h3>Statistiche</h3>';
 
-    if (get_option('avcp_showlove') == '1') {
+    if (get_option('wpgov_show_love')) {
         echo '<center><a href="http://www.wpgov.it" target="_blank" title="Software &copy; WPGov"><img style="margin:5px;" src="' . plugin_dir_url(__FILE__) . 'images/wpgov.png" /></a></center>';
     }
 }

@@ -39,11 +39,6 @@
             } else {
                 update_option('avcp_enable_editor', '0');
         }
-        if (isset($_POST['avcp_showlove_n'])){
-                update_option('avcp_showlove', '1');
-            } else {
-                update_option('avcp_showlove', '0');
-        }
         if (isset($_POST['avcp_abilita_ruoli_n'])){
                 update_option('avcp_abilita_ruoli', '1');
             } else {
@@ -56,7 +51,7 @@
     echo '<form method="post" name="options" target="_self">';
     settings_fields( 'avcp_options' );
 
-    echo '<h2>Impostazioni Ente</h2>
+    echo '<h4>IMPOSTAZIONI ENTE</h4>
     <table class="form-table"><tbody>';
 
     echo '<tr>';
@@ -83,7 +78,7 @@
 
     echo'</tbody></table>';
 
-    echo '<h2>Impostazioni Varie</h2>
+    echo '<h3>VARIE</h2>
     <table class="form-table"><tbody>';
 
     echo '<tr>';
@@ -106,19 +101,9 @@
     echo '><span class="description">La funzionalità Centri di Costo è abilitata di default e il campo relativo sarà scritto nel file XML. Se l\'ente non li prevede, puoi disabilitarne la scrittura nel file xml. Saranno comunque utilizzabili nel sito come tassonomia.</span></td>';
     echo '</tr>';
 
-    echo '<tr>';
-    echo '<th><label>Mostra un po\' di Amore</label></th>';
-    echo '<td><input type="checkbox" name="avcp_showlove_n" ';
-    $get_avcp_showlove = get_option('avcp_showlove');
-        if ($get_avcp_showlove == '1') {
-            echo 'checked="checked" ';
-        }
-    echo '><span class="description">Spunta questa casella se vuoi mostrare il link al plugin sotto alla tabella generata</span></td>';
-    echo '</tr>';
-
     echo '</tbody></table>';
 
-    echo '<h2>Visualizzazioni Archivio</h2>
+    echo '<h3>VISUALIZZAZIONI ARCHIVIO</h3>
     <table class="form-table"><tbody>';
 
     echo '<tr>';
@@ -143,7 +128,7 @@
 
     echo '</tbody></table>';
 
-    echo '<h2>Ruoli & Permessi</h2>
+    echo '<h3>RUOLI & PERMESSI</h3>
     Queste impostazioni sono riservate a utenti avanzati.
     <table class="form-table"><tbody>';
 

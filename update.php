@@ -47,5 +47,9 @@
             require_once(plugin_dir_path(__FILE__) . 'utilities/update_6.php');
         }
 
+        if (version_compare($pluginversion, "6.2", "<")) {
+            if (get_option('avcp_showlove')) { update_option( 'wpgov_show_love', '1' ); delete_option('avcp_showlove'); }
+        }
+
         anac_add_log('Script di aggiornamento '.$pluginversion.' richiamato', 0);
 ?>
