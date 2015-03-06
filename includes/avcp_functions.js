@@ -1,42 +1,43 @@
-document.getElementById("avcp_data_inizio").setAttribute("readonly", "true");
-document.getElementById("avcp_data_fine").setAttribute("readonly", "true");
-document.getElementById("avcp_cig").setAttribute("onkeyup", "validcig(this)");
+jQuery(document).ready(function($){
 
+	document.getElementById("avcp_data_inizio").setAttribute("readonly", "true");
+	document.getElementById("avcp_data_fine").setAttribute("readonly", "true");
+	document.getElementById("avcp_cig").setAttribute("onkeyup", "validcig(this)");
+	
+	$('label[for=avcp_aggiudicazione]').parent().parent().parent().css('border-top','1px solid grey');
+	$('label[for=avcp_aggiudicazione]').parent().parent().parent().prepend('<center><small>Gli importi vanno inseriti nel formato 12345<strong>.</strong>67 o, in assenza di decimali, 12345<strong>.00</strong></small></center><br>');
+	$('label[for=avcp_aggiudicazione').parent().parent().css('float','left');
+	$('label[for=avcp_aggiudicazione').parent().parent().css('width','100%');
 
-$('label[for=avcp_aggiudicazione]').parent().parent().parent().css('border-top','1px solid grey');
-$('label[for=avcp_aggiudicazione]').parent().parent().parent().prepend('<center><small>Gli importi vanno inseriti nel formato 12345<strong>.</strong>67 o, in assenza di decimali, 12345<strong>.00</strong></small></center><br>');
-$('label[for=avcp_aggiudicazione').parent().parent().css('float','left');
-$('label[for=avcp_aggiudicazione').parent().parent().css('width','100%');
+	$('label[for=avcp_s_l_2013]').parent().parent().parent().css('float','left');
+	$('label[for=avcp_s_l_2014]').parent().parent().parent().css('float','left');
+	$('label[for=avcp_s_l_2015]').parent().parent().parent().css('float','left');
+	$('label[for=avcp_s_l_2016]').parent().parent().parent().css('float','left');
+	$('label[for=avcp_s_l_2017]').parent().parent().parent().css('float','left');
+	$('label[for=avcp_s_l_2018]').parent().parent().parent().css('float','left');
 
-$('label[for=avcp_s_l_2013]').parent().parent().parent().css('float','left');
-$('label[for=avcp_s_l_2014]').parent().parent().parent().css('float','left');
-$('label[for=avcp_s_l_2015]').parent().parent().parent().css('float','left');
-$('label[for=avcp_s_l_2016]').parent().parent().parent().css('float','left');
-$('label[for=avcp_s_l_2017]').parent().parent().parent().css('float','left');
-$('label[for=avcp_s_l_2018]').parent().parent().parent().css('float','left');
+	$('label[for=avcp_s_l_2013]').parent().parent().parent().css('width','50%');
+	$('label[for=avcp_s_l_2014]').parent().parent().parent().css('width','50%');
+	$('label[for=avcp_s_l_2015]').parent().parent().parent().css('width','50%');
+	$('label[for=avcp_s_l_2016]').parent().parent().parent().css('width','50%');
+	$('label[for=avcp_s_l_2017]').parent().parent().parent().css('width','50%');
+	$('label[for=avcp_s_l_2018]').parent().parent().parent().css('width','50%');
 
-$('label[for=avcp_s_l_2013]').parent().parent().parent().css('width','50%');
-$('label[for=avcp_s_l_2014]').parent().parent().parent().css('width','50%');
-$('label[for=avcp_s_l_2015]').parent().parent().parent().css('width','50%');
-$('label[for=avcp_s_l_2016]').parent().parent().parent().css('width','50%');
-$('label[for=avcp_s_l_2017]').parent().parent().parent().css('width','50%');
-$('label[for=avcp_s_l_2018]').parent().parent().parent().css('width','50%');
+	$('#annirif-tabs li').first().remove();
+	$('#annirif-tabs li').first().remove();
+	$('#areesettori-tabs li').first().remove();
+	$('#areesettori-tabs li').first().remove();
+	
+	document.getElementById("avcp_data_inizio").setAttribute("onchange", "datespan()");
+	document.getElementById("avcp_data_fine").setAttribute("onchange", "datespan()");
 
-$('#annirif-tabs li').first().remove();
-$('#annirif-tabs li').first().remove();
-$('#areesettori-tabs li').first().remove();
-$('#areesettori-tabs li').first().remove();
-
-
-document.getElementById("avcp_data_inizio").setAttribute("onchange", "datespan()");
-document.getElementById("avcp_data_fine").setAttribute("onchange", "datespan()");
-
-document.getElementById("avcp_s_l_2013").setAttribute("onchange", "datespan()");
-document.getElementById("avcp_s_l_2014").setAttribute("onchange", "datespan()");
-document.getElementById("avcp_s_l_2015").setAttribute("onchange", "datespan()");
-document.getElementById("avcp_s_l_2016").setAttribute("onchange", "datespan()");
-document.getElementById("avcp_s_l_2017").setAttribute("onchange", "datespan()");
-document.getElementById("avcp_s_l_2018").setAttribute("onchange", "datespan()");
+	document.getElementById("avcp_s_l_2013").setAttribute("onchange", "datespan()");
+	document.getElementById("avcp_s_l_2014").setAttribute("onchange", "datespan()");
+	document.getElementById("avcp_s_l_2015").setAttribute("onchange", "datespan()");
+	document.getElementById("avcp_s_l_2016").setAttribute("onchange", "datespan()");
+	document.getElementById("avcp_s_l_2017").setAttribute("onchange", "datespan()");
+	document.getElementById("avcp_s_l_2018").setAttribute("onchange", "datespan()");
+});
 
 function datespan() {
     var jdate1 = document.getElementById("avcp_data_inizio").value.slice(-4);
@@ -189,19 +190,9 @@ jQuery(document).ready(function(){
         });
     }
 	
-})/* Italian initialisation for the jQuery UI date picker plugin. */
-/* Written by Antonello Pasella (antonello.pasella@gmail.com). */
-(function( factory ) {
-    if ( typeof define === "function" && define.amd ) {
+})
 
-        // AMD. Register as an anonymous module.
-        define([ "../datepicker" ], factory );
-    } else {
-
-        // Browser globals
-        factory( jQuery.datepicker );
-    }
-}(function( datepicker ) {
+((function( datepicker ) {
     datepicker.regional['it'] = {
         closeText: 'Chiudi',
         prevText: '&#x3C;Prec',

@@ -4,7 +4,7 @@ Plugin Name: ANAC XML Bandi di Gara (AVCP)
 Plugin URI: http://www.wpgov.it
 Description: Generatore XML per ANAC (ex AVCP) e gestione bandi di gara e contratti (Legge 190/2012 art. 1.32 & D.Lgs 33/2013)
 Author: Marco Milesi
-Version: 6.2
+Version: 6.2.1
 Author URI: http://www.marcomilesi.ml
 */
 
@@ -261,7 +261,6 @@ function atg_caricamoduli() {
     //Include sistemi di validazione
     require_once(plugin_dir_path(__FILE__) . 'valid_check.php');
     require_once(plugin_dir_path(__FILE__) . 'valid_page.php');
-    require_once(plugin_dir_path(__FILE__) . 'searchTaxonomy/searchTaxonomyGT.php');
     global $typenow;
     if ($typenow == 'avcp') {
         add_filter( 'manage_posts_custom_column', 'avcp_modify_post_table_row', 10, 2 );
@@ -269,12 +268,29 @@ function atg_caricamoduli() {
     }
 }
 
+
+function avcp_ut_trasparenza() {
+
+    global $post; if ( 'avcp' !== $post->post_type ) { return; }
+    
+    wp_register_style( 'avcp_style',  plugins_url('avcp/includes/avcp_admin.css') );
+    wp_enqueue_style( 'avcp_style');
+    
+    wp_register_script( 'avcp_functions', plugins_url('avcp/includes/avcp_functions.js'));
+	wp_enqueue_script( 'avcp_functions');
+    
+    wp_register_script('avcp_searchTaxonomyGT_at_js', plugins_url('includes/searchTaxonomyGT.js', __FILE__));
+	wp_enqueue_script('avcp_searchTaxonomyGT_at_js');
+
+}
+add_action('admin_enqueue_scripts', 'avcp_ut_trasparenza');
+
 add_action( 'admin_init', 'AVCP_ADMIN_LOAD');
 function AVCP_ADMIN_LOAD () {
+    
     require_once(plugin_dir_path(__FILE__) . 'taxfilteringbackend.php');
 
     require_once(plugin_dir_path(__FILE__) . 'alerts.php');
-    require_once(plugin_dir_path(__FILE__) . 'styledbackend.php');
     require_once(plugin_dir_path(__FILE__) . 'register_setting.php');
     require_once(plugin_dir_path(__FILE__) . 'pannelli/log.php');
     require_once(plugin_dir_path(__FILE__) . 'pannelli/import.php');
