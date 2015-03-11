@@ -4,8 +4,8 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: anac, anticorruzione, avcp, autorita, vigilanza, lavori, pubblici, amministrazione, trasparente, legge, obblighi, marco, milesi, wpgov, pubblicazione
 Requires at least: 3.7
 Tested up to: 4.1
-Version: 6.2.1
-Stable tag: 6.2.1
+Version: 6.2.2
+Stable tag: 6.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -73,6 +73,9 @@ Puoi trovare la documentazione su [wpgov.it](https://wpgov.it/soluzioni/avcp-xml
 
 == Changelog ==
 > Questa è la lista completa di tutti gli aggiornamenti, test e correzioni. Ogni volta che una nuova versione viene rilasciata assicuratevi di aggiornare il prima possibile per usufruire delle ultime migliorie!
+
+= Versione 6.2.2 - 11.03.2015 =
+* Miglioramento stabilità e velocità
 
 = Versione 6.2.1 - 06.03.2015 =
 * Corretto conflitto con Amministrazione Trasparente
